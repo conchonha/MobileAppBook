@@ -1,11 +1,11 @@
-package com.example.mobileappbook.async;
+package com.example.mobileappbook.async.register;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.example.mobileappbook.cores.body.RegisterBody;
 import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
-import com.example.mobileappbook.cores.reponse.register_reponse.RegisterReponse;
+import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
 import com.example.mobileappbook.cores.services.APIServices;
 import com.example.mobileappbook.cores.services.DataService;
 import com.example.mobileappbook.src.repositories.register.RegisterRepositories;
@@ -29,11 +29,11 @@ public class AsyncRegister extends AsyncTask<Void,Void,Void> {
     @Override
     protected Void doInBackground(Void... voids) {
         DataService dataService = APIServices.getService();
-        Call<RegisterReponse> callback = dataService.register(mRegisterBody.getmName(),mRegisterBody.getmEmail(),mRegisterBody.getmPassWord(),mRegisterBody.getmPhone(),mRegisterBody.getmAddress(),mRegisterBody.getmDescription(),mRegisterBody.getmGenger());
+        Call<UserReponse> callback = dataService.register(mRegisterBody.getmName(),mRegisterBody.getmEmail(),mRegisterBody.getmPassWord(),mRegisterBody.getmPhone(),mRegisterBody.getmAddress(),mRegisterBody.getmDescription(),mRegisterBody.getmGenger());
 
-        callback.enqueue(new Callback<RegisterReponse>() {
+        callback.enqueue(new Callback<UserReponse>() {
             @Override
-            public void onResponse(Call<RegisterReponse> call, Response<RegisterReponse> response) {
+            public void onResponse(Call<UserReponse> call, Response<UserReponse> response) {
 
                if(response.isSuccessful()){
                    mRepositoriesInstance.setmReponeRegister(response.body());
@@ -44,7 +44,7 @@ public class AsyncRegister extends AsyncTask<Void,Void,Void> {
             }
 
             @Override
-            public void onFailure(Call<RegisterReponse> call, Throwable t) {
+            public void onFailure(Call<UserReponse> call, Throwable t) {
                 Log.d(TAG, "onFailure: "+t.toString());
                 ErrorRepone errorRepone = new ErrorRepone(t.hashCode(),t.getMessage());
                 mRepositoriesInstance.setErrorReponse(errorRepone);

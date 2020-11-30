@@ -34,12 +34,10 @@ public class StartScreenActivity extends AppCompatActivity implements View.OnCli
             case R.id.btn_login:
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
-                finish();
                 break;
             case R.id.btn_register:
                 startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
-                finish();
                 break;
         }
     }

@@ -95,44 +95,5 @@ public class Validations {
         inputMethodManager.hideSoftInputFromWindow(v.getApplicationWindowToken(), 0);
     }
 
-    //register
-    public static boolean checkValidationsRegister(EditText yourName, EditText phoneNumber, EditText address, EditText email , EditText pass, EditText confirm){
-        if(Validations.isValidName(yourName.getText().toString())){
-            yourName.setError("Name invalid");
-            return false;
-        }
-        yourName.setError(null);
-
-        if(!Validations.isValidPhoneNumber(phoneNumber.getText().toString())){
-            phoneNumber.setError("Phone invalid");
-            return false;
-        }
-        phoneNumber.setError(null);
-
-        if(Validations.isValidAddress(address.getText().toString())){
-            address.setError("Address invalid");
-            return false;
-        }
-        address.setError(null);
-
-        if(Validations.isEmailValid(email.getText().toString())){
-            email.setError("Email invalid");
-            return false;
-        }
-        email.setError(null);
-
-        if(Validations.isPasswordValid(pass.getText().toString()) || !String.valueOf(pass.getText().toString().charAt(0)).equals(String.valueOf(pass.getText().toString().charAt(0)).toUpperCase())){
-            pass.setError("Password invalid");
-            return false;
-        }
-        pass.setError(null);
-
-        if(!confirm.getText().toString().equals(pass.getText().toString())){
-            confirm.setError("Confirm invalid");
-            return false;
-        }
-
-        return true;
-    }
 }
 
