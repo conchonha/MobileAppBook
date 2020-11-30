@@ -62,7 +62,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 Toast.makeText(RegisterActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                 mSharePrefs = new SharePrefs(RegisterActivity.this);
                 mSharePrefs.saveUser(registerReponse);
-                
+
                 mDialog.dismiss();
             }
         });
