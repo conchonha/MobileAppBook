@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/login">
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:text="Register"
+        android:id="@+id/txt_title"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:textSize="48sp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/txt_title"
+        android:layout_above="@+id/btn_register"
+        >
+        <androidx.cardview.widget.CardView
+            android:id="@+id/linelogin2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            app:cardCornerRadius="30dp"
+            app:cardBackgroundColor="#79171616"
+            app:cardElevation="5dp"
+            android:layout_centerVertical="true">
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="21dp"
+                        android:text="Your Name"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/edt_yourName"
+                        android:layout_width="match_parent"
+                        android:layout_height="27dp"
+                        android:lineHeight="16dp"
+                        android:background="@drawable/boder_edit"
+                        android:hint="Vui lòng nhập tên của bạn ..."
+                        android:paddingLeft="13dp"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="21dp"
+                        android:text="Phone Number"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/edt_phoneNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="27dp"
+                        android:background="@drawable/boder_edit"
+                        android:hint="Vui lòng nhập số điện thoại ..."
+                        android:lineHeight="16dp"
+                        android:paddingLeft="13dp"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="21dp"
+                        android:text="Address"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/edt_address"
+                        android:lineHeight="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="27dp"
+                        android:background="@drawable/boder_edit"
+                        android:hint="Nhập vào địa chỉ ..."
+                        android:paddingLeft="13dp"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="21dp"
+                        android:text="Email"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/edt_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="27dp"
+                        android:background="@drawable/boder_edit"
+                        android:hint="Điền vào Email ..."
+                        android:paddingLeft="13dp"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="21dp"
+                        android:text="Password"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/edt_password"
+                        android:lineHeight="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="27dp"
+                        android:background="@drawable/boder_edit"
+                        android:hint="Nhập mật khẩu ..."
+                        android:paddingLeft="13dp"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="21dp"
+                        android:text="Confirm Password"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/edt_confirmPassword"
+                        android:lineHeight="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="27dp"
+                        android:layout_marginBottom="26dp"
+                        android:background="@drawable/boder_edit"
+                        android:hint="Nhập lại mật khẩu"
+                        android:paddingLeft="13dp"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+            </ScrollView>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="163dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="15dp"
+        android:id="@+id/btn_register"
+        android:layout_marginLeft="99dp"
+        android:layout_marginRight="99dp"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="#3778F8"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="10dp"
+        android:layout_marginBottom="23dp"
+        >
+        <TextView
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:text="Register"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
