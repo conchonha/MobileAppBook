@@ -25,67 +25,120 @@
         android:layout_marginRight="16dp"
         app:cardCornerRadius="30dp"
         app:cardBackgroundColor="#80171616">
+
         <LinearLayout
-            android:paddingTop="74dp"
-            android:paddingLeft="11dp"
-            android:paddingRight="11dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:textSize="16sp"
-                android:textColor="#FFFFFF"
+            android:paddingLeft="11dp"
+            android:paddingTop="74dp"
+            android:paddingRight="11dp">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Username"/>
-            <EditText
-                android:id="@+id/edt_email"
-                android:paddingLeft="10dp"
-                android:background="@drawable/boder_edit"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Username"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/boder_edit"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/people_outline_24px" />
+
+                    <EditText
+                        android:id="@+id/edt_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Nhập vào Email ..."
+                        android:paddingLeft="10dp"
+                        android:textColor="#000000"
+                        android:textSize="10sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:hint="Nhập vào Email ..."
-                android:textSize="13sp"/>
-            <TextView
-                android:layout_marginTop="33dp"
-                android:textSize="16sp"
-                android:textColor="#FFFFFF"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Password"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/boder_edit"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/vpn_key_24px" />
+
+                    <EditText
+                        android:id="@+id/edt_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="textPassword"
+                        android:hint="Nhập vào Email ..."
+                        android:paddingLeft="10dp"
+                        android:textColor="#000000"
+                        android:textSize="10sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Password"/>
-            <EditText
-                android:id="@+id/edt_password"
-                android:paddingLeft="10dp"
-                android:background="@drawable/boder_edit"
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:hint="Nhập vào mật khẩu ..."
-                android:textSize="13sp"/>
-            <TextView
-                android:id="@+id/txt_forgotPassword"
-                android:textColor="#FFFFFF"
-                android:layout_marginTop="16dp"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Forgot Password ?"/>
-            <Button
-                android:id="@+id/btn_login"
-                android:layout_marginTop="17dp"
-                android:layout_marginBottom="41dp"
-                android:background="@drawable/border_send"
-                android:layout_marginLeft="83dp"
-                android:layout_marginRight="83dp"
-                android:gravity="center"
-                android:paddingLeft="52dp"
-                android:paddingRight="52dp"
-                android:layout_width="match_parent"
-                android:layout_height="38dp"
-                android:textSize="18sp"
-                android:text="Login"
-                android:textColor="#FFFFFF"/>
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/txt_forgotPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="Forgot Password ?"
+                    android:textColor="#FFFFFF" />
+
+                <Button
+                    android:id="@+id/btn_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:layout_marginLeft="83dp"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginRight="83dp"
+                    android:layout_marginBottom="41dp"
+                    android:background="@drawable/border_send"
+                    android:gravity="center"
+                    android:text="Login"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
