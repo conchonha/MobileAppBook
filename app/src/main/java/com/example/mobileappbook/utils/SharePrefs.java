@@ -3,7 +3,7 @@ package com.example.mobileappbook.utils;
 import android.app.Activity;
 import android.content.SharedPreferences;
 
-import com.example.mobileappbook.cores.reponse.register_reponse.RegisterReponse;
+import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
 import com.google.gson.Gson;
 
 public class SharePrefs{
@@ -15,9 +15,9 @@ public class SharePrefs{
         editor=sharedPreferences.edit();
     }
 
-    public void saveUser(RegisterReponse registerReponse){
+    public void saveUser(UserReponse userReponse){
         Gson gson = new Gson();
-        String user = gson.toJson(registerReponse,RegisterReponse.class);
+        String user = gson.toJson(userReponse, UserReponse.class);
         editor.putString(Constain.isUser,user).commit();
     }
 

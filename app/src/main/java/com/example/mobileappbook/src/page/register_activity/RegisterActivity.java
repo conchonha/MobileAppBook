@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.mobileappbook.R;
 import com.example.mobileappbook.cores.body.RegisterBody;
 import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
-import com.example.mobileappbook.cores.reponse.register_reponse.RegisterReponse;
+import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
 import com.example.mobileappbook.src.viewmodel.register.RegisterViewmodel;
 import com.example.mobileappbook.utils.SharePrefs;
 import com.example.mobileappbook.utils.Validations;
@@ -57,13 +57,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         mRegisterViewmodel = ViewModelProviders.of(RegisterActivity.this).get(RegisterViewmodel.class);
 
         //lang nghe va quan sat su thay doi cua du lieu
-        mRegisterViewmodel.getReponseRegister().observe(RegisterActivity.this, new Observer<RegisterReponse>() {
+        mRegisterViewmodel.getReponseRegister().observe(RegisterActivity.this, new Observer<UserReponse>() {
             @Override
-            public void onChanged(RegisterReponse registerReponse) {
+            public void onChanged(UserReponse userReponse) {
                 Toast.makeText(RegisterActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                 mSharePrefs = new SharePrefs(RegisterActivity.this);
-                mSharePrefs.saveUser(registerReponse);
-
+                mSharePrefs.saveUser(userReponse);
                 mDialog.dismiss();
             }
         });
@@ -71,8 +70,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         mRegisterViewmodel.getErrorReponse().observe(RegisterActivity.this, new Observer<ErrorRepone>() {
             @Override
             public void onChanged(ErrorRepone errorRepone) {
-                String reponse = "Đăng ký thất bại: code - " + errorRepone.getmCode() + " message - " + errorRepone.getmMessage();
-                Toast.makeText(RegisterActivity.this, reponse, Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this, "Đăng ký thất bại: code - " + errorRepone.getmCode() + " message - " + errorRepone.getmMessage(), Toast.LENGTH_SHORT).show();
                 mDialog.dismiss();
             }
         });
@@ -84,7 +82,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             case R.id.card_register1:
                 RegisterBody registerBody = new RegisterBody(mEdtYourName.getText().toString(), mEdtEmail.getText().toString(), mEdtPassword.getText().toString(), mEdtPhoneNumber.getText().toString(), mEdtAddress.getText().toString(), mEdtAddress.getText().toString(), "nam");
 
-                if (Validations.checkValidationsRegister(mEdtYourName, mEdtPhoneNumber, mEdtAddress, mEdtEmail, mEdtPassword, mEdtConfirm)) {
+                if (mRegisterViewmodel.checkValidationsRegister(mEdtYourName, mEdtPhoneNumber, mEdtAddress, mEdtEmail, mEdtPassword, mEdtConfirm)) {
                     mDialog = Helpers.showLoadingDialog(RegisterActivity.this);
                     mDialog.show();
                     mRegisterViewmodel.register(registerBody);

@@ -1,12 +1,9 @@
-package com.example.mobileappbook.cores.reponse.register_reponse;
+package com.example.mobileappbook.cores.reponse.user_reponse;
 
-import com.example.mobileappbook.cores.reponse.error_reponse.Error;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
-public class RegisterReponse {
+public class UserReponse {
     @SerializedName("active")
     @Expose
     private Integer active;

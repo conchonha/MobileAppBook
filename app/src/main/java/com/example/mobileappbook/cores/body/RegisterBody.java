@@ -32,9 +32,6 @@ public class RegisterBody {
     @Expose
     private String mGenger;
 
-//    public RegisterBody(){
-//
-//    }
 
     public RegisterBody(String mName, String mEmail, String mPassWord, String mPhone, String mAddress, String mDescription, String mGenger) {
         this.mName = mName;
