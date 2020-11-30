@@ -1,7 +1,9 @@
 package com.example.mobileappbook.cores.services;
 
+import com.example.mobileappbook.utils.Constain;
+
 public class APIServices {
-    private static String baseurl="http://192.168.43.248/cuahangquanlyoto/public/";
+    private static String baseurl= Constain.BaseUrl;
 
     public static DataService getService(){
         return APIRetrofitClient.getClient(baseurl).create(DataService.class);

@@ -3,6 +3,9 @@ package com.example.mobileappbook.utils;
 import android.app.Activity;
 import android.content.SharedPreferences;
 
+import com.example.mobileappbook.cores.reponse.register_reponse.RegisterReponse;
+import com.google.gson.Gson;
+
 public class SharePrefs{
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
@@ -12,12 +15,10 @@ public class SharePrefs{
         editor=sharedPreferences.edit();
     }
 
-    public void saveIsLogin(Boolean bool){
-        editor.putBoolean(Constain.keyIsLogin,bool);
-        editor.commit();
+    public void saveUser(RegisterReponse registerReponse){
+        Gson gson = new Gson();
+        String user = gson.toJson(registerReponse,RegisterReponse.class);
+        editor.putString(Constain.isUser,user).commit();
     }
 
-    public boolean getIsLogin(){
-        return sharedPreferences.getBoolean(Constain.keyIsLogin,false);
-    }
 }

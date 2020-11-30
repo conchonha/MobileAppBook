@@ -19,7 +19,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/btn_register"
+        android:layout_above="@+id/card_register1"
         android:layout_below="@id/txt_title">
 
         <androidx.cardview.widget.CardView
@@ -276,7 +276,7 @@
     </RelativeLayout>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/btn_register"
+        android:id="@+id/card_register1"
         android:layout_width="163dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -285,8 +285,8 @@
         android:layout_marginTop="15dp"
         android:layout_marginRight="99dp"
         android:layout_marginBottom="23dp"
-        android:clickable="true"
         android:foreground="?attr/selectableItemBackground"
+        android:clickable="true"
         app:cardBackgroundColor="#3778F8"
         app:cardCornerRadius="30dp"
         app:cardElevation="10dp">

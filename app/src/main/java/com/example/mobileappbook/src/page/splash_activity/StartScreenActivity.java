@@ -1,47 +1,46 @@
 package com.example.mobileappbook.src.page.splash_activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
 import com.example.mobileappbook.R;
+import com.example.mobileappbook.src.page.login_activity.LoginActivity;
+import com.example.mobileappbook.src.page.register_activity.RegisterActivity;
 
-public class StartScreenActivity extends AppCompatActivity {
-    private CardView mCardViewLogin, mCardViewRegister;
-
+public class StartScreenActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_startscreen);
-
-        init();
-        initView();
+        listenerOnclicked();
     }
 
-    private void initView() {
-
+    private void listenerOnclicked() {
         // button login
-        mCardViewLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setContentView(R.layout.activity_login);
-            }
-        });
+        findViewById(R.id.btn_login).setOnClickListener(this);
+
         //button register
-        mCardViewRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setContentView(R.layout.activity_register);
-            }
-        });
+        findViewById(R.id.btn_register).setOnClickListener(this);
     }
 
-    private void init() {
-        mCardViewLogin = findViewById(R.id.btn_login);
-        mCardViewRegister = findViewById(R.id.btn_register);
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_login:
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+                finish();
+                break;
+            case R.id.btn_register:
+                startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+                finish();
+                break;
+        }
     }
 }
