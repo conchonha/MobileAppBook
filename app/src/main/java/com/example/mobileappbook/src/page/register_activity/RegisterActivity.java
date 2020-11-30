@@ -16,9 +16,9 @@ import com.example.mobileappbook.cores.body.RegisterBody;
 import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
 import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
 import com.example.mobileappbook.src.viewmodel.register.RegisterViewmodel;
-import com.example.mobileappbook.utils.Helpers;
 import com.example.mobileappbook.utils.SharePrefs;
 import com.example.mobileappbook.utils.Validations;
+import com.example.mobileappbook.utils.*;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
     private RegisterViewmodel mRegisterViewmodel;
@@ -34,6 +34,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         initViewmodel();
         initView();
         listenerOnclickedView();
+
     }
 
     //lang nghe su kien onclcked view
