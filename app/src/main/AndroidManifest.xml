@@ -9,23 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar">
-        <activity android:name=".MainActivity">
+        <activity android:name=".src.page.main_activity.MainActivity">
 
         </activity>
-        <activity android:name=".RegisterActivity">
+        <activity android:name=".src.page.register_activity.RegisterActivity">
 
         </activity>
-        <activity android:name=".StartScreenActivity">
+        <activity android:name=".src.page.splash_activity.StartScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity">
+        <activity android:name=".src.page.login_activity.LoginActivity">
 
         </activity>
-        <activity android:name=".AccountActivity">
+        <activity android:name=".src.page.account_activity.AccountActivity">
 
         </activity>
     </application>

@@ -1,4 +1,4 @@
-package com.example.mobileappbook;
+package com.example.mobileappbook.src.page.splash_activity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,6 +6,8 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+
+import com.example.mobileappbook.R;
 
 public class StartScreenActivity extends AppCompatActivity {
     private CardView mCardViewLogin, mCardViewRegister;
