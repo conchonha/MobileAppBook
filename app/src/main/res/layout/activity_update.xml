@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login">
+    android:background="@drawable/setting">
 
     <TextView
         android:id="@+id/txt_title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="33dp"
         android:gravity="center"
-        android:text="Register"
+        android:text="Update Information"
         android:textColor="#FFFFFF"
-        android:textSize="48sp" />
+        android:textSize="40dp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/btn_register"
+        android:layout_above="@+id/btn_update"
         android:layout_below="@id/txt_title">
 
         <androidx.cardview.widget.CardView
@@ -29,7 +29,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            app:cardBackgroundColor="#79171616"
+            app:cardBackgroundColor="#4D07B5FF"
             app:cardCornerRadius="30dp"
             app:cardElevation="5dp">
 
@@ -76,9 +76,11 @@
                                 android:id="@+id/edt_yourName"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:hint="blablablabla"
                                 android:paddingLeft="10dp"
                                 android:textColor="#000000"
-                                android:textSize="10sp" />
+                                android:textColorHint="#000000"
+                                android:textSize="13sp" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -110,13 +112,15 @@
                                 android:src="@drawable/phone_android_24px" />
 
                             <EditText
-                                android:inputType="textPhonetic"
                                 android:id="@+id/edt_phoneNumber"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:hint="blablablabla"
+                                android:inputType="textPhonetic"
                                 android:paddingLeft="10dp"
                                 android:textColor="#000000"
-                                android:textSize="10sp" />
+                                android:textColorHint="#000000"
+                                android:textSize="13sp" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -151,9 +155,11 @@
                                 android:id="@+id/edt_address"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:hint="blablablabla"
                                 android:paddingLeft="10dp"
                                 android:textColor="#000000"
-                                android:textSize="10sp" />
+                                android:textColorHint="#000000"
+                                android:textSize="13sp" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -188,9 +194,11 @@
                                 android:id="@+id/edt_email"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:hint="blablablabla"
                                 android:paddingLeft="10dp"
                                 android:textColor="#000000"
-                                android:textSize="10sp" />
+                                android:textColorHint="#000000"
+                                android:textSize="13sp" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -203,7 +211,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Password"
+                            android:text="Birthday"
                             android:textColor="#FFFFFF"
                             android:textSize="16sp" />
 
@@ -219,16 +227,17 @@
                                 android:layout_gravity="center"
                                 android:layout_marginLeft="10dp"
                                 android:scaleType="fitXY"
-                                android:src="@drawable/vpn_key_24px" />
+                                android:src="@drawable/cake_24px" />
 
                             <EditText
-                                android:inputType="textPassword"
-                                android:id="@+id/edt_password"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:hint="blablablabla"
+                                android:inputType="textPassword"
                                 android:paddingLeft="10dp"
                                 android:textColor="#000000"
-                                android:textSize="10sp" />
+                                android:textColorHint="#000000"
+                                android:textSize="13sp" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -236,12 +245,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
                         android:orientation="vertical">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Confirm Password"
+                            android:text="Job"
                             android:textColor="#FFFFFF"
                             android:textSize="16sp" />
 
@@ -257,16 +267,18 @@
                                 android:layout_gravity="center"
                                 android:layout_marginLeft="10dp"
                                 android:scaleType="fitXY"
-                                android:src="@drawable/vpn_key_24px" />
+                                android:src="@drawable/ic_laptop" />
 
                             <EditText
-                                android:inputType="textPassword"
                                 android:id="@+id/edt_confirm"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:hint="blablablabla"
+                                android:inputType="textPassword"
                                 android:paddingLeft="10dp"
                                 android:textColor="#000000"
-                                android:textSize="10sp" />
+                                android:textColorHint="#000000"
+                                android:textSize="13sp" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -276,9 +288,9 @@
     </RelativeLayout>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/btn_register"
+        android:id="@+id/btn_update"
         android:layout_width="163dp"
-        android:layout_height="wrap_content"
+        android:layout_height="39dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="99dp"
@@ -293,12 +305,12 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:gravity="center"
-            android:text="Register"
+            android:text="Update"
             android:textColor="#fff"
             android:textSize="18sp"
             android:textStyle="bold" />

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#80020D24">
+    android:background="#26020D24">
     <LinearLayout
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -162,10 +162,15 @@
             </TableRow>
         </TableLayout>
     </LinearLayout>
-    <LinearLayout
-android:layout_above="@id/line3"
+    <Button
+        android:id="@+id/btn_setting"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="105dp"
+        android:layout_marginRight="105dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="40dp"
+        android:text="Setting"
+        android:background="@drawable/border_setting"/>
 </RelativeLayout>
