@@ -4,6 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/img_back"
+        android:foreground="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:layout_margin="5dp"
+        android:src="@drawable/ic_back"/>
 
     <TextView
         android:id="@+id/txt_title"
@@ -57,6 +65,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
                         android:background="@drawable/boder_edit"
                         android:orientation="horizontal">
 
@@ -96,6 +105,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
                         android:background="@drawable/boder_edit"
                         android:orientation="horizontal">
 
@@ -131,6 +141,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:gravity="center"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:clickable="true"
                         android:text="Forgot Password ?"
                         android:textColor="#FFFFFF" />
 
@@ -139,6 +151,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="38dp"
                         android:layout_marginLeft="83dp"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:clickable="true"
                         android:layout_marginTop="17dp"
                         android:layout_marginRight="83dp"
                         android:layout_marginBottom="41dp"
@@ -154,10 +168,12 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/txt_1"
+        android:id="@+id/txt_create_acount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:clickable="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="6dp"
         android:gravity="center"

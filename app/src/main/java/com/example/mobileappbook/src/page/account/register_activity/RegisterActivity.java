@@ -1,6 +1,7 @@
-package com.example.mobileappbook.src.page.register_activity;
+package com.example.mobileappbook.src.page.account.register_activity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -15,9 +16,9 @@ import com.example.mobileappbook.R;
 import com.example.mobileappbook.cores.body.RegisterBody;
 import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
 import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
+import com.example.mobileappbook.src.page.tabbar_activity.TabBarActivity;
 import com.example.mobileappbook.src.viewmodel.register.RegisterViewmodel;
 import com.example.mobileappbook.utils.SharePrefs;
-import com.example.mobileappbook.utils.Validations;
 import com.example.mobileappbook.utils.*;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
@@ -40,6 +41,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     //lang nghe su kien onclcked view
     private void listenerOnclickedView() {
         findViewById(R.id.card_register1).setOnClickListener(this);
+        findViewById(R.id.img_back).setOnClickListener(this);
     }
 
     //anh xa view
@@ -64,6 +66,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 mSharePrefs = new SharePrefs(RegisterActivity.this);
                 mSharePrefs.saveUser(userReponse);
                 mDialog.dismiss();
+                Intent intent = new Intent(getApplicationContext(), TabBarActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
             }
         });
 
@@ -87,6 +93,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     mDialog.show();
                     mRegisterViewmodel.register(registerBody);
                 }
+                break;
+            case R.id.img_back:
+                finish();
                 break;
         }
     }

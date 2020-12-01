@@ -8,8 +8,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mobileappbook.R;
-import com.example.mobileappbook.src.page.login_activity.LoginActivity;
-import com.example.mobileappbook.src.page.register_activity.RegisterActivity;
+import com.example.mobileappbook.src.page.account.login_activity.LoginActivity;
+import com.example.mobileappbook.src.page.account.register_activity.RegisterActivity;
 
 public class StartScreenActivity extends AppCompatActivity implements View.OnClickListener {
 

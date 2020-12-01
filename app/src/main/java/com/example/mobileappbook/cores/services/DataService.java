@@ -3,6 +3,8 @@ package com.example.mobileappbook.cores.services;
 import com.example.mobileappbook.cores.body.LoginBody;
 import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
 
+import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -22,4 +24,8 @@ public interface DataService {
 
     @POST("/login")
     Call<UserReponse> sendLogin(@Body LoginBody body);
+
+    @FormUrlEncoded
+    @POST("/forgot-password")
+    Call<Map>forgotPassword(@Field("email") String email);
 }

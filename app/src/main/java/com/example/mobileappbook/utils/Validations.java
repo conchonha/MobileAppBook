@@ -53,7 +53,7 @@ public class Validations {
         String validNumber3 = "^[35789]{1}\\d{8}$";
         Pattern pattern3 = Pattern.compile(validNumber3, Pattern.CASE_INSENSITIVE);
         Matcher matcher3 = pattern3.matcher(number);
-        if (matcher.find() || matcher1.find() || matcher3.find() || !number.isEmpty()) {
+        if (matcher.find() || matcher1.find() || matcher3.find()) {
             return true;
         }
         return false;

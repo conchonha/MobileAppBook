@@ -1,6 +1,7 @@
-package com.example.mobileappbook.src.page.login_activity;
+package com.example.mobileappbook.src.page.account.login_activity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -15,6 +16,9 @@ import com.example.mobileappbook.R;
 import com.example.mobileappbook.cores.body.LoginBody;
 import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
 import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
+import com.example.mobileappbook.src.page.account.recover_activity.RecoverActivity;
+import com.example.mobileappbook.src.page.account.register_activity.RegisterActivity;
+import com.example.mobileappbook.src.page.tabbar_activity.TabBarActivity;
 import com.example.mobileappbook.src.viewmodel.login.LoginViewmodel;
 import com.example.mobileappbook.utils.Helpers;
 import com.example.mobileappbook.utils.SharePrefs;
@@ -56,6 +60,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 mSharePrefs = new SharePrefs(LoginActivity.this);
                 mSharePrefs.saveUser(userReponse);
                 mDialog.dismiss();
+                Intent intent = new Intent(getApplicationContext(), TabBarActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
             }
         });
     }
@@ -63,6 +71,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     //lang nghe su kien onclicked view
     private void listenerOnclicked() {
         findViewById(R.id.btn_login).setOnClickListener(this);
+        findViewById(R.id.txt_forgotPassword).setOnClickListener(this);
+        findViewById(R.id.img_back).setOnClickListener(this);
+        findViewById(R.id.txt_create_acount).setOnClickListener(this);
     }
 
     //anh xa view
@@ -83,8 +94,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     mLoginViewmodel.login(loginBody);
                 }
                 break;
+            case R.id.txt_forgotPassword:
+                startActivity(new Intent(getApplicationContext(), RecoverActivity.class));
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                break;
+            case R.id.txt_create_acount:
+                startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                break;
+            case R.id.img_back:
+                finish();
+                break;
         }
-        listenerOnclicked();
-
     }
 }

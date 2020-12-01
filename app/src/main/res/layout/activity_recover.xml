@@ -4,6 +4,14 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/login">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/img_back"
+        android:foreground="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:layout_margin="5dp"
+        android:src="@drawable/ic_back"/>
 
     <TextView
         android:layout_centerHorizontal="true"
@@ -22,7 +30,7 @@
         android:id="@+id/linelogin2"
         android:layout_below="@id/txt_title"
         android:layout_width="match_parent"
-        android:layout_height="82dp"
+        android:layout_height="wrap_content"
         app:cardElevation="5dp"
         android:layout_marginLeft="27dp"
         android:layout_marginRight="27dp"
@@ -41,12 +49,15 @@
                 android:textColor="#FFFFFF"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Please enter your username"/>
+                android:text="Please enter your email"/>
             <EditText
                 android:id="@+id/edt_email"
                 android:paddingLeft="10dp"
+                android:inputType="textEmailAddress"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/boder_edit"
                 android:layout_width="match_parent"
+                android:textColor="#000"
                 android:layout_height="30dp"
                 android:hint="18520826@gm.uit.edu.vn"
                 android:textSize="13sp"/>
