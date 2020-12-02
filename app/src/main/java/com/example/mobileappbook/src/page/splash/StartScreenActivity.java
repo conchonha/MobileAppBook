@@ -1,4 +1,4 @@
-package com.example.mobileappbook.src.page.splash_activity;
+package com.example.mobileappbook.src.page.splash;
 
 import android.content.Intent;
 import android.os.Bundle;

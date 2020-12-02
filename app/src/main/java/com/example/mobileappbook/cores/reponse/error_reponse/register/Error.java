@@ -1,10 +1,9 @@
-package com.example.mobileappbook.cores.reponse.error_reponse;
+package com.example.mobileappbook.cores.reponse.error_reponse.register;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Error {
-
     @SerializedName("value")
     @Expose
     private String value;
@@ -22,7 +21,7 @@ public class Error {
     public String returnErr(){
         String err = "value: "+value +"\n"
                 + "msg: "+msg+"\n"
-                +"param: "+param
+                +"param: "+param+"\n"
                 +"location: "+location;
         return err;
     }

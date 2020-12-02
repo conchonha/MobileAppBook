@@ -16,10 +16,12 @@ import com.example.mobileappbook.R;
 import com.example.mobileappbook.cores.body.RegisterBody;
 import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
 import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
-import com.example.mobileappbook.src.page.tabbar_activity.TabBarActivity;
-import com.example.mobileappbook.src.viewmodel.register.RegisterViewmodel;
+import com.example.mobileappbook.src.page.tabbar.TabBarActivity;
+import com.example.mobileappbook.src.viewmodel.acount.register.RegisterViewmodel;
 import com.example.mobileappbook.utils.SharePrefs;
 import com.example.mobileappbook.utils.*;
+
+import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
     private RegisterViewmodel mRegisterViewmodel;
@@ -59,27 +61,20 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         mRegisterViewmodel = ViewModelProviders.of(RegisterActivity.this).get(RegisterViewmodel.class);
 
         //lang nghe va quan sat su thay doi cua du lieu
-        mRegisterViewmodel.getReponseRegister().observe(RegisterActivity.this, new Observer<UserReponse>() {
+        mRegisterViewmodel.getReponseRegister().observe(RegisterActivity.this, new Observer<Map>() {
             @Override
-            public void onChanged(UserReponse userReponse) {
-                Toast.makeText(RegisterActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
-                mSharePrefs = new SharePrefs(RegisterActivity.this);
-                mSharePrefs.saveUser(userReponse);
-                mDialog.dismiss();
-                Intent intent = new Intent(getApplicationContext(), TabBarActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+            public void onChanged(Map userReponse) {
+//                Toast.makeText(RegisterActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+//                mSharePrefs = new SharePrefs(RegisterActivity.this);
+//                mSharePrefs.saveUser(userReponse);
+//                mDialog.dismiss();
+//                Intent intent = new Intent(getApplicationContext(), TabBarActivity.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                startActivity(intent);
+//                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
             }
         });
 
-        mRegisterViewmodel.getErrorReponse().observe(RegisterActivity.this, new Observer<ErrorRepone>() {
-            @Override
-            public void onChanged(ErrorRepone errorRepone) {
-                Toast.makeText(RegisterActivity.this, "Đăng ký thất bại: code - " + errorRepone.getmCode() + " message - " + errorRepone.getmMessage(), Toast.LENGTH_SHORT).show();
-                mDialog.dismiss();
-            }
-        });
     }
 
     @Override

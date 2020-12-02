@@ -1,4 +1,4 @@
-package com.example.mobileappbook.src.page.tabbar_activity;
+package com.example.mobileappbook.src.page.tabbar;
 
 import android.os.Bundle;
 

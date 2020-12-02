@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.mobileappbook.R;
 import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
-import com.example.mobileappbook.src.viewmodel.recover.RecoverViewmodel;
+import com.example.mobileappbook.src.viewmodel.acount.recover.RecoverViewmodel;
 import com.example.mobileappbook.utils.Helpers;
 
 public class RecoverActivity extends AppCompatActivity implements View.OnClickListener {

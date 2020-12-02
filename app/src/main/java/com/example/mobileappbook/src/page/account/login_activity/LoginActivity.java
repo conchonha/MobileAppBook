@@ -18,8 +18,8 @@ import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
 import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
 import com.example.mobileappbook.src.page.account.recover_activity.RecoverActivity;
 import com.example.mobileappbook.src.page.account.register_activity.RegisterActivity;
-import com.example.mobileappbook.src.page.tabbar_activity.TabBarActivity;
-import com.example.mobileappbook.src.viewmodel.login.LoginViewmodel;
+import com.example.mobileappbook.src.page.tabbar.TabBarActivity;
+import com.example.mobileappbook.src.viewmodel.acount.login.LoginViewmodel;
 import com.example.mobileappbook.utils.Helpers;
 import com.example.mobileappbook.utils.SharePrefs;
 

@@ -85,6 +85,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:hint="blablablabla"
+                                android:inputType="textEmailAddress"
                                 android:paddingLeft="10dp"
                                 android:textColor="#000000"
                                 android:textColorHint="#000000"
@@ -165,6 +166,7 @@
                                 android:layout_height="match_parent"
                                 android:hint="blablablabla"
                                 android:paddingLeft="10dp"
+                                android:inputType="text"
                                 android:textColor="#000000"
                                 android:textColorHint="#000000"
                                 android:textSize="13sp" />
@@ -204,6 +206,7 @@
                                 android:layout_height="match_parent"
                                 android:hint="blablablabla"
                                 android:paddingLeft="10dp"
+                                android:inputType="textEmailAddress"
                                 android:textColor="#000000"
                                 android:textColorHint="#000000"
                                 android:textSize="13sp" />
@@ -237,11 +240,13 @@
                                 android:scaleType="fitXY"
                                 android:src="@drawable/cake_24px" />
 
-                            <EditText
+                            <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:hint="blablablabla"
                                 android:inputType="textPassword"
+                                android:gravity="center_vertical"
+                                android:id="@+id/txt_birthday"
                                 android:paddingLeft="10dp"
                                 android:textColor="#000000"
                                 android:textColorHint="#000000"
@@ -278,11 +283,11 @@
                                 android:src="@drawable/ic_laptop" />
 
                             <EditText
-                                android:id="@+id/edt_confirm"
+                                android:id="@+id/edt_job"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:hint="blablablabla"
-                                android:inputType="textPassword"
+                                android:inputType="text"
                                 android:paddingLeft="10dp"
                                 android:textColor="#000000"
                                 android:textColorHint="#000000"

@@ -1,4 +1,4 @@
-package com.example.mobileappbook.src.viewmodel.recover;
+package com.example.mobileappbook.src.viewmodel.acount.recover;
 
 import android.app.Application;
 import android.widget.EditText;
@@ -8,7 +8,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
-import com.example.mobileappbook.src.repositories.recover.RecoverRepositories;
+import com.example.mobileappbook.src.repositories.acount.recover.RecoverRepositories;
 import com.example.mobileappbook.utils.Validations;
 
 public class RecoverViewmodel extends AndroidViewModel {

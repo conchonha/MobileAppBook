@@ -1,4 +1,4 @@
-package com.example.mobileappbook.src.repositories.recover;
+package com.example.mobileappbook.src.repositories.acount.recover;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

@@ -1,17 +1,17 @@
 package com.example.mobileappbook.utils;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
 import com.google.gson.Gson;
 
 public class SharePrefs{
-    private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor editor;
+    private static SharedPreferences sharedPreferences;
+    private static SharedPreferences.Editor editor;
 
-    public SharePrefs(Activity activity){
-        sharedPreferences = activity.getSharedPreferences("datalogin",activity.MODE_PRIVATE);
+    public SharePrefs(Context context){
+        sharedPreferences = context.getSharedPreferences("datalogin",context.MODE_PRIVATE);
         editor=sharedPreferences.edit();
     }
 
@@ -19,6 +19,10 @@ public class SharePrefs{
         Gson gson = new Gson();
         String user = gson.toJson(userReponse, UserReponse.class);
         editor.putString(Constain.isUser,user).commit();
+    }
+
+    public String getUser(){
+        return sharedPreferences.getString(Constain.isUser,"");
     }
 
 }

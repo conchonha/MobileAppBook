@@ -11,9 +11,9 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Design.NoActionBar">
-        <activity android:name=".src.page.tabbar_activity.TabBarActivity"/>
+        <activity android:name=".src.page.tabbar.TabBarActivity"/>
         <activity android:name=".src.page.account.register_activity.RegisterActivity"/>
-        <activity android:name=".src.page.splash_activity.StartScreenActivity">
+        <activity android:name=".src.page.splash.StartScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
