@@ -1,4 +1,5 @@
 package com.example.mobileappbook.cores.services;
+import com.example.mobileappbook.cores.body.ActiveAcountBody;
 import com.example.mobileappbook.cores.body.LoginBody;
 import com.example.mobileappbook.cores.body.RegisterBody;
 import com.example.mobileappbook.cores.body.ResetPasswordBody;
@@ -25,4 +26,7 @@ public interface DataService {
 
     @POST("/reset-password")
     Call<UserReponse> resetPassword(@Body ResetPasswordBody body);
+
+    @POST("/active-account")
+    Call<UserReponse> activeAcount(@Body ActiveAcountBody body);
 }

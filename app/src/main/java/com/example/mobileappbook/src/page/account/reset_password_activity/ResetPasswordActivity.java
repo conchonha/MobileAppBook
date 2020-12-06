@@ -1,10 +1,11 @@
-package com.example.mobileappbook.src.page.account.forget_password_activity;
+package com.example.mobileappbook.src.page.account.reset_password_activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -13,7 +14,6 @@ import android.widget.Toast;
 import com.example.mobileappbook.R;
 import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
 import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
-import com.example.mobileappbook.src.page.account.recover_activity.RecoverActivity;
 import com.example.mobileappbook.src.viewmodel.acount.reset_password.ResetPasswordViewmodel;
 import com.example.mobileappbook.utils.Helpers;
 
@@ -28,7 +28,15 @@ public class ResetPasswordActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_reset_password);
         initViewModel();
         initView();
+        init();
         listenerOnclicked();
+    }
+
+    private void init() {
+        Intent intent = getIntent();
+        if(intent.hasExtra("email")){
+            mEdtEmail.setText(intent.getStringExtra("email"));
+        }
     }
 
     private void listenerOnclicked() {

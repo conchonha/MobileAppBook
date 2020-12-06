@@ -20,11 +20,9 @@ import com.example.mobileappbook.src.page.account.register_activity.RegisterActi
 import com.example.mobileappbook.src.page.tabbar.TabBarActivity;
 import com.example.mobileappbook.src.viewmodel.acount.login.LoginViewmodel;
 import com.example.mobileappbook.utils.Helpers;
-import com.example.mobileappbook.utils.SharePrefs;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-    private EditText mEdtEmail;
-    private EditText mEdtPassword;
+    private EditText mEdtEmail,mEdtPassword;
     //variable
     private Dialog mDialog;
     private LoginViewmodel mLoginViewmodel;
@@ -46,7 +44,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mLoginViewmodel.getErrorReponse().observe(LoginActivity.this, new Observer<ErrorRepone>() {
             @Override
             public void onChanged(ErrorRepone errorRepone) {
-                Toast.makeText(LoginActivity.this, "Login thất bại: code - " + errorRepone.getmCode() + " message - " + errorRepone.getmMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Login fail: code - " + errorRepone.getmCode() + " message - " + errorRepone.getmMessage(), Toast.LENGTH_SHORT).show();
                 mDialog.dismiss();
             }
         });
@@ -58,6 +56,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 mLoginViewmodel.saveUser(userReponse);
                 mDialog.dismiss();
                 Helpers.intentClear(LoginActivity.this, TabBarActivity.class);
+
             }
         });
     }

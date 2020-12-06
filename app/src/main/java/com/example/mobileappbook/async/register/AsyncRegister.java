@@ -26,7 +26,6 @@ public class AsyncRegister extends AsyncTask<Void, Void, Void> {
         }
     }
 
-
     @Override
     protected Void doInBackground(Void... voids) {
         DataService dataService = APIServices.getService();
@@ -35,7 +34,7 @@ public class AsyncRegister extends AsyncTask<Void, Void, Void> {
         callback.enqueue(new Callback<UserReponse>() {
             @Override
             public void onResponse(Call<UserReponse> call, Response<UserReponse> response) {
-                Log.d(TAG, "onResponse: " + response.body().toString());
+                Log.d(TAG, "onResponse: " + response.toString());
                 if (response.isSuccessful()) {
                     mRepositoriesInstance.setmReponeRegister(response.body());
                 } else {

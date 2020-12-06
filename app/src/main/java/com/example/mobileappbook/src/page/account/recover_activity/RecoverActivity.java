@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.mobileappbook.R;
 import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
-import com.example.mobileappbook.src.page.account.forget_password_activity.ResetPasswordActivity;
+import com.example.mobileappbook.src.page.account.reset_password_activity.ResetPasswordActivity;
 import com.example.mobileappbook.src.viewmodel.acount.recover.RecoverViewmodel;
 import com.example.mobileappbook.utils.Helpers;
 
@@ -44,7 +44,7 @@ public class RecoverActivity extends AppCompatActivity implements View.OnClickLi
             public void onChanged(ErrorRepone errorRepone) {
                 Toast.makeText(RecoverActivity.this, "Code - " + errorRepone.getmCode() + " message - " + errorRepone.getmMessage(), Toast.LENGTH_SHORT).show();
                 if (errorRepone.getmCode() == 200) {
-                    startActivity(new Intent(getApplicationContext(), ResetPasswordActivity.class));
+                    startActivity(new Intent(getApplicationContext(), ResetPasswordActivity.class).putExtra("email",mEdtEmail.getText().toString()));
                     overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                     finish();
                 }

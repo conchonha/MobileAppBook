@@ -12,8 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".src.page.account.forget_password_activity.ResetPasswordActivity"/>
-        <activity android:name=".src.page.account.activity_acount.ActivityAcount" />
+        <activity android:name=".src.page.account.reset_password_activity.ResetPasswordActivity"/>
+        <activity android:name=".src.page.account.active_acount.ActiveAcountActivity" />
         <activity android:name=".src.page.tabbar.TabBarActivity" />
         <activity android:name=".src.page.account.register_activity.RegisterActivity" />
         <activity android:name=".src.page.splash.StartScreenActivity">
