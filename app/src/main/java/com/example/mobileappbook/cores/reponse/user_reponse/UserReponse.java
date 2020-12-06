@@ -40,9 +40,20 @@ public class UserReponse {
     @SerializedName("gender")
     @Expose
     private String gender;
+    @SerializedName("activeToken")
+    @Expose
+    private String activeToken;
     @SerializedName("__v")
     @Expose
     private Integer v;
+
+    public String getActiveToken() {
+        return activeToken;
+    }
+
+    public void setActiveToken(String activeToken) {
+        this.activeToken = activeToken;
+    }
 
     public Integer getActive() {
         return active;

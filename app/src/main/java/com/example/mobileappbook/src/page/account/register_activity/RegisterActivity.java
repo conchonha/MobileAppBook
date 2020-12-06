@@ -58,8 +58,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             public void onChanged(UserReponse userReponse) {
                 mDialog.dismiss();
                 Toast.makeText(RegisterActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
-                mRegisterViewmodel.saveUser(userReponse);
-                Helpers.intentClear(RegisterActivity.this);
+                finish();
             }
         });
 

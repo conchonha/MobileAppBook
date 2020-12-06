@@ -29,8 +29,8 @@ public class Helpers {
         }
     }
 
-    public static void intentClear(Activity context){
-        Intent intent = new Intent(context, TabBarActivity.class);
+    public static void intentClear(Activity context,Class activitity){
+        Intent intent = new Intent(context, activitity);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         context.startActivity(intent);
         context.overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
