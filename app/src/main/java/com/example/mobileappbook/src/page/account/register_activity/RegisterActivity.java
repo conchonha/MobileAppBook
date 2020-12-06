@@ -1,7 +1,6 @@
 package com.example.mobileappbook.src.page.account.register_activity;
 
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -13,22 +12,16 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.mobileappbook.R;
-import com.example.mobileappbook.cores.body.RegisterBody;
 import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
 import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
-import com.example.mobileappbook.src.page.tabbar.TabBarActivity;
 import com.example.mobileappbook.src.viewmodel.acount.register.RegisterViewmodel;
-import com.example.mobileappbook.utils.SharePrefs;
-import com.example.mobileappbook.utils.*;
-
-import java.util.Map;
+import com.example.mobileappbook.utils.Helpers;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
     private RegisterViewmodel mRegisterViewmodel;
     private EditText mEdtYourName, mEdtPhoneNumber, mEdtAddress, mEdtEmail, mEdtPassword, mEdtConfirm;
     //variable
     private Dialog mDialog;
-    private SharePrefs mSharePrefs;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,7 +30,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         initViewmodel();
         initView();
         listenerOnclickedView();
-
     }
 
     //lang nghe su kien onclcked view
@@ -61,32 +53,34 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         mRegisterViewmodel = ViewModelProviders.of(RegisterActivity.this).get(RegisterViewmodel.class);
 
         //lang nghe va quan sat su thay doi cua du lieu
-        mRegisterViewmodel.getReponseRegister().observe(RegisterActivity.this, new Observer<Map>() {
+        mRegisterViewmodel.getReponseRegister().observe(RegisterActivity.this, new Observer<UserReponse>() {
             @Override
-            public void onChanged(Map userReponse) {
-//                Toast.makeText(RegisterActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
-//                mSharePrefs = new SharePrefs(RegisterActivity.this);
-//                mSharePrefs.saveUser(userReponse);
-//                mDialog.dismiss();
-//                Intent intent = new Intent(getApplicationContext(), TabBarActivity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                startActivity(intent);
-//                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+            public void onChanged(UserReponse userReponse) {
+                mDialog.dismiss();
+                Toast.makeText(RegisterActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                mRegisterViewmodel.saveUser(userReponse);
+                Helpers.intentClear(RegisterActivity.this);
             }
         });
 
+        //lang nghe va quan sat su thay doi cua du lieu
+        mRegisterViewmodel.getErroreponse().observe(RegisterActivity.this, new Observer<ErrorRepone>() {
+            @Override
+            public void onChanged(ErrorRepone errorRepone) {
+                Toast.makeText(RegisterActivity.this, "Login thất bại: code - " + errorRepone.getmCode() + " message - " + errorRepone.getmMessage(), Toast.LENGTH_SHORT).show();
+                mDialog.dismiss();
+            }
+        });
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.card_register1:
-                RegisterBody registerBody = new RegisterBody(mEdtYourName.getText().toString(), mEdtEmail.getText().toString(), mEdtPassword.getText().toString(), mEdtPhoneNumber.getText().toString(), mEdtAddress.getText().toString(), mEdtAddress.getText().toString(), "nam");
-
                 if (mRegisterViewmodel.checkValidationsRegister(mEdtYourName, mEdtPhoneNumber, mEdtAddress, mEdtEmail, mEdtPassword, mEdtConfirm)) {
                     mDialog = Helpers.showLoadingDialog(RegisterActivity.this);
                     mDialog.show();
-                    mRegisterViewmodel.register(registerBody);
+                    mRegisterViewmodel.register();
                 }
                 break;
             case R.id.img_back:
@@ -94,8 +88,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 break;
         }
     }
-
-
 }
 
 

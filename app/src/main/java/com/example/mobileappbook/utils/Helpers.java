@@ -2,11 +2,14 @@ package com.example.mobileappbook.utils;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import com.example.mobileappbook.R;
+import com.example.mobileappbook.src.page.tabbar.TabBarActivity;
 
 import java.util.Calendar;
 
@@ -26,13 +29,10 @@ public class Helpers {
         }
     }
 
-    public static String getTime(){
-        Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int mounth = calendar.get(Calendar.MONTH) + 1;
-        int date = calendar.get(Calendar.DATE);
-
-        String time = year + "-"+mounth + "-"+date;
-        return time;
+    public static void intentClear(Activity context){
+        Intent intent = new Intent(context, TabBarActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        context.startActivity(intent);
+        context.overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
     }
 }

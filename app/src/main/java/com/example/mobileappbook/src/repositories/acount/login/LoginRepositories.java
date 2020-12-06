@@ -9,27 +9,27 @@ import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
 import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
 
 public class LoginRepositories {
-    MutableLiveData<ErrorRepone>mErrorReponseLogin = new MutableLiveData<>();
-    MutableLiveData<UserReponse>mLoginReponse = new MutableLiveData<>();
+    private MutableLiveData<ErrorRepone>mErroReponse = new MutableLiveData<>();
+    private MutableLiveData<UserReponse>mUserReponse = new MutableLiveData<>();
 
     public void login(LoginBody loginBody){
         AsyncLogin asyncLogin = new AsyncLogin(this,loginBody);
         asyncLogin.execute();
     }
 
-    public void setLoginReponse(UserReponse userReponse){
-        mLoginReponse.setValue(userReponse);
+    public LiveData<ErrorRepone> getmErroReponse() {
+        return mErroReponse;
     }
 
-    public LiveData<UserReponse>getLoginReponse(){
-        return mLoginReponse;
+    public void setmErroReponse(ErrorRepone erroReponse) {
+        mErroReponse.setValue(erroReponse);
     }
 
-    public void setErrorReponse(ErrorRepone errorReponse){
-        mErrorReponseLogin.setValue(errorReponse);
+    public LiveData<UserReponse> getmUserReponse() {
+        return mUserReponse;
     }
 
-    public LiveData<ErrorRepone>getErrorReponse(){
-        return mErrorReponseLogin;
+    public void setmUserReponse(UserReponse userReponse) {
+        mUserReponse.setValue(userReponse);
     }
 }

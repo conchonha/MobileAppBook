@@ -40,9 +40,9 @@ public class RecoverActivity extends AppCompatActivity implements View.OnClickLi
         mRecoverViewmodel.getReponseRecover().observe(RecoverActivity.this, new Observer<ErrorRepone>() {
             @Override
             public void onChanged(ErrorRepone errorRepone) {
-                Toast.makeText(RecoverActivity.this, "Code - "+errorRepone.getmCode() +" message - "+errorRepone.getmMessage(), Toast.LENGTH_SHORT).show();
-                if(errorRepone.getmCode() == 200){
-                   finish();
+                Toast.makeText(RecoverActivity.this, "Code - " + errorRepone.getmCode() + " message - " + errorRepone.getmMessage(), Toast.LENGTH_SHORT).show();
+                if (errorRepone.getmCode() == 200) {
+                    finish();
                 }
                 mDialog.dismiss();
             }
@@ -62,9 +62,9 @@ public class RecoverActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.btn_send :
-                if(mRecoverViewmodel.checkValidation(mEdtEmail)){
+        switch (v.getId()) {
+            case R.id.btn_send:
+                if (mRecoverViewmodel.checkValidation(mEdtEmail)) {
                     mDialog = Helpers.showLoadingDialog(RecoverActivity.this);
                     mDialog.show();
                     mRecoverViewmodel.forgotPassword(mEdtEmail.getText().toString());

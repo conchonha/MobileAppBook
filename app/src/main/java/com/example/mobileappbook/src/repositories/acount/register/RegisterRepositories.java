@@ -6,11 +6,12 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.mobileappbook.async.register.AsyncRegister;
 import com.example.mobileappbook.cores.body.RegisterBody;
 import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
+import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
 
 import java.util.Map;
 
 public class RegisterRepositories {
-    private LiveData<Map> mReponeRegister = new MutableLiveData<>();
+    private MutableLiveData<UserReponse> mReponeRegister = new MutableLiveData<>();
     private MutableLiveData<ErrorRepone> mErroreponseRegister = new MutableLiveData<>();
 
     public void register(RegisterBody registerBody) {
@@ -18,12 +19,12 @@ public class RegisterRepositories {
         asyncRegister.execute();
     }
 
-    public LiveData<Map> getReponeRegister() {
+    public LiveData<UserReponse> getReponeRegister() {
         return mReponeRegister;
     }
 
-    public void setmReponeRegister(LiveData<Map> reponeRegister) {
-        mReponeRegister = reponeRegister;
+    public void setmReponeRegister(UserReponse userReponse) {
+        mReponeRegister.setValue(userReponse);
     }
 
     public void setErrorReponse(ErrorRepone errorReponse) {

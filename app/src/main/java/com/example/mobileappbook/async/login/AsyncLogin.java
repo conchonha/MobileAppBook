@@ -10,6 +10,9 @@ import com.example.mobileappbook.cores.services.APIServices;
 import com.example.mobileappbook.cores.services.DataService;
 import com.example.mobileappbook.src.repositories.acount.login.LoginRepositories;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -17,7 +20,7 @@ import retrofit2.Response;
 public class AsyncLogin extends AsyncTask<Void,Void,Void> {
     private LoginRepositories mLoginRepositories;
     private LoginBody mLoginBody;
-    private String TAG = "Async:ogin";
+    private String TAG = "AsyncLogin";
 
     public AsyncLogin(LoginRepositories loginRepositories,LoginBody loginBody){
         this.mLoginRepositories = loginRepositories;
@@ -34,10 +37,10 @@ public class AsyncLogin extends AsyncTask<Void,Void,Void> {
             public void onResponse(Call<UserReponse> call, Response<UserReponse> response) {
                 Log.d(TAG, "onResponse: "+response.toString());
                 if(response.isSuccessful()){
-                    mLoginRepositories.setLoginReponse(response.body());
+                    mLoginRepositories.setmUserReponse(response.body());
                 }else{
                     ErrorRepone errorRepone = new ErrorRepone(response.hashCode(),response.message());
-                    mLoginRepositories.setErrorReponse(errorRepone);
+                    mLoginRepositories.setmErroReponse(errorRepone);
                 }
             }
 
@@ -45,7 +48,7 @@ public class AsyncLogin extends AsyncTask<Void,Void,Void> {
             public void onFailure(Call<UserReponse> call, Throwable t) {
                 Log.d(TAG, "onFailure: "+t.toString());
                 ErrorRepone errorRepone = new ErrorRepone(t.hashCode(),t.getMessage());
-                mLoginRepositories.setErrorReponse(errorRepone);
+                mLoginRepositories.setmErroReponse(errorRepone);
             }
         });
         return null;

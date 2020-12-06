@@ -11,10 +11,13 @@ import com.example.mobileappbook.cores.body.LoginBody;
 import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
 import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
 import com.example.mobileappbook.src.repositories.acount.login.LoginRepositories;
+import com.example.mobileappbook.utils.SharePrefs;
 import com.example.mobileappbook.utils.Validations;
 
 public class LoginViewmodel extends AndroidViewModel {
     private LoginRepositories mLoginRepositories;
+    private LoginBody mLoginBody;
+    private SharePrefs mSharePrefs = new SharePrefs(getApplication());
 
     public LoginViewmodel(@NonNull Application application) {
         super(application);
@@ -23,16 +26,20 @@ public class LoginViewmodel extends AndroidViewModel {
         }
     }
 
-    public void login(LoginBody loginBody){
-        mLoginRepositories.login(loginBody);
+    public void saveUser(UserReponse userReponse){
+        mSharePrefs.saveUser(userReponse);
     }
 
-    public LiveData<UserReponse>getLoginReponse(){
-        return mLoginRepositories.getLoginReponse();
+    public void login(){
+        mLoginRepositories.login(mLoginBody);
+    }
+
+    public LiveData<UserReponse>getUserReponse(){
+        return mLoginRepositories.getmUserReponse();
     }
 
     public LiveData<ErrorRepone>getErrorReponse(){
-        return mLoginRepositories.getErrorReponse();
+        return mLoginRepositories.getmErroReponse();
     }
 
     public boolean checkValidation(EditText edtEmail,EditText edtPass){
@@ -47,6 +54,7 @@ public class LoginViewmodel extends AndroidViewModel {
             return false;
         }
         edtPass.setError(null);
+        mLoginBody = new LoginBody(edtEmail.getText().toString(),edtPass.getText().toString());
         return true;
     }
 }

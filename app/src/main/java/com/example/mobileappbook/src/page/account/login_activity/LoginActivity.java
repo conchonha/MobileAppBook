@@ -13,12 +13,10 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.mobileappbook.R;
-import com.example.mobileappbook.cores.body.LoginBody;
 import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
 import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
 import com.example.mobileappbook.src.page.account.recover_activity.RecoverActivity;
 import com.example.mobileappbook.src.page.account.register_activity.RegisterActivity;
-import com.example.mobileappbook.src.page.tabbar.TabBarActivity;
 import com.example.mobileappbook.src.viewmodel.acount.login.LoginViewmodel;
 import com.example.mobileappbook.utils.Helpers;
 import com.example.mobileappbook.utils.SharePrefs;
@@ -29,7 +27,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     //variable
     private Dialog mDialog;
     private LoginViewmodel mLoginViewmodel;
-    private SharePrefs mSharePrefs;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,17 +50,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
-        mLoginViewmodel.getLoginReponse().observe(LoginActivity.this, new Observer<UserReponse>() {
+        mLoginViewmodel.getUserReponse().observe(LoginActivity.this, new Observer<UserReponse>() {
             @Override
             public void onChanged(UserReponse userReponse) {
                 Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
-                mSharePrefs = new SharePrefs(LoginActivity.this);
-                mSharePrefs.saveUser(userReponse);
+                mLoginViewmodel.saveUser(userReponse);
                 mDialog.dismiss();
-                Intent intent = new Intent(getApplicationContext(), TabBarActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                Helpers.intentClear(LoginActivity.this);
             }
         });
     }
@@ -86,12 +79,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_login:
-                LoginBody loginBody = new LoginBody(mEdtEmail.getText().toString(), mEdtPassword.getText().toString());
-
                 if (mLoginViewmodel.checkValidation(mEdtEmail, mEdtPassword)) {
                     mDialog = Helpers.showLoadingDialog(LoginActivity.this);
                     mDialog.show();
-                    mLoginViewmodel.login(loginBody);
+                    mLoginViewmodel.login();
                 }
                 break;
             case R.id.txt_forgotPassword:
