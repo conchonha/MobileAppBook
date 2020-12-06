@@ -1,4 +1,4 @@
-package com.example.mobileappbook.async.login;
+package com.example.mobileappbook.async.acount.login;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -9,9 +9,6 @@ import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
 import com.example.mobileappbook.cores.services.APIServices;
 import com.example.mobileappbook.cores.services.DataService;
 import com.example.mobileappbook.src.repositories.acount.login.LoginRepositories;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
