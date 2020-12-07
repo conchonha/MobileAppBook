@@ -86,6 +86,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
                                                         public void onResponse(Call<Map> call, Response<Map> response) {
                                                             Log.d(TAG, "onResponse: " + response.toString());
                                                             if (response.isSuccessful()) {
+                                                                mSharePrefs.removeCart();
                                                                 Toast.makeText(PaymentActivity.this, "Success", Toast.LENGTH_SHORT).show();
                                                                 finish();
                                                             }

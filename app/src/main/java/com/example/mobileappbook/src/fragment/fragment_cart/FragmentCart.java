@@ -76,7 +76,6 @@ public class FragmentCart extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.card_pay:
                 if (mCartModel != null) {
-                    mSharePrefs.removeCart();
                     startActivity(new Intent(getActivity(), PaymentActivity.class));
                     getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                 }else{
