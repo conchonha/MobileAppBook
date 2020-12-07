@@ -20,7 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".src.page.home.DetailBuyActivity"/>
+        <activity android:name=".src.page.home.DetailBuyActivity">
+
+        </activity>
         <activity android:name=".src.page.account.login_activity.LoginActivity"/>
         <activity android:name=".src.page.setting.activity_update.ActivityUpdateInfor"/>
         <activity android:name=".src.page.account.recover_activity.RecoverActivity"/>
