@@ -21,6 +21,7 @@ import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseRepo
 import com.example.mobileappbook.model.CallbackFeatured;
 import com.example.mobileappbook.src.adapter.featured_adapter.FeaturedAdapter;
 import com.example.mobileappbook.src.viewmodel.featured.FeaturedViewModel;
+import com.example.mobileappbook.utils.Constain;
 import com.example.mobileappbook.utils.Helpers;
 
 import java.util.List;
@@ -45,7 +46,7 @@ public class FragmentFeatured extends Fragment implements CallbackFeatured {
     }
 
     private void init() {
-        mFeaturedAdapter = new FeaturedAdapter();
+        mFeaturedAdapter = new FeaturedAdapter(this);
         if(mFeaturedAdapter.getItemCount() == 0){
             mDialog = Helpers.showLoadingDialog(getActivity());
             mDialog.show();
@@ -98,6 +99,14 @@ public class FragmentFeatured extends Fragment implements CallbackFeatured {
 
     @Override
     public void onClickItem(GetAllCourseReponse reponse) {
-
+        FragmentDetailBuy fragmentDetailBuy = new FragmentDetailBuy();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(Constain.courseReponse,reponse);
+        fragmentDetailBuy.setArguments(bundle);
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .setCustomAnimations(R.anim.slide_in_fragment,R.anim.slide_out_right)
+                .add(R.id.relative_featured,fragmentDetailBuy,Constain.fragmentDetailBuy)
+                .commit();
     }
 }

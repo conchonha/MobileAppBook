@@ -17,8 +17,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.FeaturedViewhodler> {
+    private FragmentFeatured mFragmentFeatured;
     private List<GetAllCourseReponse>mListCourseReponse  = new ArrayList<>();
     private View mView;
+
+    public FeaturedAdapter(FragmentFeatured fragmentFeatured) {
+        this.mFragmentFeatured = fragmentFeatured;
+    }
+
     @NonNull
     @Override
     public FeaturedViewhodler onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -37,7 +43,7 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.Featur
         holder.mCardBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CallbackFeatured callbackFeatured = new FragmentFeatured();
+                CallbackFeatured callbackFeatured = mFragmentFeatured;
                 callbackFeatured.onClickItem(reponse);
             }
         });

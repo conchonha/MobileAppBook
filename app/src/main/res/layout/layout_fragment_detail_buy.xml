@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:scrollbars="none"
     android:layout_height="match_parent"
     android:background="@drawable/home_flashsale"
-    tools:context=".src.page.home.DetailBuyActivity">
+    >
   <RelativeLayout
       android:layout_width="match_parent"
       android:layout_marginLeft="20dp"
@@ -66,6 +67,7 @@
                       android:text="PROBABILITY"
                       android:textColor="#fff"
                       android:textSize="16sp"
+                      android:id="@+id/txt_name"
                       android:textStyle="bold"
                       android:background="#7A7777"
                       android:paddingRight="2dp"
@@ -77,6 +79,7 @@
                       android:textColor="#1A2799"
                       android:textSize="16sp"
                       android:layout_marginTop="7dp"
+                      android:id="@+id/txt_name_category"
                       android:textStyle="bold"
                       android:background="#FFF"
                       android:paddingRight="2dp"
@@ -100,6 +103,7 @@
                           android:text="Update: 20:12 18/09/2020"
                           android:textColor="#000"
                           android:textStyle="bold"
+                          android:id="@+id/txt_time"
                           android:textSize="11sp"
                           android:layout_height="wrap_content"/>
                   </androidx.cardview.widget.CardView>
@@ -150,6 +154,7 @@
           android:layout_height="wrap_content"
           android:text="$50.0"
           android:textColor="#978D8D"
+          android:id="@+id/txt_price_featured"
           android:layout_below="@+id/txt_price"
           android:layout_toRightOf="@+id/txt_price"
           android:layout_marginTop="4dp"
@@ -164,15 +169,17 @@
           android:layout_toRightOf="@+id/txt_sale"
           android:layout_marginLeft="7dp"
           android:layout_marginTop="4dp"
-          android:id="@+id/txt_money"
+          android:id="@+id/txt_price_sale_featured"
           android:textStyle="bold"
           android:textSize="25dp"/>
       <androidx.cardview.widget.CardView
           android:layout_width="133dp"
-          android:layout_below="@+id/txt_money"
+          android:layout_below="@+id/txt_price_sale_featured"
           android:layout_centerHorizontal="true"
           android:layout_marginTop="22dp"
           android:id="@+id/card_4"
+          android:foreground="?attr/selectableItemBackground"
+          android:clickable="true"
           app:cardCornerRadius="30dp"
           app:cardBackgroundColor="#3778F8"
           android:layout_height="47dp">
@@ -220,6 +227,7 @@
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:layout_marginTop="7dp"
+                  android:id="@+id/txt_description"
                   android:textColor="#fff"
                   android:textSize="13sp"
                   android:text="@string/text" />

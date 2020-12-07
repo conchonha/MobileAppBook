@@ -164,11 +164,11 @@
             android:layout_toRightOf="@+id/txt_sale"
             android:layout_marginLeft="7dp"
             android:layout_marginTop="4dp"
-            android:id="@+id/txt_money"
+            android:id="@+id/txt_price_sale_featured"
             android:textStyle="bold"
             android:textSize="25dp"/>
         <RelativeLayout
-            android:layout_below="@id/txt_money"
+            android:layout_below="@id/txt_price_sale_featured"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/relative_1">
