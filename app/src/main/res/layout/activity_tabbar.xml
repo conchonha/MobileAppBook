@@ -21,7 +21,7 @@
             app:tabIconTint="@color/tab_icon_tin"
             app:tabIndicatorHeight="2dp"
             android:id="@+id/tab_layout"
-            android:layout_height="wrap_content"/>
+            android:layout_height="?attr/bottomAppBarStyle"/>
 
 
     <androidx.viewpager.widget.ViewPager
