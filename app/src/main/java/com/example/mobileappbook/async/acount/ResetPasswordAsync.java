@@ -8,7 +8,7 @@ import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
 import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
 import com.example.mobileappbook.cores.services.APIServices;
 import com.example.mobileappbook.cores.services.DataService;
-import com.example.mobileappbook.src.repositories.acount.reset_password.ResetPasswordRepositories;
+import com.example.mobileappbook.src.repositories.acount.ResetPasswordRepositories;
 
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -56,7 +56,7 @@ dependencies {
     //countryl
     implementation 'com.hbb20:ccp:2.4.0'
 
-    implementation 'com.google.android.gms:play-services-wallet:18.1.2'
+//    implementation 'com.google.android.gms:play-services-wallet:18.1.2'
     implementation 'com.stripe:stripe-android:14.5.0'
 
 }

@@ -8,16 +8,18 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import com.example.mobileappbook.R;
 import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseReponse;
 import com.example.mobileappbook.utils.Constain;
+import com.example.mobileappbook.utils.SharePrefs;
 
 public class FragmentDetailBuy extends Fragment implements View.OnClickListener {
     private View mView;
     private TextView mTxtName,mTxtNameCategory,mTxtPrice,mTxtPriceSale,mTxtTime,mTxtDescription;
+    //variable
+    private GetAllCourseReponse mReponse;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -35,14 +37,14 @@ public class FragmentDetailBuy extends Fragment implements View.OnClickListener 
     }
 
     private void init() {
-        GetAllCourseReponse reponse = (GetAllCourseReponse) getArguments().getSerializable(Constain.courseReponse);
-        if(reponse != null){
-            mTxtName.setText(reponse.getName());
-            mTxtDescription.setText(reponse.getDescription());
-            mTxtNameCategory.setText(reponse.getCategory().getName());
-            mTxtPrice.setText(reponse.getPrice().toString());
-            mTxtPriceSale.setText(reponse.getV().toString());
-            mTxtTime.setText(reponse.getCreatedAt());
+        mReponse = (GetAllCourseReponse) getArguments().getSerializable(Constain.courseReponse);
+        if(mReponse != null){
+            mTxtName.setText(mReponse.getName());
+            mTxtDescription.setText(mReponse.getDescription());
+            mTxtNameCategory.setText(mReponse.getCategory().getName());
+            mTxtPrice.setText(mReponse.getPrice().toString());
+            mTxtPriceSale.setText(mReponse.getV().toString());
+            mTxtTime.setText(mReponse.getCreatedAt());
         }
     }
 
@@ -71,6 +73,8 @@ public class FragmentDetailBuy extends Fragment implements View.OnClickListener 
                 }
                 break;
             case R.id.card_4:
+                SharePrefs sharePrefs = new SharePrefs(getContext());
+                sharePrefs.saveCart(mReponse,getContext());
                 break;
         }
     }

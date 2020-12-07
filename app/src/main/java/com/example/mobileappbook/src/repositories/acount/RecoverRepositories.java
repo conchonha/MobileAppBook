@@ -1,0 +1,24 @@
+package com.example.mobileappbook.src.repositories.acount;
+
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
+import com.example.mobileappbook.async.acount.AsyncRecover;
+import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
+
+public class RecoverRepositories {
+    MutableLiveData<ErrorRepone>mReponseRecover = new MutableLiveData<>();
+
+    public void forgotPassword(String email){
+        AsyncRecover asyncRecover = new AsyncRecover(this,email);
+        asyncRecover.execute();
+    }
+
+    public void setDataReponseRecover(ErrorRepone errorRepone){
+        mReponseRecover.setValue(errorRepone);
+    }
+
+    public LiveData<ErrorRepone> getDataReponseRecover(){
+        return mReponseRecover;
+    }
+}

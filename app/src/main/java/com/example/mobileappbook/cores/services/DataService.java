@@ -1,6 +1,7 @@
 package com.example.mobileappbook.cores.services;
 import com.example.mobileappbook.cores.body.ActiveAcountBody;
 import com.example.mobileappbook.cores.body.LoginBody;
+import com.example.mobileappbook.cores.body.PaymentBody;
 import com.example.mobileappbook.cores.body.RegisterBody;
 import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseReponse;
 import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCategoryReponse;
@@ -40,11 +41,13 @@ public interface DataService {
     @GET("/course/get-top")
     Call<List<GetAllCourseReponse>> gettopcourse();
 
-
     @POST("/reset-password")
     Call<UserReponse> resetPassword(@Body ResetPasswordBody body);
 
     @POST("/active-account")
     Call<UserReponse> activeAcount(@Body ActiveAcountBody body);
+
+    @POST("/payment/pay")
+    Call<Map>pay(@Body PaymentBody body);
 
 }

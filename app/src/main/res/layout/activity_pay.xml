@@ -4,12 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_height="match_parent"
-    android:background="#FFFFFF">
+
+    android:layout_height="match_parent">
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#F44336"
         android:id="@+id/payTB"
         app:title="Thanh toán"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"

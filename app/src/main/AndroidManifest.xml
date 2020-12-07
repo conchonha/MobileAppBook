@@ -12,8 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".src.page.account.reset_password_activity.ResetPasswordActivity"/>
-        <activity android:name=".src.page.account.active_acount.ActiveAcountActivity" />
+        <activity android:name=".src.page.account.ResetPasswordActivity"/>
+        <activity android:name=".src.page.account.ActiveAcountActivity" />
         <activity android:name=".src.page.tabbar.TabBarActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".src.page.account.register_activity.RegisterActivity" />
+        <activity android:name=".src.page.account.RegisterActivity" />
         <activity android:name=".src.page.splash.StartScreenActivity">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
@@ -29,12 +29,12 @@
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
         </activity>
-        <activity android:name=".src.page.account.login_activity.LoginActivity" />
-        <activity android:name=".src.page.setting.activity_update.ActivityUpdateInfor" />
-        <activity android:name=".src.page.account.recover_activity.RecoverActivity" />
-        <activity android:name=".src.page.setting.activity_setting.ActivitySetting" />
-        <activity android:name=".src.page.setting.activity_security.ActivitySecurity" />
-        <activity android:name=".src.page.setting.activity_changeavatar.ActivityChangeAvatar" />
+        <activity android:name=".src.page.account.LoginActivity" />
+        <activity android:name=".src.page.setting.ActivityUpdateInfor" />
+        <activity android:name=".src.page.account.RecoverActivity" />
+        <activity android:name=".src.page.setting.ActivitySetting" />
+        <activity android:name=".src.page.setting.ActivitySecurity" />
+        <activity android:name=".src.page.setting.ActivityChangeAvatar" />
         <activity android:name=".src.page.payment.PaymentActivity"/>
     </application>
 

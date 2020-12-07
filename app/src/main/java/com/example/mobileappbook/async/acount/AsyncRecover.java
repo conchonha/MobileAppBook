@@ -6,7 +6,7 @@ import android.util.Log;
 import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
 import com.example.mobileappbook.cores.services.APIServices;
 import com.example.mobileappbook.cores.services.DataService;
-import com.example.mobileappbook.src.repositories.acount.recover.RecoverRepositories;
+import com.example.mobileappbook.src.repositories.acount.RecoverRepositories;
 
 import java.util.Map;
 
