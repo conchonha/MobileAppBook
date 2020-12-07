@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.mobileappbook.R;
 import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
 import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
+import com.example.mobileappbook.src.page.account.active_acount.ActiveAcountActivity;
 import com.example.mobileappbook.src.page.account.recover_activity.RecoverActivity;
 import com.example.mobileappbook.src.page.account.register_activity.RegisterActivity;
 import com.example.mobileappbook.src.page.tabbar.TabBarActivity;
@@ -22,7 +23,7 @@ import com.example.mobileappbook.src.viewmodel.acount.login.LoginViewmodel;
 import com.example.mobileappbook.utils.Helpers;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-    private EditText mEdtEmail,mEdtPassword;
+    private EditText mEdtEmail, mEdtPassword;
     //variable
     private Dialog mDialog;
     private LoginViewmodel mLoginViewmodel;
@@ -44,19 +45,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mLoginViewmodel.getErrorReponse().observe(LoginActivity.this, new Observer<ErrorRepone>() {
             @Override
             public void onChanged(ErrorRepone errorRepone) {
-                Toast.makeText(LoginActivity.this, "Login fail: code - " + errorRepone.getmCode() + " message - " + errorRepone.getmMessage(), Toast.LENGTH_SHORT).show();
                 mDialog.dismiss();
+                Toast.makeText(LoginActivity.this, "Login fail: code - " + errorRepone.getmCode() + " message - " + errorRepone.getmMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
         mLoginViewmodel.getUserReponse().observe(LoginActivity.this, new Observer<UserReponse>() {
             @Override
             public void onChanged(UserReponse userReponse) {
+                mDialog.dismiss();
                 Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
                 mLoginViewmodel.saveUser(userReponse);
-                mDialog.dismiss();
-                Helpers.intentClear(LoginActivity.this, TabBarActivity.class);
-
+                if (userReponse.getActive() == 0) {
+                    Toast.makeText(LoginActivity.this, "Please active acount", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), ActiveAcountActivity.class).putExtra("email", userReponse.getEmail()));
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+                } else {
+                    Helpers.intentClear(LoginActivity.this, TabBarActivity.class);
+                }
             }
         });
     }
@@ -87,11 +93,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.txt_forgotPassword:
                 startActivity(new Intent(getApplicationContext(), RecoverActivity.class));
-                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                 break;
             case R.id.txt_create_acount:
                 startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
-                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                 break;
             case R.id.img_back:
                 finish();

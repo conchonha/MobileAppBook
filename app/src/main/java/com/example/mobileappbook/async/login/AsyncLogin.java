@@ -10,9 +10,6 @@ import com.example.mobileappbook.cores.services.APIServices;
 import com.example.mobileappbook.cores.services.DataService;
 import com.example.mobileappbook.src.repositories.acount.login.LoginRepositories;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,7 +34,10 @@ public class AsyncLogin extends AsyncTask<Void,Void,Void> {
             public void onResponse(Call<UserReponse> call, Response<UserReponse> response) {
                 Log.d(TAG, "onResponse: "+response.toString());
                 if(response.isSuccessful()){
-                    mLoginRepositories.setmUserReponse(response.body());
+                    UserReponse userReponse = response.body();
+                    userReponse.setmAuthToken(response.headers().get("Auth-token"));
+                    Log.d(TAG, "onResponse: auth-token -"+ userReponse.getmAuthToken());
+                    mLoginRepositories.setmUserReponse(userReponse);
                 }else{
                     ErrorRepone errorRepone = new ErrorRepone(response.hashCode(),response.message());
                     mLoginRepositories.setmErroReponse(errorRepone);

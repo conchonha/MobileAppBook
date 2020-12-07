@@ -46,6 +46,17 @@ public class UserReponse {
     @SerializedName("__v")
     @Expose
     private Integer v;
+    @SerializedName("Auth-token")
+    @Expose
+    private String mAuthToken;
+
+    public String getmAuthToken() {
+        return mAuthToken;
+    }
+
+    public void setmAuthToken(String mAuthToken) {
+        this.mAuthToken = mAuthToken;
+    }
 
     public String getActiveToken() {
         return activeToken;
