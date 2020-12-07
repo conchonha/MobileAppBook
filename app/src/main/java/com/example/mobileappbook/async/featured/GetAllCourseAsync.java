@@ -38,7 +38,6 @@ public class GetAllCourseAsync extends AsyncTask<Void,Void,Void> {
                     Log.d(TAG, "onResponse: " + response.hashCode());
                     Log.d(TAG, "onResponse: " + response.message());
                     mErrorRepone = new ErrorRepone(response.hashCode(),response.message());
-                    mGetAllCourseReponsitories.setmErrorGetAllCourseReponse(mErrorRepone);
                 }
             }
 
@@ -48,7 +47,6 @@ public class GetAllCourseAsync extends AsyncTask<Void,Void,Void> {
                 Log.d(TAG, "onResponse: " + t.hashCode());
                 Log.d(TAG, "onResponse: " + t.getMessage());
                 mErrorRepone = new ErrorRepone(t.hashCode(),t.getMessage());
-                mGetAllCourseReponsitories.setmErrorGetAllCourseReponse(mErrorRepone);
             }
         });
         return null;

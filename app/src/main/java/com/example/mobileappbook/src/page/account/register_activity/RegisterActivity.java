@@ -1,6 +1,7 @@
 package com.example.mobileappbook.src.page.account.register_activity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -14,6 +15,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.mobileappbook.R;
 import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
 import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
+import com.example.mobileappbook.src.page.account.active_acount.ActiveAcountActivity;
 import com.example.mobileappbook.src.viewmodel.acount.register.RegisterViewmodel;
 import com.example.mobileappbook.utils.Helpers;
 
@@ -58,8 +60,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             public void onChanged(UserReponse userReponse) {
                 mDialog.dismiss();
                 Toast.makeText(RegisterActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
-                mRegisterViewmodel.saveUser(userReponse);
-                Helpers.intentClear(RegisterActivity.this);
+                startActivity(new Intent(getApplicationContext(), ActiveAcountActivity.class).putExtra("email", mEdtEmail.getText().toString()));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
             }
         });
 

@@ -20,8 +20,8 @@ public class GetFreeCourseAsync extends AsyncTask<Void, Void, Void> {
     private ErrorRepone mErrorRepone;
     private String TAG = "GetFreeCourseAsync";
 
-    public GetFreeCourseAsync(FeaturedRepositories mGetFreeCourseRepositories) {
-        this.mGetFreeCourseRepositories = mGetFreeCourseRepositories;
+    public GetFreeCourseAsync(FeaturedRepositories featuredRepositories) {
+        this.mGetFreeCourseRepositories = featuredRepositories;
     }
 
     @Override
@@ -33,20 +33,20 @@ public class GetFreeCourseAsync extends AsyncTask<Void, Void, Void> {
             public void onResponse(Call<List<GetAllCourseReponse>> call, Response<List<GetAllCourseReponse>> response) {
                 Log.d(TAG, "onResponse: " + response.toString());
                 if (response.isSuccessful()) {
-                    mGetFreeCourseRepositories.setmGetAllCourseReponse(response.body());
+                    mGetFreeCourseRepositories.setmGetFreeCourseReponse(response.body());
                 }else {
                     Log.d(TAG, "onResponse: " + response.hashCode());
                     Log.d(TAG, "onResponse: " + response.message());
                     mErrorRepone = new ErrorRepone(response.hashCode(), response.message());
-                    mGetFreeCourseRepositories.setmErrorGetAllCourseReponse(mErrorRepone);
                 }
 
             }
 
             @Override
             public void onFailure(Call<List<GetAllCourseReponse>> call, Throwable t) {
+                Log.d(TAG, "onResponse: " + t.hashCode());
+                Log.d(TAG, "onResponse: " + t.getMessage());
                 mErrorRepone = new ErrorRepone(t.hashCode(), t.getMessage());
-                mGetFreeCourseRepositories.setmErrorGetAllCourseReponse(mErrorRepone);
             }
         });
         return null;

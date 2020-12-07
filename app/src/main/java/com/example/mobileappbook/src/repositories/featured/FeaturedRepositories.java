@@ -7,17 +7,17 @@ import com.example.mobileappbook.async.featured.GetAllCategoryAsync;
 import com.example.mobileappbook.async.featured.GetAllCourseAsync;
 import com.example.mobileappbook.async.featured.GetFreeCourseAsync;
 import com.example.mobileappbook.async.featured.GetTopCourseAsync;
-import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
 import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCategoryReponse;
 import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseReponse;
 
 import java.util.List;
 
 public class FeaturedRepositories {
-    private MutableLiveData<List<GetAllCategoryReponse>> mGetAllCategory = new MutableLiveData<>();
-    private MutableLiveData<ErrorRepone> mGetAllCategoryError = new MutableLiveData<>();
+    private MutableLiveData<List<GetAllCategoryReponse>> mGetAllCategoryReponse = new MutableLiveData<>();
     private MutableLiveData<List<GetAllCourseReponse>> mGetAllCourseReponse = new MutableLiveData<>();
-    private MutableLiveData<ErrorRepone> mErrorGetAllCourseReponse = new MutableLiveData<>();
+    private MutableLiveData<List<GetAllCourseReponse>> mGetTopCourseReponse = new MutableLiveData<>();
+    private MutableLiveData<List<GetAllCourseReponse>> mGetFreeCourseReponse = new MutableLiveData<>();
+
 
     public void initstalise(){
         GetAllCourseAsync allCourseAsync = new GetAllCourseAsync(this);
@@ -31,31 +31,39 @@ public class FeaturedRepositories {
         freeCourseAsync.execute();
     }
 
-    public void setmGetAllCategory(List<GetAllCategoryReponse> getAllCategory){
-        mGetAllCategory.setValue(getAllCategory);
+    //---------------------Category------------
+    public void setmGetAllCategoryReponse(List<GetAllCategoryReponse> getAllCategory){
+        mGetAllCategoryReponse.setValue(getAllCategory);
     }
 
-    public void setmGetAllCategoryError(ErrorRepone errorRepone){
-        mGetAllCategoryError.setValue(errorRepone);
-    }
-
-    public LiveData<List<GetAllCategoryReponse>> getAllCategory(){
-      return mGetAllCategory;
+    public LiveData<List<GetAllCategoryReponse>> getmGetAllCategoryReponse(){
+        return mGetAllCategoryReponse;
     };
-    public LiveData<ErrorRepone> getAllCategoryError(){
-        return mGetAllCategoryError;
-    }
 
+    //----------------------All Course-------------
     public void setmGetAllCourseReponse(List<GetAllCourseReponse> getAllCourseReponse){
         mGetAllCourseReponse.setValue(getAllCourseReponse);
     }
-    public void setmErrorGetAllCourseReponse(ErrorRepone errorRepone){
-        mErrorGetAllCourseReponse.setValue(errorRepone);
-    }
-    public LiveData<List<GetAllCourseReponse>> getAllCourse(){
+
+    public LiveData<List<GetAllCourseReponse>> getmGetAllCourseReponse(){
         return mGetAllCourseReponse;
     }
-    public LiveData<ErrorRepone> getAllCourseError(){
-        return mErrorGetAllCourseReponse;
+
+    //----------------------Top Course-------------
+    public void setmGetTopCourseReponse(List<GetAllCourseReponse> getAllCourseReponse){
+        mGetTopCourseReponse.setValue(getAllCourseReponse);
+    }
+
+    public LiveData<List<GetAllCourseReponse>> getmGetTopCourseReponse(){
+        return mGetTopCourseReponse;
+    }
+
+    //----------------------Free Course-------------
+    public void setmGetFreeCourseReponse(List<GetAllCourseReponse> getAllCourseReponse){
+        mGetFreeCourseReponse.setValue(getAllCourseReponse);
+    }
+
+    public LiveData<List<GetAllCourseReponse>> getmGetFreeCourseReponse(){
+        return mGetFreeCourseReponse;
     }
 }

@@ -12,28 +12,23 @@ import com.example.mobileappbook.cores.body.RegisterBody;
 import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
 import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
 import com.example.mobileappbook.src.repositories.acount.register.RegisterRepositories;
-import com.example.mobileappbook.utils.SharePrefs;
 import com.example.mobileappbook.utils.Validations;
 
 public class RegisterViewmodel extends AndroidViewModel {
     private RegisterRepositories mRegisterRepositories;
-    private SharePrefs mSharePrefs;
     private RegisterBody mRegisterBody = null;
     private MutableLiveData<Boolean> checkLoadingDialog = new MutableLiveData<>();
     private String TAG = "RegisterViewmodel";
 
     public RegisterViewmodel(@NonNull Application application) {
         super(application);
-        mRegisterRepositories = new RegisterRepositories();
-        mSharePrefs = new SharePrefs(application);
+         if(mRegisterRepositories == null){
+             mRegisterRepositories = new RegisterRepositories();
+         }
     }
 
     public void register() {
         mRegisterRepositories.register(mRegisterBody);
-    }
-
-    public void saveUser(UserReponse userReponse) {
-        mSharePrefs.saveUser(userReponse);
     }
 
     //register

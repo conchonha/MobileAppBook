@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
 import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCategoryReponse;
 import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseReponse;
 import com.example.mobileappbook.src.repositories.featured.FeaturedRepositories;
@@ -25,18 +24,18 @@ public class FeaturedViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<GetAllCategoryReponse>> getAllCategory(){
-        return  mFeaturedRepositories.getAllCategory();
+        return  mFeaturedRepositories.getmGetAllCategoryReponse();
     };
-
-    public LiveData<ErrorRepone> getAllCategoryError(){
-        return mFeaturedRepositories.getAllCategoryError();
-    }
 
     public LiveData<List<GetAllCourseReponse>> getAllCourseReponse(){
-        return mFeaturedRepositories.getAllCourse();
+        return mFeaturedRepositories.getmGetAllCourseReponse();
     }
-    public LiveData<ErrorRepone> getAllCourseError(){
-        return mFeaturedRepositories.getAllCourseError();
-    };
 
+    public LiveData<List<GetAllCourseReponse>>getmGetTopCourseReponse(){
+        return mFeaturedRepositories.getmGetTopCourseReponse();
+    }
+
+    public LiveData<List<GetAllCourseReponse>>getmGetFreeCourseReponse(){
+        return mFeaturedRepositories.getmGetFreeCourseReponse();
+    }
 }

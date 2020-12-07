@@ -33,12 +33,11 @@ public class GetTopCourseAsync extends AsyncTask<Void,Void,Void> {
             public void onResponse(Call<List<GetAllCourseReponse>> call, Response<List<GetAllCourseReponse>> response) {
                 Log.d(TAG, "onResponse: " + response.toString());
                 if (response.isSuccessful()){
-                    mGetTopCourseReponsitories.setmGetAllCourseReponse(response.body());
+                    mGetTopCourseReponsitories.setmGetTopCourseReponse(response.body());
                 }else {
                     Log.d(TAG, "onResponse: " + response.hashCode());
                     Log.d(TAG, "onResponse: " + response.message());
                     mErrorRepone = new ErrorRepone(response.hashCode(),response.message());
-                    mGetTopCourseReponsitories.setmErrorGetAllCourseReponse(mErrorRepone);
                 }
             }
 
@@ -47,8 +46,6 @@ public class GetTopCourseAsync extends AsyncTask<Void,Void,Void> {
                 Log.d(TAG, "onResponse: " + t.hashCode());
                 Log.d(TAG, "onResponse: " + t.getMessage());
                 mErrorRepone = new ErrorRepone(t.hashCode(),t.getMessage());
-                mGetTopCourseReponsitories.setmErrorGetAllCourseReponse(mErrorRepone);
-
             }
         });
         return null;

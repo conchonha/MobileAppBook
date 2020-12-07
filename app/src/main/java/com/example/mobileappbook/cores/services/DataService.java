@@ -1,16 +1,15 @@
 package com.example.mobileappbook.cores.services;
-import android.database.Observable;
-
+import com.example.mobileappbook.cores.body.ActiveAcountBody;
 import com.example.mobileappbook.cores.body.LoginBody;
 import com.example.mobileappbook.cores.body.RegisterBody;
 import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseReponse;
 import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCategoryReponse;
+import com.example.mobileappbook.cores.body.ResetPasswordBody;
 import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
 
 import java.util.List;
 import java.util.Map;
 
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -41,5 +40,11 @@ public interface DataService {
     @GET("/course/get-top")
     Call<List<GetAllCourseReponse>> gettopcourse();
 
+
+    @POST("/reset-password")
+    Call<UserReponse> resetPassword(@Body ResetPasswordBody body);
+
+    @POST("/active-account")
+    Call<UserReponse> activeAcount(@Body ActiveAcountBody body);
 
 }

@@ -3,7 +3,7 @@ package com.example.mobileappbook.src.repositories.acount.recover;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.mobileappbook.async.acount.recover.AsyncRecover;
+import com.example.mobileappbook.async.acount.AsyncRecover;
 import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
 
 public class RecoverRepositories {

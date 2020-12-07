@@ -3,7 +3,7 @@ package com.example.mobileappbook.src.repositories.acount.register;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.mobileappbook.async.acount.register.AsyncRegister;
+import com.example.mobileappbook.async.acount.AsyncRegister;
 import com.example.mobileappbook.cores.body.RegisterBody;
 import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
 import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;

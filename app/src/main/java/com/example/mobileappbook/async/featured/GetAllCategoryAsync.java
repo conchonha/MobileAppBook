@@ -33,12 +33,11 @@ public class GetAllCategoryAsync extends AsyncTask<Void,Void,Void> {
             public void onResponse(Call<List<GetAllCategoryReponse>> call, Response<List<GetAllCategoryReponse>> response) {
                 Log.d(TAG, "onResponse: " + response.toString());
                 if (response.isSuccessful()){
-                        mFeaturedRepositories.setmGetAllCategory(response.body());
+                        mFeaturedRepositories.setmGetAllCategoryReponse(response.body());
                 }else {
                     Log.d(TAG, "onResponse: " + response.hashCode());
                     Log.d(TAG, "onResponse: " + response.message());
                     mErrorRepone = new ErrorRepone(response.hashCode(),response.message());
-                    mFeaturedRepositories.setmGetAllCategoryError(mErrorRepone);
                 }
             }
 
@@ -47,7 +46,6 @@ public class GetAllCategoryAsync extends AsyncTask<Void,Void,Void> {
                 Log.d(TAG, "onResponse: " + t.hashCode());
                 Log.d(TAG, "onResponse: " + t.getMessage());
                 mErrorRepone = new ErrorRepone(t.hashCode(),t.getMessage());
-                mFeaturedRepositories.setmGetAllCategoryError(mErrorRepone);
             }
         });
         return null;
