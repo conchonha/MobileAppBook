@@ -1,4 +1,4 @@
-package com.example.mobileappbook.async.acount.register;
+package com.example.mobileappbook.async.acount;
 
 import android.os.AsyncTask;
 import android.util.Log;

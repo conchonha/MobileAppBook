@@ -18,13 +18,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mobileappbook.R;
 import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCategoryReponse;
 import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseReponse;
+import com.example.mobileappbook.model.CallbackFeatured;
 import com.example.mobileappbook.src.adapter.featured_adapter.FeaturedAdapter;
 import com.example.mobileappbook.src.viewmodel.featured.FeaturedViewModel;
 import com.example.mobileappbook.utils.Helpers;
 
 import java.util.List;
 
-public class FragmentFeatured extends Fragment {
+public class FragmentFeatured extends Fragment implements CallbackFeatured {
     private View mView;
     private Dialog mDialog;
     //variable
@@ -95,4 +96,8 @@ public class FragmentFeatured extends Fragment {
         });
     }
 
+    @Override
+    public void onClickItem(GetAllCourseReponse reponse) {
+
+    }
 }

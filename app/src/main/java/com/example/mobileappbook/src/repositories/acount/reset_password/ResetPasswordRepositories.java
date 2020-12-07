@@ -3,7 +3,7 @@ package com.example.mobileappbook.src.repositories.acount.reset_password;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.mobileappbook.async.reset_password.ResetPasswordAsync;
+import com.example.mobileappbook.async.acount.ResetPasswordAsync;
 import com.example.mobileappbook.cores.body.ResetPasswordBody;
 import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
 import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
