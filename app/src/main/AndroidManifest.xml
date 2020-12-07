@@ -20,6 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".src.page.home.DetailBuyActivity"/>
         <activity android:name=".src.page.account.login_activity.LoginActivity"/>
         <activity android:name=".src.page.setting.activity_update.ActivityUpdateInfor"/>
         <activity android:name=".src.page.account.recover_activity.RecoverActivity"/>
@@ -27,5 +28,8 @@
         <activity android:name=".src.page.setting.activity_security.ActivitySecurity"/>
         <activity android:name=".src.page.setting.activity_changeavatar.ActivityChangeAvatar"/>
     </application>
+    <meta-data
+        android:name="com.google.android.gms.wallet.api.enabled"
+        android:value="true" />
 
 </manifest>
