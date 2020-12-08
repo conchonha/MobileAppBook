@@ -52,6 +52,7 @@ public class FragmentCart extends Fragment implements View.OnClickListener {
         mSharePrefs = new SharePrefs(getContext());
         mCartModel = mGson.fromJson(mSharePrefs.getCart(), CartModel.class);
         if (mCartModel != null) {
+            mTotal = 0;
             for (GetAllCourseReponse reponse : mCartModel.getList()) {
                 mTotal += reponse.getPrice();
             }
