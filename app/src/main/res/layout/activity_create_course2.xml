@@ -6,6 +6,7 @@
     android:background="@drawable/login">
 
     <TextView
+        android:fontFamily="@font/black_and_white_picture"
         android:id="@+id/txt_title"
         android:layout_width="wrap_content"
         android:layout_height="60dp"

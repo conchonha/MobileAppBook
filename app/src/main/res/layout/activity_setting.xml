@@ -13,6 +13,7 @@
         android:layout_margin="5dp"
         android:src="@drawable/ic_back"/>
     <TextView
+        android:fontFamily="@font/black_and_white_picture"
         android:id="@+id/txt_settingt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,7 +24,7 @@
         android:layout_marginRight="116dp"
         android:gravity="center"
         android:text="Setting"
-        android:textSize="40sp" />
+        android:textSize="48sp" />
 
     <LinearLayout
         android:layout_width="match_parent"

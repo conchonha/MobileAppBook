@@ -8,13 +8,14 @@
     android:paddingLeft="20dp">
 
     <TextView
+        android:fontFamily="@font/black_and_white_picture"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/shopping_cart_24px"
         android:text=" Your Cart"
         android:id="@+id/txt_1"
         android:textColor="#FFFFFF"
-        android:textSize="40dp" />
+        android:textSize="48sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_cart"

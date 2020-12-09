@@ -17,13 +17,14 @@
         android:src="@drawable/ic_back" />
 
     <TextView
+        android:fontFamily="@font/black_and_white_picture"
         android:id="@+id/txt_youcourse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:text="Your Course"
-        android:textSize="40sp" />
+        android:textSize="48sp" />
 
     <ScrollView
         android:layout_centerInParent="true"

@@ -14,6 +14,7 @@
         android:src="@drawable/ic_back"/>
 
     <TextView
+        android:fontFamily="@font/black_and_white_picture"
         android:id="@+id/txt_title"
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -22,7 +23,7 @@
         android:gravity="center"
         android:text="Security"
         android:textColor="#FFFFFF"
-        android:textSize="40dp" />
+        android:textSize="48sp" />
 
     <RelativeLayout
         android:layout_width="match_parent"

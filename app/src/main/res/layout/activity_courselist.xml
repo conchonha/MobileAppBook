@@ -4,6 +4,7 @@
     android:background="@drawable/banner_course"
     android:layout_height="match_parent">
     <TextView
+        android:fontFamily="@font/black_and_white_picture"
         android:id="@+id/txt_title"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
