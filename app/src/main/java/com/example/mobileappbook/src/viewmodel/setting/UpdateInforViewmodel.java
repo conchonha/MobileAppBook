@@ -1,4 +1,4 @@
-package com.example.mobileappbook.src.viewmodel.acount;
+package com.example.mobileappbook.src.viewmodel.setting;
 
 import android.app.Application;
 

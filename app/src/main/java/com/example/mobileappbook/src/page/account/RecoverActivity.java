@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.mobileappbook.R;
 import com.example.mobileappbook.src.viewmodel.acount.RecoverViewmodel;
+import com.example.mobileappbook.utils.Constain;
 import com.example.mobileappbook.utils.Helpers;
 
 import java.util.Map;
@@ -43,7 +44,7 @@ public class RecoverActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onChanged(Map map) {
                 mDialog.dismiss();
-                if (map.get("300") != null) {
+                if (map.get(Constain.keyMapErr) != null) {
                     Toast.makeText(RecoverActivity.this, map.get("300")+"", Toast.LENGTH_SHORT).show();
                 }else{
                     startActivity(new Intent(getApplicationContext(), ResetPasswordActivity.class).putExtra("email",mEdtEmail.getText().toString()));

@@ -47,6 +47,8 @@ public class ResetPasswordAsync extends AsyncTask<Void,Void,Void> {
                         mAcountRepositories.setResetPasswordReponse(mUserReponse);
                     } catch (IOException | JSONException e) {
                         e.printStackTrace();
+                        mUserReponse.setMessage(response.message());
+                        mAcountRepositories.setResetPasswordReponse(mUserReponse);
                     }
                 }
             }

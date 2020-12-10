@@ -6,6 +6,7 @@ import android.util.Log;
 import com.example.mobileappbook.cores.services.APIServices;
 import com.example.mobileappbook.cores.services.DataService;
 import com.example.mobileappbook.src.repositories.acount.AcountRepositories;
+import com.example.mobileappbook.utils.Constain;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -41,10 +42,12 @@ public class AsyncRecover extends AsyncTask<Void,Void,Void> {
                 }else{
                     try {
                         String repone = response.errorBody().string();
-                        mMap.put("300",repone);
+                        mMap.put(Constain.keyMapErr,repone);
                         mAcountRepositories.setRecoverPasswordReponse(mMap);
                     } catch (IOException e) {
                         e.printStackTrace();
+                        mMap.put(Constain.keyMapErr,response.message());
+                        mAcountRepositories.setRecoverPasswordReponse(mMap);
                     }
                 }
             }

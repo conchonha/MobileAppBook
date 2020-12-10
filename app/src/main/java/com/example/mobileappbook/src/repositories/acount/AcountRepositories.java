@@ -7,8 +7,10 @@ import com.example.mobileappbook.async.acount.ActiveAcountAsync;
 import com.example.mobileappbook.async.acount.AsyncLogin;
 import com.example.mobileappbook.async.acount.AsyncRecover;
 import com.example.mobileappbook.async.acount.AsyncRegister;
-import com.example.mobileappbook.async.acount.ChangeProfileAsync;
+import com.example.mobileappbook.async.setting.ChangeProfileAsync;
+import com.example.mobileappbook.async.setting.LogoutAsync;
 import com.example.mobileappbook.async.acount.ResetPasswordAsync;
+import com.example.mobileappbook.async.setting.SecurityAsync;
 import com.example.mobileappbook.cores.body.ActiveAcountBody;
 import com.example.mobileappbook.cores.body.LoginBody;
 import com.example.mobileappbook.cores.body.RegisterBody;
@@ -25,6 +27,8 @@ public class AcountRepositories {
     private MutableLiveData<Map> mRecoverPasswordReponse = new MutableLiveData<>();
     private MutableLiveData<UserReponse>mRessetPasswordReponse = new MutableLiveData<>();
     private MutableLiveData<UserReponse>mChangeProfileReponse = new MutableLiveData<>();
+    private MutableLiveData<Map>mUserLogoutReponse = new MutableLiveData<>();
+    private MutableLiveData<UserReponse>mChangePasswordReponse = new MutableLiveData<>();
 
     //---------------------login
     public void login(LoginBody loginBody){
@@ -108,5 +112,33 @@ public class AcountRepositories {
 
     public void setChangeProfileReponse(UserReponse userReponse) {
         mChangeProfileReponse.setValue(userReponse);
+    }
+
+    //-------------------------user logout
+    public void userLogout(String token){
+        LogoutAsync async = new LogoutAsync(this,token);
+        async.execute();
+    }
+
+    public LiveData<Map> getUserLogoutReponse() {
+        return mUserLogoutReponse;
+    }
+
+    public void setUserLogoutReponse(Map map) {
+        mUserLogoutReponse.setValue(map);
+    }
+
+    //-------------------------user Change password
+    public void userChangePassword(String pass,String newPass,String token){
+        SecurityAsync async = new SecurityAsync(this,token,pass,newPass);
+        async.execute();
+    }
+
+    public LiveData<UserReponse> getChangePasswordReponse() {
+        return mChangePasswordReponse;
+    }
+
+    public void setChangePasswordReponse(UserReponse userLogoutReponse) {
+        mChangePasswordReponse.setValue(userLogoutReponse);
     }
 }

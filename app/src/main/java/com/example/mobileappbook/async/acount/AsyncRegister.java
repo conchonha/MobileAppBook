@@ -65,6 +65,8 @@ public class AsyncRegister extends AsyncTask<Void, Void, Void> {
                         }
                     } catch (IOException | JSONException e) {
                         e.printStackTrace();
+                        mUserReponse.setMessage(response.message());
+                        mAcountRepositories.setRegisterReponse(mUserReponse);
                     }
                 }
             }

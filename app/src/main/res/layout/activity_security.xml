@@ -86,9 +86,9 @@
 
                             <EditText
                                 android:id="@+id/edt_password"
+                                android:inputType="textPassword"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:hint="blablablabla"
                                 android:paddingLeft="10dp"
                                 android:textColor="#000000"
                                 android:textColorHint="#000000"
@@ -127,9 +127,8 @@
                             <EditText
                                 android:id="@+id/edt_newpassword"
                                 android:layout_width="match_parent"
+                                android:inputType="textPassword"
                                 android:layout_height="match_parent"
-                                android:hint="blablablabla"
-                                android:inputType="textPhonetic"
                                 android:paddingLeft="10dp"
                                 android:textColor="#000000"
                                 android:textColorHint="#000000"
@@ -170,7 +169,7 @@
                                 android:id="@+id/edt_confirmpassword"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:hint="blablablabla"
+                                android:inputType="textPassword"
                                 android:paddingLeft="10dp"
                                 android:textColor="#000000"
                                 android:textColorHint="#000000"

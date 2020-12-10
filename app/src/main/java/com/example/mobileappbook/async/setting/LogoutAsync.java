@@ -1,67 +1,66 @@
-package com.example.mobileappbook.async.acount;
+package com.example.mobileappbook.async.setting;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.mobileappbook.cores.body.LoginBody;
-import com.example.mobileappbook.cores.reponse.acount.UserReponse;
 import com.example.mobileappbook.cores.services.APIServices;
 import com.example.mobileappbook.cores.services.DataService;
 import com.example.mobileappbook.src.repositories.acount.AcountRepositories;
+import com.example.mobileappbook.utils.Constain;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AsyncLogin extends AsyncTask<Void,Void,Void> {
+public class LogoutAsync extends AsyncTask<Void,Void,Void> {
     private AcountRepositories mAcountRepositories;
-    private LoginBody mLoginBody;
-    private UserReponse mUserReponse  = new UserReponse();
+    private String mToken;
+    private Map mMap = new HashMap();
     private String TAG = "AsyncLogin";
 
-    public AsyncLogin(AcountRepositories acountRepositories,LoginBody loginBody){
+    public LogoutAsync(AcountRepositories acountRepositories,String token){
         this.mAcountRepositories = acountRepositories;
-        this.mLoginBody = loginBody;
+        this.mToken = token;
     }
 
     @Override
     protected Void doInBackground(Void... voids) {
         DataService dataService = APIServices.getService();
-        Call<UserReponse>callback = dataService.sendLogin(mLoginBody);
+        Call<Map> callback = dataService.userLogout(mToken);
 
-        callback.enqueue(new Callback<UserReponse>() {
+        callback.enqueue(new Callback<Map>() {
             @Override
-            public void onResponse(Call<UserReponse> call, Response<UserReponse> response) {
+            public void onResponse(Call<Map> call, Response<Map> response) {
                 Log.d(TAG, "onResponse: "+response.toString());
                 if(response.isSuccessful()){
-                    mUserReponse = response.body();
-                    mUserReponse.setmAuthToken(response.headers().get("Auth-token"));
-                    mAcountRepositories.setLoginReponse(mUserReponse);
+                    mAcountRepositories.setUserLogoutReponse(response.body());
                 }else{
                     try {
                         String reponse = response.errorBody().string();
                         JSONObject jsonObject = new JSONObject(reponse);
-                        mUserReponse.setMessage(jsonObject.getString("message"));
-                        mAcountRepositories.setLoginReponse(mUserReponse);
+                        mMap.put(Constain.keyMapErr,jsonObject.get("message"));
+                        mAcountRepositories.setUserLogoutReponse(mMap);
                         Log.d(TAG, "onResponse: "+jsonObject.getString("message"));
                     } catch (IOException | JSONException e) {
                         e.printStackTrace();
-                        mUserReponse.setMessage(response.message());
-                        mAcountRepositories.setLoginReponse(mUserReponse);
+                        mMap.put(Constain.keyMapErr,response.message());
+                        mAcountRepositories.setUserLogoutReponse(mMap);
                     }
                 }
             }
 
             @Override
-            public void onFailure(Call<UserReponse> call, Throwable t) {
+            public void onFailure(Call<Map> call, Throwable t) {
                 Log.d(TAG, "onFailure: "+t.toString());
-                mUserReponse.setMessage(t.getMessage());
-                mAcountRepositories.setLoginReponse(mUserReponse);
+                mMap.put(Constain.keyMapErr,t.getMessage());
+                mAcountRepositories.setUserLogoutReponse(mMap);
             }
         });
         return null;
