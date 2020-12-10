@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,10 +19,14 @@ import com.example.mobileappbook.model.CallbackFeatured;
 import com.example.mobileappbook.utils.Constain;
 import com.example.mobileappbook.utils.Helpers;
 import com.example.mobileappbook.utils.SharePrefs;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
 
 public class DetailBuyFragment extends Fragment implements View.OnClickListener,CallbackFeatured{
     private View mView;
     private TextView mTxtName,mTxtNameCategory,mTxtPrice,mTxtPriceSale,mTxtTime,mTxtDescription;
+    private ImageView mImageAvatar;
     //variable
     private GetAllCourseReponse mReponse;
     private Dialog mDialog;
@@ -47,8 +52,16 @@ public class DetailBuyFragment extends Fragment implements View.OnClickListener,
             mTxtDescription.setText(mReponse.getDescription());
             mTxtNameCategory.setText(mReponse.getCategory().getName());
             mTxtPrice.setText(mReponse.getPrice().toString());
-            mTxtPriceSale.setText(mReponse.getV().toString());
+            mTxtPriceSale.setText(mReponse.getDiscount().toString()+"%");
             mTxtTime.setText(mReponse.getCreatedAt());
+            Picasso.get().load(Constain.coursesUrlImg+mReponse.getImage()).placeholder(R.drawable.empty23).error(R.drawable.empty23).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).into(mImageAvatar);
+            if(mReponse.getDiscount() != 0){
+                int price = mReponse.getPrice()-(mReponse.getPrice()*mReponse.getDiscount())/100;
+                mTxtPrice.setText(price+"");
+            }
+            if(mReponse.getPrice() == 0){
+                mTxtPrice.setText("Miễn phí");
+            }
         }
     }
 
@@ -60,6 +73,7 @@ public class DetailBuyFragment extends Fragment implements View.OnClickListener,
         mTxtPriceSale = mView.findViewById(R.id.txt_price_sale_featured);
         mTxtTime = mView.findViewById(R.id.txt_time);
         mTxtDescription = mView.findViewById(R.id.txt_description);
+        mImageAvatar = mView.findViewById(R.id.img_avatar);
     }
 
     @Override

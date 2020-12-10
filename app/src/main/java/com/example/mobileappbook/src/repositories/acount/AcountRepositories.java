@@ -7,11 +7,13 @@ import com.example.mobileappbook.async.acount.ActiveAcountAsync;
 import com.example.mobileappbook.async.acount.AsyncLogin;
 import com.example.mobileappbook.async.acount.AsyncRecover;
 import com.example.mobileappbook.async.acount.AsyncRegister;
+import com.example.mobileappbook.async.acount.ChangeProfileAsync;
 import com.example.mobileappbook.async.acount.ResetPasswordAsync;
 import com.example.mobileappbook.cores.body.ActiveAcountBody;
 import com.example.mobileappbook.cores.body.LoginBody;
 import com.example.mobileappbook.cores.body.RegisterBody;
 import com.example.mobileappbook.cores.body.ResetPasswordBody;
+import com.example.mobileappbook.cores.body.UserInfoBody;
 import com.example.mobileappbook.cores.reponse.acount.UserReponse;
 
 import java.util.Map;
@@ -22,6 +24,7 @@ public class AcountRepositories {
     private MutableLiveData<UserReponse> mActiveReponse = new MutableLiveData<>();
     private MutableLiveData<Map> mRecoverPasswordReponse = new MutableLiveData<>();
     private MutableLiveData<UserReponse>mRessetPasswordReponse = new MutableLiveData<>();
+    private MutableLiveData<UserReponse>mChangeProfileReponse = new MutableLiveData<>();
 
     //---------------------login
     public void login(LoginBody loginBody){
@@ -91,5 +94,19 @@ public class AcountRepositories {
 
     public void setResetPasswordReponse(UserReponse userReponse) {
         mRessetPasswordReponse.setValue(userReponse);
+    }
+
+    //-------------------------change profile
+    public void changeProfile(UserInfoBody userInfoBody,String token){
+        ChangeProfileAsync async = new ChangeProfileAsync(this,userInfoBody,token);
+        async.execute();
+    }
+
+    public LiveData<UserReponse> getChangeProfileReponse() {
+        return mChangeProfileReponse;
+    }
+
+    public void setChangeProfileReponse(UserReponse userReponse) {
+        mChangeProfileReponse.setValue(userReponse);
     }
 }

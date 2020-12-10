@@ -28,7 +28,7 @@ public class ActiveAccountActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_acount);
+        setContentView(R.layout.activity_active_account);
         initView();
         init();
         initViewModel();
