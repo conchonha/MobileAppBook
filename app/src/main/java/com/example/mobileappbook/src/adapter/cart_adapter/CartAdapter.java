@@ -16,7 +16,7 @@ import java.util.List;
 public class CartAdapter extends RecyclerView.Adapter <CartAdapter.CartViewhodler>{
     private List<GetAllCourseReponse>list = new ArrayList<>();
 
-    public CartAdapter(List<GetAllCourseReponse> list) {
+    public void setList(List<GetAllCourseReponse> list) {
         this.list = list;
     }
 

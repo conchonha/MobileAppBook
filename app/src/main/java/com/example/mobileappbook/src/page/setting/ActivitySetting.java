@@ -32,7 +32,7 @@ public class ActivitySetting extends AppCompatActivity implements View.OnClickLi
                 finish();
                 break;
             case R.id.txt_update_infor:
-                startActivity(new Intent(getApplicationContext(), ActivityUpdateInfor.class));
+                startActivity(new Intent(getApplicationContext(), UserInfoActivity.class));
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                 break;
             case R.id.txt_security:
@@ -40,7 +40,7 @@ public class ActivitySetting extends AppCompatActivity implements View.OnClickLi
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                 break;
             case R.id.txt_change:
-                startActivity(new Intent(getApplicationContext(), ActivityChangeAvatar.class));
+                startActivity(new Intent(getApplicationContext(), UserAvatarActivity.class));
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                 break;
 

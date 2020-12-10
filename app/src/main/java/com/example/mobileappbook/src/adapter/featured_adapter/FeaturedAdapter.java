@@ -11,18 +11,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mobileappbook.R;
 import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseReponse;
 import com.example.mobileappbook.model.CallbackFeatured;
-import com.example.mobileappbook.src.fragment.fragment_featured.FragmentFeatured;
+import com.example.mobileappbook.src.fragment.fragment_featured.FeatureFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.FeaturedViewhodler> {
-    private FragmentFeatured mFragmentFeatured;
+    private FeatureFragment mFeatureFragment;
     private List<GetAllCourseReponse>mListCourseReponse  = new ArrayList<>();
     private View mView;
 
-    public FeaturedAdapter(FragmentFeatured fragmentFeatured) {
-        this.mFragmentFeatured = fragmentFeatured;
+    public FeaturedAdapter(FeatureFragment featureFragment) {
+        this.mFeatureFragment = featureFragment;
     }
 
     @NonNull
@@ -43,7 +43,7 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.Featur
         holder.mCardBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CallbackFeatured callbackFeatured = mFragmentFeatured;
+                CallbackFeatured callbackFeatured = mFeatureFragment;
                 callbackFeatured.onClickItem(reponse);
             }
         });

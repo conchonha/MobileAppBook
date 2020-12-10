@@ -13,9 +13,10 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.mobileappbook.R;
-import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
 import com.example.mobileappbook.src.viewmodel.acount.RecoverViewmodel;
 import com.example.mobileappbook.utils.Helpers;
+
+import java.util.Map;
 
 public class RecoverActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText mEdtEmail;
@@ -38,16 +39,17 @@ public class RecoverActivity extends AppCompatActivity implements View.OnClickLi
         mRecoverViewmodel = ViewModelProviders.of(RecoverActivity.this).get(RecoverViewmodel.class);
 
         //lang nghe va quan sat du lieu
-        mRecoverViewmodel.getReponseRecover().observe(RecoverActivity.this, new Observer<ErrorRepone>() {
+        mRecoverViewmodel.getReponseRecover().observe(this, new Observer<Map>() {
             @Override
-            public void onChanged(ErrorRepone errorRepone) {
-                Toast.makeText(RecoverActivity.this, "Code - " + errorRepone.getmCode() + " message - " + errorRepone.getmMessage(), Toast.LENGTH_SHORT).show();
-                if (errorRepone.getmCode() == 200) {
+            public void onChanged(Map map) {
+                mDialog.dismiss();
+                if (map.get("300") != null) {
+                    Toast.makeText(RecoverActivity.this, map.get("300")+"", Toast.LENGTH_SHORT).show();
+                }else{
                     startActivity(new Intent(getApplicationContext(), ResetPasswordActivity.class).putExtra("email",mEdtEmail.getText().toString()));
                     overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                     finish();
                 }
-                mDialog.dismiss();
             }
         });
     }
@@ -67,11 +69,9 @@ public class RecoverActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_send:
-                if (mRecoverViewmodel.checkValidation(mEdtEmail)) {
-                    mDialog = Helpers.showLoadingDialog(RecoverActivity.this);
+                    mDialog  = Helpers.showLoadingDialog(this);
                     mDialog.show();
-                    mRecoverViewmodel.forgotPassword(mEdtEmail.getText().toString());
-                }
+                    mRecoverViewmodel.recoverPassword(mEdtEmail);
                 break;
             case R.id.img_back:
                 finish();

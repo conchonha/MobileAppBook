@@ -1,9 +1,10 @@
-package com.example.mobileappbook.cores.reponse.user_reponse;
+package com.example.mobileappbook.cores.reponse.acount;
 
+import com.example.mobileappbook.cores.reponse.error_reponse.ObjectError;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class UserReponse {
+public class UserReponse extends ObjectError {
     @SerializedName("active")
     @Expose
     private Integer active;

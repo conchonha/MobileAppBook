@@ -3,30 +3,24 @@ package com.example.mobileappbook.src.page.setting;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.mobileappbook.R;
-import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
+import com.example.mobileappbook.cores.reponse.acount.UserReponse;
 import com.example.mobileappbook.src.viewmodel.acount.UpdateInforViewmodel;
-import com.example.mobileappbook.utils.SharePrefs;
-import com.google.gson.Gson;
 
-public class ActivityUpdateInfor extends AppCompatActivity implements View.OnClickListener {
+public class UserInfoActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText mEdtYourName,mEdtPhoneNumber,mEdtAddress,mEdtEmail,mEdtJob;
-    private TextView mTxtBirthday;
     //variable
     private UpdateInforViewmodel mUpdateInfoViewmodel;
-    private SharePrefs mSharePrefs;
-    private Gson mGson;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update);
+        setContentView(R.layout.activity_user_info);
         initViewModel();
         initView();
         init();
@@ -34,9 +28,7 @@ public class ActivityUpdateInfor extends AppCompatActivity implements View.OnCli
     }
 
     private void init() {
-        mSharePrefs = new SharePrefs(this);
-        mGson = new Gson();
-        UserReponse userReponse = mGson.fromJson(mSharePrefs.getUser(),UserReponse.class);
+        UserReponse userReponse = mUpdateInfoViewmodel.getUserLocal();
         if(userReponse != null){
             mEdtYourName.setText(userReponse.getName());
             mEdtPhoneNumber.setText(userReponse.getPhone());
@@ -48,7 +40,7 @@ public class ActivityUpdateInfor extends AppCompatActivity implements View.OnCli
 
     //khoi tao viewmodel
     private void initViewModel() {
-        mUpdateInfoViewmodel = ViewModelProviders.of(ActivityUpdateInfor.this).get(UpdateInforViewmodel.class);
+        mUpdateInfoViewmodel = ViewModelProviders.of(UserInfoActivity.this).get(UpdateInforViewmodel.class);
     }
 
     //anh xa view
@@ -57,7 +49,6 @@ public class ActivityUpdateInfor extends AppCompatActivity implements View.OnCli
         mEdtPhoneNumber = findViewById(R.id.edt_phoneNumber);
         mEdtAddress = findViewById(R.id.edt_address);
         mEdtEmail = findViewById(R.id.edt_email);
-        mTxtBirthday = findViewById(R.id.txt_birthday);
         mEdtJob = findViewById(R.id.edt_job);
     }
 
@@ -71,6 +62,11 @@ public class ActivityUpdateInfor extends AppCompatActivity implements View.OnCli
         switch (v.getId()){
             case R.id.img_back:
                 finish();
+                break;
+            case R.id.btn_update:
+                if(mUpdateInfoViewmodel.checkvalidation(mEdtYourName,mEdtPhoneNumber,mEdtAddress,mEdtJob)){
+
+                }
                 break;
         }
     }

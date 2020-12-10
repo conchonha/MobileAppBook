@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class GetAllCourseReponse implements Serializable {
+public class GetAllCourseReponse{
     @SerializedName("vote")
     @Expose
     private Vote vote;

@@ -26,7 +26,7 @@ import com.example.mobileappbook.utils.Helpers;
 
 import java.util.List;
 
-public class FragmentFeatured extends Fragment implements CallbackFeatured {
+public class FeatureFragment extends Fragment implements CallbackFeatured {
     private View mView;
     private Dialog mDialog;
     //variable
@@ -99,14 +99,13 @@ public class FragmentFeatured extends Fragment implements CallbackFeatured {
 
     @Override
     public void onClickItem(GetAllCourseReponse reponse) {
-        FragmentDetailBuy fragmentDetailBuy = new FragmentDetailBuy();
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(Constain.courseReponse,reponse);
-        fragmentDetailBuy.setArguments(bundle);
+        DetailBuyFragment detailBuyFragment = new DetailBuyFragment();
+        CallbackFeatured callbackFeatured = detailBuyFragment;
+        callbackFeatured.onClickItem(reponse);
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
                 .setCustomAnimations(R.anim.slide_in_fragment,R.anim.slide_out_right)
-                .add(R.id.relative_featured,fragmentDetailBuy,Constain.fragmentDetailBuy)
+                .add(R.id.relative_featured, detailBuyFragment,Constain.fragmentDetailBuy)
                 .commit();
     }
 }

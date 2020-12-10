@@ -1,6 +1,8 @@
 package com.example.mobileappbook.src.fragment.fragment_featured;
 
+import android.app.Dialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,14 +14,17 @@ import androidx.fragment.app.Fragment;
 
 import com.example.mobileappbook.R;
 import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseReponse;
+import com.example.mobileappbook.model.CallbackFeatured;
 import com.example.mobileappbook.utils.Constain;
+import com.example.mobileappbook.utils.Helpers;
 import com.example.mobileappbook.utils.SharePrefs;
 
-public class FragmentDetailBuy extends Fragment implements View.OnClickListener {
+public class DetailBuyFragment extends Fragment implements View.OnClickListener,CallbackFeatured{
     private View mView;
     private TextView mTxtName,mTxtNameCategory,mTxtPrice,mTxtPriceSale,mTxtTime,mTxtDescription;
     //variable
     private GetAllCourseReponse mReponse;
+    private Dialog mDialog;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -37,7 +42,6 @@ public class FragmentDetailBuy extends Fragment implements View.OnClickListener 
     }
 
     private void init() {
-        mReponse = (GetAllCourseReponse) getArguments().getSerializable(Constain.courseReponse);
         if(mReponse != null){
             mTxtName.setText(mReponse.getName());
             mTxtDescription.setText(mReponse.getDescription());
@@ -73,9 +77,22 @@ public class FragmentDetailBuy extends Fragment implements View.OnClickListener 
                 }
                 break;
             case R.id.card_4:
-                SharePrefs sharePrefs = new SharePrefs(getContext());
-                sharePrefs.saveCart(mReponse,getContext());
+                mDialog = Helpers.showLoadingDialog(getActivity());
+                mDialog.show();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        SharePrefs sharePrefs = new SharePrefs(getContext());
+                        sharePrefs.saveCart(mReponse,getContext());
+                        mDialog.dismiss();
+                    }
+                },3000);
                 break;
         }
+    }
+
+    @Override
+    public void onClickItem(GetAllCourseReponse reponse) {
+        mReponse = reponse;
     }
 }

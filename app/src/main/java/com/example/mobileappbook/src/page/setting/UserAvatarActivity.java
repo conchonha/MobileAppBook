@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mobileappbook.R;
 
-public class ActivityChangeAvatar extends AppCompatActivity implements View.OnClickListener {
+public class UserAvatarActivity extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

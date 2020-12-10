@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.mobileappbook.R;
 
-public class FragmentCourses extends Fragment {
+public class mycoursesFragment extends Fragment {
     private View mView;
     @Nullable
     @Override

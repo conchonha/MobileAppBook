@@ -9,26 +9,25 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.mobileappbook.cores.body.RegisterBody;
-import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
-import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
-import com.example.mobileappbook.src.repositories.acount.RegisterRepositories;
+import com.example.mobileappbook.cores.reponse.acount.UserReponse;
+import com.example.mobileappbook.src.repositories.acount.AcountRepositories;
 import com.example.mobileappbook.utils.Validations;
 
 public class RegisterViewmodel extends AndroidViewModel {
-    private RegisterRepositories mRegisterRepositories;
+    private AcountRepositories mAcountRepositories;
     private RegisterBody mRegisterBody = null;
     private MutableLiveData<Boolean> checkLoadingDialog = new MutableLiveData<>();
     private String TAG = "RegisterViewmodel";
 
     public RegisterViewmodel(@NonNull Application application) {
         super(application);
-         if(mRegisterRepositories == null){
-             mRegisterRepositories = new RegisterRepositories();
+         if(mAcountRepositories == null){
+             mAcountRepositories = new AcountRepositories();
          }
     }
 
     public void register() {
-        mRegisterRepositories.register(mRegisterBody);
+        mAcountRepositories.register(mRegisterBody);
     }
 
     //register
@@ -72,10 +71,7 @@ public class RegisterViewmodel extends AndroidViewModel {
     }
 
     public LiveData<UserReponse> getReponseRegister() {
-        return mRegisterRepositories.getReponeRegister();
+        return mAcountRepositories.getRegisterReponse();
     }
 
-    public LiveData<ErrorRepone> getErroreponse() {
-        return mRegisterRepositories.getErrorReponse();
-    }
 }

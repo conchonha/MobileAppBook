@@ -3,7 +3,6 @@ package com.example.mobileappbook.async.featured;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
 import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseReponse;
 import com.example.mobileappbook.src.repositories.featured.FeaturedRepositories;
 import com.example.mobileappbook.cores.services.*;
@@ -17,7 +16,7 @@ import retrofit2.Response;
 
 public class GetFreeCourseAsync extends AsyncTask<Void, Void, Void> {
     private FeaturedRepositories mGetFreeCourseRepositories;
-    private ErrorRepone mErrorRepone;
+   // private ErrorRepone mErrorRepone;
     private String TAG = "GetFreeCourseAsync";
 
     public GetFreeCourseAsync(FeaturedRepositories featuredRepositories) {
@@ -37,7 +36,7 @@ public class GetFreeCourseAsync extends AsyncTask<Void, Void, Void> {
                 }else {
                     Log.d(TAG, "onResponse: " + response.hashCode());
                     Log.d(TAG, "onResponse: " + response.message());
-                    mErrorRepone = new ErrorRepone(response.hashCode(), response.message());
+                 //   mErrorRepone = new ErrorRepone(response.hashCode(), response.message());
                 }
 
             }
@@ -46,7 +45,7 @@ public class GetFreeCourseAsync extends AsyncTask<Void, Void, Void> {
             public void onFailure(Call<List<GetAllCourseReponse>> call, Throwable t) {
                 Log.d(TAG, "onResponse: " + t.hashCode());
                 Log.d(TAG, "onResponse: " + t.getMessage());
-                mErrorRepone = new ErrorRepone(t.hashCode(), t.getMessage());
+              //  mErrorRepone = new ErrorRepone(t.hashCode(), t.getMessage());
             }
         });
         return null;

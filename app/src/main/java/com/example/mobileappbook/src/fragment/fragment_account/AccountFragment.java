@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 import com.example.mobileappbook.R;
 import com.example.mobileappbook.src.page.setting.ActivitySetting;
 
-public class FragmentAccount extends Fragment implements View.OnClickListener {
+public class AccountFragment extends Fragment implements View.OnClickListener {
     private View mView;
     @Nullable
     @Override

@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.mobileappbook.R;
 
-public class FragmentSearch extends Fragment {
+public class SearchFragment extends Fragment {
     private View mView;
     @Nullable
     @Override

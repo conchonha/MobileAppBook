@@ -8,24 +8,23 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.mobileappbook.cores.body.ResetPasswordBody;
-import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
-import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
-import com.example.mobileappbook.src.repositories.acount.ResetPasswordRepositories;
+import com.example.mobileappbook.cores.reponse.acount.UserReponse;
+import com.example.mobileappbook.src.repositories.acount.AcountRepositories;
 import com.example.mobileappbook.utils.Validations;
 
 public class ResetPasswordViewmodel extends AndroidViewModel {
-    private ResetPasswordRepositories mResetPasswordRepositories;
+    private AcountRepositories mAcountRepositories;
     private ResetPasswordBody mResetPasswordBody;
 
     public ResetPasswordViewmodel(@NonNull Application application) {
         super(application);
-        if(mResetPasswordRepositories == null){
-            mResetPasswordRepositories = new ResetPasswordRepositories();
+        if(mAcountRepositories == null){
+            mAcountRepositories = new AcountRepositories();
         }
     }
 
     public void resetPassword(){
-        mResetPasswordRepositories.resetPassword(mResetPasswordBody);
+        mAcountRepositories.resetPassword(mResetPasswordBody);
     }
 
     public boolean checkValidation(EditText edtEmail,EditText edtToken,EditText edtNewPass){
@@ -50,11 +49,7 @@ public class ResetPasswordViewmodel extends AndroidViewModel {
         return true;
     }
 
-    public LiveData<ErrorRepone>getErrorReponseResetpass(){
-        return mResetPasswordRepositories.getmErrorReponseResetPassword();
-    }
-
-    public LiveData<UserReponse>getReponseResetPass(){
-        return mResetPasswordRepositories.getmReponseResetPassword();
+    public LiveData<UserReponse>getmReponseResetPassword(){
+        return mAcountRepositories.getResetPasswordReponse();
     }
 }

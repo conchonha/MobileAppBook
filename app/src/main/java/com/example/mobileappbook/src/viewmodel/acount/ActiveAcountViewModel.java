@@ -7,29 +7,24 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.mobileappbook.cores.body.ActiveAcountBody;
-import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
-import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
-import com.example.mobileappbook.src.repositories.acount.ActiveAcountRepositories;
+import com.example.mobileappbook.cores.reponse.acount.UserReponse;
+import com.example.mobileappbook.src.repositories.acount.AcountRepositories;
 
 public class ActiveAcountViewModel extends AndroidViewModel {
-    private ActiveAcountRepositories mActiveAcountRepositories;
+    private AcountRepositories mAcountRepositories;
 
     public ActiveAcountViewModel(@NonNull Application application) {
         super(application);
-        if(mActiveAcountRepositories == null){
-            mActiveAcountRepositories = new ActiveAcountRepositories();
+        if(mAcountRepositories == null){
+            mAcountRepositories = new AcountRepositories();
         }
     }
 
     public void activeAcount(ActiveAcountBody activeAcountBody){
-        mActiveAcountRepositories.activeAcount(activeAcountBody);
+        mAcountRepositories.activeAcount(activeAcountBody);
     }
 
     public LiveData<UserReponse>getDataReponseActiveAcount(){
-        return mActiveAcountRepositories.getmDataReponse();
-    }
-
-    public LiveData<ErrorRepone>getErrorReponse(){
-        return mActiveAcountRepositories.getmErrorReponse();
+        return mAcountRepositories.getActiveReponse();
     }
 }

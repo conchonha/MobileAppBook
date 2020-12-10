@@ -6,7 +6,7 @@ import com.example.mobileappbook.cores.body.RegisterBody;
 import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseReponse;
 import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCategoryReponse;
 import com.example.mobileappbook.cores.body.ResetPasswordBody;
-import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
+import com.example.mobileappbook.cores.reponse.acount.UserReponse;
 
 import java.util.List;
 import java.util.Map;

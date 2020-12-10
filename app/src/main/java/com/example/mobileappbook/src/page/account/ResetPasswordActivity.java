@@ -12,8 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.mobileappbook.R;
-import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
-import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
+import com.example.mobileappbook.cores.reponse.acount.UserReponse;
 import com.example.mobileappbook.src.viewmodel.acount.ResetPasswordViewmodel;
 import com.example.mobileappbook.utils.Helpers;
 
@@ -55,20 +54,16 @@ public class ResetPasswordActivity extends AppCompatActivity implements View.OnC
         mResetPasswordViewmodel = ViewModelProviders.of(this).get(ResetPasswordViewmodel.class);
 
         //quan sát và lắng nghe sự thay đổi của dữ liệu
-        mResetPasswordViewmodel.getErrorReponseResetpass().observe(this, new Observer<ErrorRepone>() {
-            @Override
-            public void onChanged(ErrorRepone errorRepone) {
-                Toast.makeText(getApplicationContext(), "Code - " + errorRepone.getmCode() + " message - " + errorRepone.getmMessage(), Toast.LENGTH_SHORT).show();
-                mDialog.dismiss();
-            }
-        });
-
-        mResetPasswordViewmodel.getReponseResetPass().observe(this, new Observer<UserReponse>() {
+        mResetPasswordViewmodel.getmReponseResetPassword().observe(this, new Observer<UserReponse>() {
             @Override
             public void onChanged(UserReponse userReponse) {
-                Toast.makeText(ResetPasswordActivity.this, "Reset password success", Toast.LENGTH_SHORT).show();
                 mDialog.dismiss();
-                finish();
+                if(userReponse.getMessage() != null){
+                    Toast.makeText(ResetPasswordActivity.this, userReponse.getMessage(), Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(ResetPasswordActivity.this, "Reset password success", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
             }
         });
     }
