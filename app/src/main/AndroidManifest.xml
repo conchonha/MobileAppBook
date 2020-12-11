@@ -19,7 +19,11 @@
         <activity android:name=".src.page.tabbar.TabBarActivity" />
         <activity android:name=".src.page.account.RegisterActivity" />
         <activity android:name=".src.page.splash.StartScreenActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".src.page.account.LoginActivity" />
         <activity android:name=".src.page.setting.UserInfoActivity" />
@@ -27,11 +31,6 @@
         <activity android:name=".src.page.setting.ActivitySetting" />
         <activity android:name=".src.page.setting.ActivitySecurity" />
         <activity android:name=".src.page.setting.UserAvatarActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".src.page.payment.PayActivity"/>
     </application>
