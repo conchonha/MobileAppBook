@@ -1,12 +1,15 @@
 package com.example.mobileappbook.src.page.tabbar;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.mobileappbook.R;
 import com.example.mobileappbook.src.adapter.tabbar_adapter.TabbarAdapter;
+import com.example.mobileappbook.utils.Constain;
 import com.google.android.material.tabs.TabLayout;
 
 public class TabBarActivity extends AppCompatActivity {
@@ -38,11 +41,26 @@ public class TabBarActivity extends AppCompatActivity {
         mTabLayout.getTabAt(3).setIcon(R.drawable.ic_cart);
         mTabLayout.getTabAt(4).setIcon(R.drawable.ic_acount);
 
+        //
+        Intent intent = getIntent();
+        if(intent.hasExtra(Constain.keyTap)){
+            int index = intent.getIntExtra(Constain.keyTap,0);
+            loadPageFragment(index);
+        }
     }
 
     //ánh xạ view
     private void initView() {
         mViewPager = findViewById(R.id.viewpager);
         mTabLayout = findViewById(R.id.tab_layout);
+    }
+
+    public void loadPageFragment(final int index){
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mTabLayout.getTabAt(index).select();
+            }
+        },100);
     }
 }

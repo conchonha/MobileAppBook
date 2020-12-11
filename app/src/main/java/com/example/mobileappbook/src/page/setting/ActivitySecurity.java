@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.mobileappbook.R;
 import com.example.mobileappbook.cores.reponse.acount.UserReponse;
+import com.example.mobileappbook.src.page.tabbar.TabBarActivity;
 import com.example.mobileappbook.src.viewmodel.setting.SecurityViewModel;
 import com.example.mobileappbook.utils.Helpers;
 
@@ -44,7 +45,7 @@ public class ActivitySecurity extends AppCompatActivity implements View.OnClickL
                 }else{
                     Toast.makeText(ActivitySecurity.this, "Security Success", Toast.LENGTH_SHORT).show();
                     mSecurityViewModel.saveUser(userReponse);
-                    finish();
+                    Helpers.intentClearOnTapSelected4(ActivitySecurity.this, TabBarActivity.class);
                 }
             }
         });

@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.mobileappbook.R;
 import com.example.mobileappbook.cores.body.UserInfoBody;
 import com.example.mobileappbook.cores.reponse.acount.UserReponse;
+import com.example.mobileappbook.src.page.tabbar.TabBarActivity;
 import com.example.mobileappbook.src.viewmodel.setting.UpdateInforViewmodel;
 import com.example.mobileappbook.utils.Helpers;
 
@@ -63,6 +64,7 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
                     mUserReponse.setDescription(mEdtJob.getText().toString());
                     mUpdateInfoViewmodel.saveUserLocal(mUserReponse);
                     Toast.makeText(UserInfoActivity.this, "Update Thành Công", Toast.LENGTH_SHORT).show();
+                    Helpers.intentClearOnTapSelected4(UserInfoActivity.this, TabBarActivity.class);
                 }
             }
         });

@@ -72,6 +72,7 @@ public class ActivitySetting extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.img_back:
+                setResult(RESULT_OK);
                 finish();
                 break;
             case R.id.txt_update_infor:

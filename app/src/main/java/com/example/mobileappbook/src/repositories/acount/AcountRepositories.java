@@ -11,6 +11,7 @@ import com.example.mobileappbook.async.setting.ChangeProfileAsync;
 import com.example.mobileappbook.async.setting.LogoutAsync;
 import com.example.mobileappbook.async.acount.ResetPasswordAsync;
 import com.example.mobileappbook.async.setting.SecurityAsync;
+import com.example.mobileappbook.async.setting.UserChangeAvatarAsync;
 import com.example.mobileappbook.cores.body.ActiveAcountBody;
 import com.example.mobileappbook.cores.body.LoginBody;
 import com.example.mobileappbook.cores.body.RegisterBody;
@@ -19,6 +20,8 @@ import com.example.mobileappbook.cores.body.UserInfoBody;
 import com.example.mobileappbook.cores.reponse.acount.UserReponse;
 
 import java.util.Map;
+
+import okhttp3.MultipartBody;
 
 public class AcountRepositories {
     private MutableLiveData<UserReponse> mLoginReponse = new MutableLiveData<>();
@@ -29,6 +32,7 @@ public class AcountRepositories {
     private MutableLiveData<UserReponse>mChangeProfileReponse = new MutableLiveData<>();
     private MutableLiveData<Map>mUserLogoutReponse = new MutableLiveData<>();
     private MutableLiveData<UserReponse>mChangePasswordReponse = new MutableLiveData<>();
+    private MutableLiveData<UserReponse>mUserChangeAvatarReponse = new MutableLiveData<>();
 
     //---------------------login
     public void login(LoginBody loginBody){
@@ -140,5 +144,19 @@ public class AcountRepositories {
 
     public void setChangePasswordReponse(UserReponse userLogoutReponse) {
         mChangePasswordReponse.setValue(userLogoutReponse);
+    }
+
+    //-------------------------user Change avatar
+    public void userChangeAvatar(MultipartBody.Part part, String token){
+        UserChangeAvatarAsync avatarAsync = new UserChangeAvatarAsync(this,part,token);
+        avatarAsync.execute();
+    }
+
+    public LiveData<UserReponse> getUserChangeAvatarReponse() {
+        return mUserChangeAvatarReponse;
+    }
+
+    public void setUserChangeAvatarReponse(UserReponse userReponse) {
+        mUserChangeAvatarReponse.setValue(userReponse);
     }
 }

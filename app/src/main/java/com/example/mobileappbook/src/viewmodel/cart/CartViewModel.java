@@ -5,6 +5,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseReponse;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartViewModel extends AndroidViewModel {
-    private SharePrefs mSharePrefs;
+    private SharePrefs mSharePrefs = new SharePrefs(getApplication());
     private Gson mGson = new Gson();
     private CartModel mCartModel;
     private MutableLiveData<CartModel>getmCartModel = new MutableLiveData<>();
@@ -27,7 +28,6 @@ public class CartViewModel extends AndroidViewModel {
 
     public void initstalise(TextView editText){
         int total  = 0;
-        mSharePrefs = new SharePrefs(getApplication());
         mCartModel = mGson.fromJson(mSharePrefs.getCart(), CartModel.class);
         if (mCartModel != null) {
             total = 0;
@@ -48,11 +48,11 @@ public class CartViewModel extends AndroidViewModel {
 
     }
 
-    public MutableLiveData<CartModel> getDataCart() {
+    public LiveData<CartModel> getDataCart() {
         return getmCartModel;
     }
 
-    public void setmCartModel(CartModel mCartModel) {
-        this.getmCartModel.postValue(mCartModel);
+    public void remoCart(){
+        mSharePrefs.removeCart();
     }
 }

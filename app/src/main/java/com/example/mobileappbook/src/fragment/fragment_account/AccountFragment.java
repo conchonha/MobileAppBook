@@ -2,6 +2,7 @@ package com.example.mobileappbook.src.fragment.fragment_account;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,11 +24,15 @@ import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
+import static android.app.Activity.RESULT_OK;
+
 public class AccountFragment extends Fragment implements View.OnClickListener {
     private View mView;
     private UserReponse mUserReponse;
     private TextView mTxtYourName,mTxtPhoneNumber,mTxtEmail,mTxtPhone1,mTxtAddress,mTxtJob,mTxtTime;
     private ImageView mImageAvatar;
+    private final int REQUEST_CODE = 01;
+    private String TAG = "AccountFragment";
 
     @Nullable
     @Override
@@ -73,9 +78,24 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_setting:
-                startActivity(new Intent(getContext(), ActivitySetting.class));
+                startActivityForResult(new Intent(getContext(), ActivitySetting.class),REQUEST_CODE);
                 getActivity().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                 break;
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK){
+            switch (requestCode){
+                case REQUEST_CODE:
+                    Log.d(TAG, "onClick: co nhay");
+//                    getActivity().finish();
+//                    startActivity(getActivity().getIntent());
+//                    getActivity().overridePendingTransition(0,0);
+                    break;
+            }
         }
     }
 }

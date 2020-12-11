@@ -19,6 +19,7 @@ import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseRepo
 import com.example.mobileappbook.cores.services.APIServices;
 import com.example.mobileappbook.cores.services.DataService;
 import com.example.mobileappbook.model.CartModel;
+import com.example.mobileappbook.src.page.tabbar.TabBarActivity;
 import com.example.mobileappbook.src.viewmodel.cart.CartViewModel;
 import com.example.mobileappbook.utils.Helpers;
 import com.example.mobileappbook.utils.SharePrefs;
@@ -40,7 +41,7 @@ import retrofit2.Response;
 public class PayActivity extends AppCompatActivity implements View.OnClickListener {
     private CardInputWidget mCardInputWidget;
     private String TAG = "PaymentActivity";
-    private Gson gson = new Gson();
+    private Gson mGson = new Gson();
     private SharePrefs mSharePrefs;
     private UserReponse mUserReponse;
     private CartModel mCartModel;
@@ -58,7 +59,7 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
     }
 
     private void initViewModel() {
-        mCartViewModel  = ViewModelProviders.of(this).get(CartViewModel.class);
+        mCartViewModel = ViewModelProviders.of(this).get(CartViewModel.class);
     }
 
     private void listenerOnclicked() {
@@ -67,8 +68,8 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
 
     private void init() {
         mSharePrefs = new SharePrefs(getApplicationContext());
-        mUserReponse = gson.fromJson(mSharePrefs.getUser(), UserReponse.class);
-        mCartModel = gson.fromJson(mSharePrefs.getCart(), CartModel.class);
+        mUserReponse = mGson.fromJson(mSharePrefs.getUser(), UserReponse.class);
+        mCartModel = mGson.fromJson(mSharePrefs.getCart(), CartModel.class);
         mCardInputWidget.setPostalCodeEnabled(false);
     }
 
@@ -82,73 +83,90 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
             case R.id.payBtn:
                 if (mCartModel != null) {
                     try {
-                        mDialog = Helpers.showLoadingDialog(this);
-                        mDialog.show();
-                        Card card = mCardInputWidget.getCard();
+                        final Card card = mCardInputWidget.getCard();
                         Stripe stripe = new Stripe(PayActivity.this, "pk_test_y8urHXEikr7ysm3tk7uRilcp00aTSdh57w");
 
                         stripe.createCardToken(
                                 card,
                                 new ApiResultCallback<Token>() {
-                                    public void onSuccess(@NonNull Token token) {
-                                        Log.d(TAG, "onSuccess: " + token);
+                                    public void onSuccess(@NonNull final Token token) {
                                         try {
-                                            for (int i = 0; i < mCartModel.getList().size(); i++) {
-                                                final PaymentBody paymentBody = new PaymentBody(mUserReponse.getName(), mUserReponse.getEmail(),
-                                                        token.toString(), mCartModel.getList().get(i).getPrice().toString(), mCartModel.getList().get(i).getCategory().getId(), mUserReponse.getId());
-                                                new AsyncTask<Void, Void, Void>() {
-                                                    @Override
-                                                    protected Void doInBackground(Void... voids) {
-                                                        DataService dataService = APIServices.getService();
-                                                        Call<Map> call = dataService.pay(paymentBody);
-                                                        call.enqueue(new Callback<Map>() {
-                                                            @Override
-                                                            public void onResponse(Call<Map> call, Response<Map> response) {
-                                                                Log.d(TAG, "onResponse: " + response.toString());
-                                                                if (response.isSuccessful()) {
-                                                                    mSharePrefs.removeCart();
-                                                                    Toast.makeText(PayActivity.this, "Success", Toast.LENGTH_SHORT).show();
-                                                                    finish();
-                                                                }
-                                                            }
+                                            new AsyncTask<Void, Void, Void>() {
+                                                @Override
+                                                protected void onPreExecute() {
+                                                    super.onPreExecute();
+                                                    mDialog = Helpers.showLoadingDialog(PayActivity.this);
+                                                    mDialog.show();
+                                                }
 
+                                                @Override
+                                                protected Void doInBackground(Void... voids) {
+                                                    for (int i = 0; i < mCartModel.getList().size(); i++) {
+                                                        final PaymentBody paymentBody = new PaymentBody(mUserReponse.getName(), mUserReponse.getEmail(),
+                                                                token.getId(), mCartModel.getList().get(i).getPrice().toString(), mCartModel.getList().get(i).getCategory().getId(), mUserReponse.getId());
+                                                        final int finalI = i;
+                                                        new AsyncTask<Void, Void, Void>() {
                                                             @Override
-                                                            public void onFailure(Call<Map> call, Throwable t) {
-                                                                Log.d(TAG, "onResponse: " + t.toString());
+                                                            protected Void doInBackground(Void... voids) {
+                                                                DataService dataService = APIServices.getService();
+                                                                Call<Map> call = dataService.pay(paymentBody);
+                                                                call.enqueue(new Callback<Map>() {
+                                                                    @Override
+                                                                    public void onResponse(Call<Map> call, Response<Map> response) {
+                                                                        Log.d(TAG, "onResponse: " + response.toString());
+                                                                        Toast.makeText(PayActivity.this, response.message(), Toast.LENGTH_SHORT).show();
+                                                                        if (response.isSuccessful()) {
+                                                                            Log.d(TAG, "onResponse: -success-" + mGson.toJson(response.body()));
+                                                                            Helpers.intentClearOnTapSelected3(PayActivity.this, TabBarActivity.class);
+                                                                            mCartModel.getList().remove(finalI);
+                                                                        } else {
+                                                                            Log.d(TAG, "onResponse: -err-" + mGson.toJson(response.errorBody()));
+                                                                        }
+                                                                    }
+
+                                                                    @Override
+                                                                    public void onFailure(Call<Map> call, Throwable t) {
+                                                                        Log.d(TAG, "onFailure: --err" + t.toString());
+                                                                        Toast.makeText(PayActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                                                                    }
+                                                                });
+                                                                return null;
                                                             }
-                                                        });
-                                                        return null;
+                                                        }.execute();
                                                     }
-                                                }.execute();
-                                            }
+                                                    return null;
+                                                }
+
+                                                @Override
+                                                protected void onPostExecute(Void aVoid) {
+                                                    super.onPostExecute(aVoid);
+                                                    try {
+                                                        Thread.sleep(3000);
+                                                        mDialog.dismiss();
+                                                        mCartViewModel.remoCart();
+                                                        Helpers.intentClearOnTapSelected3(PayActivity.this,TabBarActivity.class);
+                                                        finish();
+                                                    } catch (InterruptedException e) {
+                                                        e.printStackTrace();
+                                                    }
+                                                }
+                                            }.execute();
                                         } catch (Exception e) {
-                                            Log.d(TAG, "onSuccess: "+e.toString());
+                                            Log.d(TAG, "onError: " + e.toString());
+                                            Toast.makeText(PayActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                                         }
                                     }
 
                                     public void onError(@NonNull Exception error) {
-                                        Log.d(TAG, "onError: "+error.toString());
-                                        Toast.makeText(PayActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                                        Log.d(TAG, "onError: " + error.toString());
+                                        Toast.makeText(PayActivity.this, "Stripper is incorrect", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                         );
-                    mDialog.dismiss();
-                    mSharePrefs.removeCart();
-                        List<GetAllCourseReponse>list = new ArrayList<>();
-                        CartModel cartModel = new CartModel();
-                        cartModel.setList(list);
-                        mCartViewModel.setmCartModel(cartModel);
-                    //finish();
-                    }catch (Exception e1){
-                        mDialog.dismiss();
-                        mSharePrefs.removeCart();
-                        List<GetAllCourseReponse>list = new ArrayList<>();
-                        CartModel cartModel = new CartModel();
-                        cartModel.setList(list);
-                        mCartViewModel.setmCartModel(cartModel);
-                        //finish();
+                    } catch (Exception e1) {
+                        Toast.makeText(PayActivity.this, "card is incorrect", Toast.LENGTH_SHORT).show();
                     }
-                }else{
+                } else {
                     Toast.makeText(this, "giỏ hàng rỗng", Toast.LENGTH_SHORT).show();
                 }
                 break;

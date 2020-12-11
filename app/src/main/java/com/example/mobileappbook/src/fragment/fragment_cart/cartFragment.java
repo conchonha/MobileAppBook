@@ -3,6 +3,7 @@ package com.example.mobileappbook.src.fragment.fragment_cart;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +58,7 @@ public class cartFragment extends Fragment implements View.OnClickListener {
         mCartViewModel.getDataCart().observe(getViewLifecycleOwner(), new Observer<CartModel>() {
             @Override
             public void onChanged(CartModel cartModel) {
+                Log.d("TAG", "onChanged: "+cartModel.getList().size());
                 mDialog.dismiss();
                 mAdapter.setList(cartModel.getList());
                 mAdapter.notifyDataSetChanged();
