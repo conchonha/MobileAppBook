@@ -2,8 +2,11 @@ package com.example.mobileappbook.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.lifecycle.LiveData;
 
 import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseReponse;
 import com.example.mobileappbook.cores.reponse.acount.UserReponse;
@@ -22,6 +25,13 @@ public class SharePrefs {
     public SharePrefs(Context context) {
         mSharedPreferences = context.getSharedPreferences("datalogin", context.MODE_PRIVATE);
         mEditTor = mSharedPreferences.edit();
+    }
+    public void saveBackgoundImage(String img){
+        mEditTor.putString(Constain.isImgBackground,img).commit();
+    }
+
+    public String getBackgoundImage(){
+        return mSharedPreferences.getString(Constain.isImgBackground,"");
     }
 
     public void saveUser(UserReponse userReponse) {
