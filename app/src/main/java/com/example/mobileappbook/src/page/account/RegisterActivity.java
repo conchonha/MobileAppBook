@@ -13,8 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.mobileappbook.R;
-import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
-import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
+import com.example.mobileappbook.cores.reponse.acount.UserReponse;
 import com.example.mobileappbook.src.viewmodel.acount.RegisterViewmodel;
 import com.example.mobileappbook.utils.Helpers;
 
@@ -58,18 +57,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onChanged(UserReponse userReponse) {
                 mDialog.dismiss();
-                Toast.makeText(RegisterActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(), ActiveAcountActivity.class).putExtra("email", mEdtEmail.getText().toString()));
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
-            }
-        });
-
-        //lang nghe va quan sat su thay doi cua du lieu
-        mRegisterViewmodel.getErroreponse().observe(RegisterActivity.this, new Observer<ErrorRepone>() {
-            @Override
-            public void onChanged(ErrorRepone errorRepone) {
-                Toast.makeText(RegisterActivity.this, "Login thất bại: code - " + errorRepone.getmCode() + " message - " + errorRepone.getmMessage(), Toast.LENGTH_SHORT).show();
-                mDialog.dismiss();
+                if(userReponse.getMessage() != null){
+                    Toast.makeText(RegisterActivity.this, userReponse.getMessage(), Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(RegisterActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), ActiveAccountActivity.class).putExtra("email", mEdtEmail.getText().toString()));
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+                }
             }
         });
     }

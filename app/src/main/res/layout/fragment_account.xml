@@ -22,6 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/avt_1"
+                android:id="@+id/img_avatar"
                 android:scaleType="fitXY"/>
         </androidx.cardview.widget.CardView>
         <LinearLayout
@@ -32,8 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
-                android:id="@+id/edt_yourName"
-                android:hint="Im Yoona"
+                android:id="@+id/txt_yourName"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#FFFFFF"
                 android:textStyle="bold"
@@ -42,17 +42,15 @@
                 android:layout_height="wrap_content"
                 />
             <TextView
-                android:id="@+id/edt_phoneNumber"
+                android:id="@+id/txt_phoneNumber"
                 android:textColorHint="#FFFFFF"
                 android:textColor="#FFFFFF"
-                android:hint="(+84) 0909 9696 969"
                 android:textSize="14sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
             <TextView
-                android:id="@+id/edt_email"
-                android:hint="yoonasnsd@gmail.com"
+                android:id="@+id/txt_email"
                 android:textColor="#13c8b2"
                 android:textColorHint="#13c8b2"
                 android:textSize="14sp"
@@ -82,14 +80,14 @@
             </TableRow>
             <TableRow>
                 <TextView
-                    android:text="(+84) 0909 9696 969"
-                    android:hint="(+84) 0909 9696 969"
+                    android:hint="(+84)"
                     android:textColor="#FFFFFF"
+                    android:id="@+id/txt_phone1"
                     android:lineHeight="19sp"
                     android:textSize="15sp"/>
                 <TextView
                     android:layout_marginLeft="22dp"
-                    android:text="30th May, 1990"
+                    android:text=""
                     android:textColor="#FFFFFF"
                     android:lineHeight="19sp"
                     android:textSize="15sp"/>
@@ -105,14 +103,14 @@
             </TableRow>
             <TableRow>
                 <TextView
-                    android:text="Seoul, Korea"
                     android:textColor="#FFFFFF"
+                    android:id="@+id/txtAddress"
                     android:lineHeight="19sp"
                     android:textSize="15sp"/>
                 <TextView
-                    android:text="Singer, Actress"
                     android:textColor="#FFFFFF"
                     android:lineHeight="19sp"
+                    android:id="@+id/txt_job"
                     android:textSize="15sp"
                     android:layout_marginLeft="22dp"/>
             </TableRow>
@@ -127,12 +125,12 @@
             </TableRow>
             <TableRow>
                 <TextView
-                    android:text="51.643 USD"
+                    android:text="0 USD"
                     android:textColor="#FFFFFF"
                     android:lineHeight="19sp"
                     android:textSize="15sp"/>
                 <TextView
-                    android:text="VIP 3 (Platinum)"
+                    android:text="VIP 0"
                     android:textColor="#FFFFFF"
                     android:lineHeight="19sp"
                     android:textSize="15sp"
@@ -149,13 +147,14 @@
             </TableRow>
             <TableRow>
                 <TextView
-                    android:text="3 Days"
+                    android:text="3 Mounth"
                     android:textColor="#FFFFFF"
                     android:lineHeight="19sp"
                     android:textSize="15sp"/>
                 <TextView
                     android:text="1st January, 2020"
                     android:textColor="#FFFFFF"
+                    android:id="@+id/txt_time"
                     android:lineHeight="19sp"
                     android:textSize="15sp"
                     android:layout_marginLeft="22dp"/>

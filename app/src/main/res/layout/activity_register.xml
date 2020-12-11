@@ -120,7 +120,7 @@
                                 android:src="@drawable/phone_android_24px" />
 
                             <EditText
-                                android:inputType="textPhonetic"
+                                android:inputType="phone"
                                 android:id="@+id/edt_phoneNumber"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"

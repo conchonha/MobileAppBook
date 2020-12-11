@@ -13,8 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.mobileappbook.R;
-import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
-import com.example.mobileappbook.cores.reponse.user_reponse.UserReponse;
+import com.example.mobileappbook.cores.reponse.acount.UserReponse;
 import com.example.mobileappbook.src.page.tabbar.TabBarActivity;
 import com.example.mobileappbook.src.viewmodel.acount.LoginViewmodel;
 import com.example.mobileappbook.utils.Helpers;
@@ -24,6 +23,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     //variable
     private Dialog mDialog;
     private LoginViewmodel mLoginViewmodel;
+    private String TAG = "LoginActivity";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,26 +39,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mLoginViewmodel = ViewModelProviders.of(LoginActivity.this).get(LoginViewmodel.class);
 
         //lang nghe va quan sat su thay doi cua du lieu
-        mLoginViewmodel.getErrorReponse().observe(LoginActivity.this, new Observer<ErrorRepone>() {
-            @Override
-            public void onChanged(ErrorRepone errorRepone) {
-                mDialog.dismiss();
-                Toast.makeText(LoginActivity.this, "Login fail: code - " + errorRepone.getmCode() + " message - " + errorRepone.getmMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
         mLoginViewmodel.getUserReponse().observe(LoginActivity.this, new Observer<UserReponse>() {
             @Override
             public void onChanged(UserReponse userReponse) {
                 mDialog.dismiss();
-                Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
-                mLoginViewmodel.saveUser(userReponse);
-                if (userReponse.getActive() == 0) {
-                    Toast.makeText(LoginActivity.this, "Please active acount", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(), ActiveAcountActivity.class).putExtra("email", userReponse.getEmail()));
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
-                } else {
-                    Helpers.intentClear(LoginActivity.this, TabBarActivity.class);
+                if (userReponse.getMessage() != null) {
+                    Toast.makeText(LoginActivity.this, userReponse.getMessage(), Toast.LENGTH_SHORT).show();
+                }else{
+                    mLoginViewmodel.saveUser(userReponse);
+                    if (userReponse.getActive() == 0) {
+                        Toast.makeText(LoginActivity.this, "Please active acount", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), ActiveAccountActivity.class).putExtra("email", userReponse.getEmail()));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
+                        Helpers.intentClear(LoginActivity.this, TabBarActivity.class);
+                    }
                 }
             }
         });

@@ -3,11 +3,13 @@ package com.example.mobileappbook.async.acount;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.mobileappbook.cores.reponse.error_reponse.ErrorRepone;
 import com.example.mobileappbook.cores.services.APIServices;
 import com.example.mobileappbook.cores.services.DataService;
-import com.example.mobileappbook.src.repositories.acount.RecoverRepositories;
+import com.example.mobileappbook.src.repositories.acount.AcountRepositories;
+import com.example.mobileappbook.utils.Constain;
 
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -16,12 +18,13 @@ import retrofit2.Response;
 
 public class AsyncRecover extends AsyncTask<Void,Void,Void> {
     private String mEmail;
-    private RecoverRepositories mRecoverRepositories;
+    private AcountRepositories mAcountRepositories;
+    private Map mMap = new HashMap();
     private String TAG = "AsyncRecover";
-    private ErrorRepone mErrorReponse;
 
-    public  AsyncRecover(RecoverRepositories recoverRepositories,String email){
-        this.mRecoverRepositories = recoverRepositories;
+
+    public  AsyncRecover(AcountRepositories acountRepositories,String email){
+        this.mAcountRepositories = acountRepositories;
         this.mEmail = email;
     }
 
@@ -35,19 +38,25 @@ public class AsyncRecover extends AsyncTask<Void,Void,Void> {
             public void onResponse(Call<Map> call, Response<Map> response) {
                 Log.d(TAG, "onResponse: "+response.toString());
                 if(response.isSuccessful()){
-                    mErrorReponse = new ErrorRepone(200,"send data mail success");
-                    mRecoverRepositories.setDataReponseRecover(mErrorReponse);
+                    mAcountRepositories.setRecoverPasswordReponse(response.body());
                 }else{
-                    mErrorReponse = new ErrorRepone(response.hashCode(),response.message());
-                    mRecoverRepositories.setDataReponseRecover(mErrorReponse);
+                    try {
+                        String repone = response.errorBody().string();
+                        mMap.put(Constain.keyMapErr,repone);
+                        mAcountRepositories.setRecoverPasswordReponse(mMap);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        mMap.put(Constain.keyMapErr,response.message());
+                        mAcountRepositories.setRecoverPasswordReponse(mMap);
+                    }
                 }
             }
 
             @Override
             public void onFailure(Call<Map> call, Throwable t) {
                 Log.d(TAG, "onFailure: "+t.getMessage());
-                mErrorReponse = new ErrorRepone(t.hashCode(),t.getMessage());
-                mRecoverRepositories.setDataReponseRecover(mErrorReponse);
+                mMap.put("300",t.getMessage());
+                mAcountRepositories.setRecoverPasswordReponse(mMap);
             }
         });
         return null;

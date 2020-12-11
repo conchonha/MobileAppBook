@@ -6,11 +6,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.example.mobileappbook.src.fragment.fragment_account.FragmentAccount;
-import com.example.mobileappbook.src.fragment.fragment_cart.FragmentCart;
-import com.example.mobileappbook.src.fragment.fragment_featured.FragmentFeatured;
-import com.example.mobileappbook.src.fragment.fragment_search.FragmentCourses;
-import com.example.mobileappbook.src.fragment.fragment_search.FragmentSearch;
+import com.example.mobileappbook.src.fragment.fragment_account.AccountFragment;
+import com.example.mobileappbook.src.fragment.fragment_cart.cartFragment;
+import com.example.mobileappbook.src.fragment.fragment_featured.FeatureFragment;
+import com.example.mobileappbook.src.fragment.fragment_search.mycoursesFragment;
+import com.example.mobileappbook.src.fragment.fragment_search.SearchFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +29,11 @@ public class TabbarAdapter extends FragmentStatePagerAdapter {
         mListTitle.add("Acount");
 
         //add fragment tuong ứng
-        mListFragment.add(new FragmentFeatured());
-        mListFragment.add(new FragmentSearch());
-        mListFragment.add(new FragmentCourses());
-        mListFragment.add(new FragmentCart());
-        mListFragment.add(new FragmentAccount());
+        mListFragment.add(new FeatureFragment());
+        mListFragment.add(new SearchFragment());
+        mListFragment.add(new mycoursesFragment());
+        mListFragment.add(new cartFragment());
+        mListFragment.add(new AccountFragment());
     }
 
     @NonNull

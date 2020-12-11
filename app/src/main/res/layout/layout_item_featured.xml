@@ -23,7 +23,8 @@
                 android:layout_height="75dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="4dp"
-                android:src="@drawable/rectangle_22"
+                android:id="@+id/img_img_courses"
+                android:scaleType="fitXY"
                 app:riv_corner_radius="13dp" />
 
             <LinearLayout
