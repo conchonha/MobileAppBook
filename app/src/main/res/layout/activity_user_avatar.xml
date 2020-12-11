@@ -64,6 +64,7 @@
                 android:layout_marginLeft="12dp"
                 android:layout_marginTop="12dp"
                 android:src="@drawable/avt_1"
+                android:id="@+id/img_avatar"
                 android:background="#000000"
                 app:riv_mutate_background="true"
                 app:riv_corner_radius="30dp"

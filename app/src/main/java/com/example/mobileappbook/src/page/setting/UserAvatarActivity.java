@@ -3,11 +3,9 @@ package com.example.mobileappbook.src.page.setting;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -16,19 +14,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.mobileappbook.R;
+import com.example.mobileappbook.cores.reponse.acount.UserReponse;
 import com.example.mobileappbook.src.viewmodel.setting.UserAvatarViewModel;
+import com.example.mobileappbook.utils.Constain;
+import com.example.mobileappbook.utils.SharePrefs;
+import com.google.gson.Gson;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 
 public class UserAvatarActivity extends AppCompatActivity implements View.OnClickListener {
+    private ImageView mImageBackground, mImageAvatar;
+    //variable
     private String TAG = "UserAvatarActivity";
     private final int REQUEST_IMAGE_BACKGROUND_CAPTURE = 1;
     private final int REQUEST_IMAGE_BACKGROUND_LIBRALY = 2;
-    private ImageView mImageBackground;
     private UserAvatarViewModel mUserAvatarViewModel;
     private File mFileImage;
-    private Uri mUriBackground;
+    private UserReponse mUserReponse;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,12 +47,14 @@ public class UserAvatarActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void init() {
+        mUserReponse = new Gson().fromJson(new SharePrefs(getApplicationContext()).getUser(), UserReponse.class);
         String s = mUserAvatarViewModel.getBackgroundImg();
-        if(s != null){
-            Log.d(TAG, "onChanged: "+s);
-            byte[]array = Base64.decode(s,Base64.DEFAULT);
-            Bitmap bitmap = BitmapFactory.decodeByteArray(array,0,array.length);
+        if (s != null) {
+            byte[] array = Base64.decode(s, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(array, 0, array.length);
             mImageBackground.setImageBitmap(bitmap);
+        } else {
+            Picasso.get().load(Constain.userUrlImg + mUserReponse.getImage()).placeholder(R.drawable.useravatar).error(R.drawable.useravatar).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).into(mImageAvatar);
         }
     }
 
@@ -57,6 +66,7 @@ public class UserAvatarActivity extends AppCompatActivity implements View.OnClic
     //anh xa view
     private void initView() {
         mImageBackground = findViewById(R.id.img_background);
+        mImageAvatar = findViewById(R.id.img_avatar);
     }
 
     private void listenerOnclicked() {
@@ -68,8 +78,8 @@ public class UserAvatarActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK && data != null){
-            switch (requestCode){
+        if (resultCode == RESULT_OK && data != null) {
+            switch (requestCode) {
                 case REQUEST_IMAGE_BACKGROUND_CAPTURE:
                     Bundle extras = data.getExtras();
                     Bitmap bitmap = (Bitmap) extras.get("data");
@@ -92,7 +102,7 @@ public class UserAvatarActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.img_back:
                 finish();
                 break;
