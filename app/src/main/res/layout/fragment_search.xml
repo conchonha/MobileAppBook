@@ -1,70 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/relative_2"
+    android:background="@drawable/img_background_search"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
-        <androidx.appcompat.widget.Toolbar
+        <ScrollView
             android:layout_width="match_parent"
-            android:padding="5dp"
-            android:background="#322C2C"
-            android:layout_height="50dp">
-            <androidx.appcompat.widget.SearchView
+            android:layout_height="match_parent">
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/searchViewItem"
-                app:queryHint="Tìm kiếm khóa học..."
-                android:background="@drawable/fragment_search_seach_view_border"
-                />
-        </androidx.appcompat.widget.Toolbar>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Gợi ý"
-            android:textSize="22dp"
-            android:layout_below="@+id/homeTB"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="15dp"
-            android:textColor="#FFFFFF"
-            android:fontFamily="sans-serif-medium"
-            />
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chipGroup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:singleSelection="true">
-        </com.google.android.material.chip.ChipGroup>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Danh mục"
-            android:textSize="22dp"
-            android:layout_below="@+id/homeTB"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="15dp"
-            android:textColor="#FFFFFF"
-            android:fontFamily="sans-serif-medium"
-            />
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/search_recycler_view"
-            android:paddingLeft="10dp"
-            android:layout_marginTop="5dp"
-            />
-    </LinearLayout>
-</ScrollView>
+                android:orientation="vertical">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="37dp"
+                    app:cardCornerRadius="15dp"
+                    android:layout_marginTop="29dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginBottom="37dp"
+                    app:cardBackgroundColor="#fff">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:drawableLeft="@drawable/ic_search"
+                        android:textColor="#000"
+                        android:id="@+id/editText_search"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="-3dp"
+                        android:drawablePadding="21dp"
+                        android:background="#00000000"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="12dp"
+                        android:textColorHint="#434343"
+                        android:hint="search..."/>
+                </androidx.cardview.widget.CardView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:background="#E0E0E0"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textColor="#000"
+                        android:layout_marginLeft="11dp"
+                        android:layout_marginTop="13dp"
+                        android:textStyle="bold"
+                        android:text="Recommend"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="20dp"
+                        android:id="@+id/recycler"
+                        android:layout_marginTop="15dp"
+                        android:paddingRight="20dp"
+                        />
+                </LinearLayout>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="150dp"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="37dp"
+                    app:cardCornerRadius="15dp"
+                    android:id="@+id/cart_search"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    app:cardBackgroundColor="#8BD5ED"
+                    android:layout_gravity="center">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="16dp"
+                        android:gravity="center"
+                        android:text="Search"/>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </ScrollView>
+
+</RelativeLayout>

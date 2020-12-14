@@ -8,11 +8,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.mobileappbook.R;
+import com.example.mobileappbook.compoments.OnPageChange;
 import com.example.mobileappbook.src.adapter.tabbar_adapter.TabbarAdapter;
 import com.example.mobileappbook.utils.Constain;
 import com.google.android.material.tabs.TabLayout;
 
-public class TabBarActivity extends AppCompatActivity {
+public class TabBarActivity extends AppCompatActivity{
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
 
@@ -26,6 +27,7 @@ public class TabBarActivity extends AppCompatActivity {
         initView();
         init();
     }
+
 
     private void init() {
         mTabbarAdapter = new TabbarAdapter(getSupportFragmentManager());
