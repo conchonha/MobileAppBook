@@ -46,6 +46,7 @@
         <activity android:name=".src.page.payment.PayActivity"/>
         <activity android:name=".src.page.course.CreateCourseActivity"/>
         <activity android:name=".src.page.course.CreateCourse2Activity"/>
+        <activity android:name=".src.page.course.ChangeCourseAvataActivity"/>
     </application>
 
 </manifest>
