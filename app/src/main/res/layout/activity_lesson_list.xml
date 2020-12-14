@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/banner_lesson">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/img_back"
+        android:foreground="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:layout_margin="5dp"
+        android:src="@drawable/ic_back"/>
+
+    <TextView
+        android:fontFamily="@font/black_and_white_picture"
+        android:id="@+id/txt_title"
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:gravity="center"
+        android:text="List of Lessons"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp"/>
+    <LinearLayout
+        android:layout_below="@id/txt_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
+            <LinearLayout
+                android:layout_width="116dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/boder_lesson">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Lesson 1"
+                    android:gravity="center"
+                    android:textSize="22sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -16,14 +16,20 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".src.page.account.ResetPasswordActivity"/>
         <activity android:name=".src.page.account.ActiveAccountActivity" />
-        <activity android:name=".src.page.tabbar.TabBarActivity" />
-        <activity android:name=".src.page.account.RegisterActivity" />
-        <activity android:name=".src.page.splash.StartScreenActivity">
+        <activity android:name=".src.page.tabbar.TabBarActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".src.page.account.RegisterActivity" />
+        <activity android:name=".src.page.splash.StartScreenActivity">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity android:name=".src.page.account.LoginActivity" />
         <activity android:name=".src.page.setting.UserInfoActivity" />
@@ -38,6 +44,8 @@
 <!--            </intent-filter>-->
         </activity>
         <activity android:name=".src.page.payment.PayActivity"/>
+        <activity android:name=".src.page.course.CreateCourseActivity"/>
+        <activity android:name=".src.page.course.CreateCourse2Activity"/>
     </application>
 
 </manifest>
