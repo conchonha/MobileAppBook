@@ -2,37 +2,40 @@ package com.example.mobileappbook.src.page.course;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
 import com.example.mobileappbook.R;
 
-public class CreateCourse2Activity extends AppCompatActivity {
-    private CardView mBtnChangeCourseAvt;
+public class CreateCourse2Activity extends AppCompatActivity implements View.OnClickListener {
+    private EditText mEdtCourseName,mEdtObjectives,mEdtDesciption,mEdtField,mEdtPrice,mEdtDiscount;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_course2);
         initView();
-        listenerOnclick();
+        listenerOnclicked();
     }
 
-    private void listenerOnclick() {
-        mBtnChangeCourseAvt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    //ánh xạ view
+    private void initView() {
+    }
+
+    //lắng nghe sự kiện onClicked
+    private void listenerOnclicked() {
+        findViewById(R.id.btn_next).setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn_next:
                 startActivity(new Intent(CreateCourse2Activity.this,ChangeCourseAvataActivity.class));
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
-            }
-        });
-    }
-
-    private void initView() {
-        mBtnChangeCourseAvt = findViewById(R.id.btn_next);
+                break;
+        }
     }
 }
