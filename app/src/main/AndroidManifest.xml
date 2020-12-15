@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mobileappbook">
+
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:requestLegacyExternalStorage="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".src.page.account.ResetPasswordActivity"/>
+        <activity android:name=".src.page.course.CourseList2Activity"></activity>
+        <activity android:name=".src.page.account.ResetPasswordActivity" />
         <activity android:name=".src.page.account.ActiveAccountActivity" />
         <activity android:name=".src.page.tabbar.TabBarActivity">
             <intent-filter>
@@ -25,28 +27,32 @@
         </activity>
         <activity android:name=".src.page.account.RegisterActivity" />
         <activity android:name=".src.page.splash.StartScreenActivity">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".src.page.account.LoginActivity" />
         <activity android:name=".src.page.setting.UserInfoActivity" />
         <activity android:name=".src.page.account.RecoverActivity" />
         <activity android:name=".src.page.setting.ActivitySetting" />
         <activity android:name=".src.page.setting.ActivitySecurity" />
-        <activity android:name=".src.page.setting.UserAvatarActivity" >
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+        <activity android:name=".src.page.setting.UserAvatarActivity">
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".src.page.payment.PayActivity"/>
-        <activity android:name=".src.page.course.CreateCourseActivity"/>
-        <activity android:name=".src.page.course.CreateCourse2Activity"/>
-        <activity android:name=".src.page.course.ChangeCourseAvataActivity"/>
+        <activity android:name=".src.page.payment.PayActivity" />
+        <activity android:name=".src.page.course.CreateCourseActivity" />
+        <activity android:name=".src.page.course.CreateCourse2Activity" />
+        <activity android:name=".src.page.course.ChangeCourseAvataActivity" />
     </application>
 
 </manifest>

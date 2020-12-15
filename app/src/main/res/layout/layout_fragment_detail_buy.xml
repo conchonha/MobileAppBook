@@ -30,13 +30,13 @@
           <RelativeLayout
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              app:background="@drawable/img_rectangle13"
               >
               <ImageView
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
                   android:id="@+id/img_avatar"
                   android:alpha="0.6"
+                  android:background="#AB080724"
                   android:scaleType="fitXY"/>
               <androidx.cardview.widget.CardView
                   android:layout_width="25dp"
@@ -197,6 +197,7 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           app:cardCornerRadius="15dp"
+          app:cardBackgroundColor="#65D7CFCF"
           app:cardElevation="10dp"
           android:layout_marginBottom="2dp"
           android:padding="2dp"
@@ -230,6 +231,7 @@
                   android:id="@+id/txt_description"
                   android:textColor="#fff"
                   android:textSize="13sp"
+                  android:layout_marginBottom="80dp"
                   android:text="@string/text" />
           </LinearLayout>
       </androidx.cardview.widget.CardView>

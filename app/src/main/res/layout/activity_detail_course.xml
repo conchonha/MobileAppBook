@@ -218,6 +218,7 @@
             android:layout_height="wrap_content"
             app:cardCornerRadius="15dp"
             app:cardElevation="10dp"
+            app:cardBackgroundColor="#63D7CFCF"
             android:layout_marginBottom="2dp"
             android:padding="2dp"
             android:layout_marginTop="23dp"
@@ -248,6 +249,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
                     android:textColor="#fff"
+                    android:layout_marginBottom="102dp"
                     android:textSize="13sp"
                     android:text="@string/text" />
             </LinearLayout>

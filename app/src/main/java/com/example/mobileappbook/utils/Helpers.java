@@ -1,7 +1,9 @@
 package com.example.mobileappbook.utils;
 
 import android.app.Activity;
+import android.app.Application;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Environment;
@@ -9,6 +11,8 @@ import android.util.Base64;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.mobileappbook.R;
 
@@ -85,5 +89,15 @@ public class Helpers {
         bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
         byte[]hinhanh=byteArrayOutputStream.toByteArray();
         return Base64.encodeToString(hinhanh,Base64.DEFAULT);
+    }
+
+    public static void removeFragment(FragmentManager fragmentManager,int anim_out,int anim_in,String tag){
+        Fragment prev = fragmentManager.findFragmentByTag(tag);
+        if (prev != null) {
+            fragmentManager.beginTransaction()
+                    .setCustomAnimations(anim_out,anim_in)
+                    .remove(prev)
+                    .commit();
+        }
     }
 }

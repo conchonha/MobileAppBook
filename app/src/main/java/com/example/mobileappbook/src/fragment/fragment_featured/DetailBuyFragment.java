@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.example.mobileappbook.R;
 import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseReponse;
 import com.example.mobileappbook.model.CallbackFeatured;
+import com.example.mobileappbook.src.page.tabbar.TabBarActivity;
 import com.example.mobileappbook.utils.Constain;
 import com.example.mobileappbook.utils.Helpers;
 import com.example.mobileappbook.utils.SharePrefs;
@@ -80,15 +81,8 @@ public class DetailBuyFragment extends Fragment implements View.OnClickListener,
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.img_back:
-                Fragment prev = getFragmentManager().findFragmentByTag(Constain.fragmentDetailBuy);
-                if (prev != null) {
-                    getActivity()
-                            .getSupportFragmentManager()
-                            .beginTransaction()
-                            .setCustomAnimations(R.anim.slide_out_right,R.anim.slide_out_fragment)
-                            .remove(prev)
-                            .commit();
-                }
+                TabBarActivity.mTabLayout.setVisibility(View.GONE);
+                Helpers.removeFragment(getFragmentManager(),R.anim.slide_out_right,R.anim.slide_out_fragment,Constain.fragmentDetailBuy);
                 break;
             case R.id.card_4:
                 mDialog = Helpers.showLoadingDialog(getActivity());

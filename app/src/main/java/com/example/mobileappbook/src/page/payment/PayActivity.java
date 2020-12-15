@@ -104,10 +104,7 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
                                                     for (int i = 0; i < mCartModel.getList().size(); i++) {
                                                         final PaymentBody paymentBody = new PaymentBody(mUserReponse.getName(), mUserReponse.getEmail(),
                                                                 token.getId(), mCartModel.getList().get(i).getPrice().toString(), mCartModel.getList().get(i).getCategory().getId(), mUserReponse.getId());
-                                                        final int finalI = i;
-                                                        new AsyncTask<Void, Void, Void>() {
-                                                            @Override
-                                                            protected Void doInBackground(Void... voids) {
+                                                                final int finalI = i;
                                                                 DataService dataService = APIServices.getService();
                                                                 Call<Map> call = dataService.pay(paymentBody);
                                                                 call.enqueue(new Callback<Map>() {
@@ -130,9 +127,6 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
                                                                         Toast.makeText(PayActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
                                                                     }
                                                                 });
-                                                                return null;
-                                                            }
-                                                        }.execute();
                                                     }
                                                     return null;
                                                 }

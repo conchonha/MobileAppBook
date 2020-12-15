@@ -3,19 +3,24 @@ package com.example.mobileappbook.src.page.tabbar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.mobileappbook.R;
 import com.example.mobileappbook.compoments.OnPageChange;
 import com.example.mobileappbook.src.adapter.tabbar_adapter.TabbarAdapter;
 import com.example.mobileappbook.utils.Constain;
+import com.example.mobileappbook.utils.Helpers;
 import com.google.android.material.tabs.TabLayout;
 
 public class TabBarActivity extends AppCompatActivity{
     private ViewPager mViewPager;
-    private TabLayout mTabLayout;
+    public static TabLayout mTabLayout;
 
     //variable
     private TabbarAdapter mTabbarAdapter;
@@ -26,10 +31,33 @@ public class TabBarActivity extends AppCompatActivity{
         setContentView(R.layout.activity_tabbar);
         initView();
         init();
+        listenerOnclicked();
+    }
+    //lắng nghe sự kiện onclick
+    private void listenerOnclicked() {
+        mViewPager.addOnPageChangeListener(new OnPageChange() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                switch (position){
+                    case 0:
+                        mTabLayout.setVisibility(View.GONE);
+                        finish();
+                        startActivity(getIntent());
+                        overridePendingTransition(0,0);
+                        break;
+                    default:
+                        Helpers.removeFragment(getSupportFragmentManager(),0,0,Constain.fragmentDetailBuy);
+                        Helpers.removeFragment(getSupportFragmentManager(),0,0,Constain.feauterFragment);
+                        mTabLayout.setVisibility(View.VISIBLE);
+                        break;
+                }
+            }
+        });
     }
 
-
     private void init() {
+        mTabLayout.setVisibility(View.GONE);
         mTabbarAdapter = new TabbarAdapter(getSupportFragmentManager());
 
         //set adapter cho viewpager

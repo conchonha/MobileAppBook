@@ -15,23 +15,19 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.mobileappbook.R;
+import com.example.mobileappbook.src.page.course.CourseList2Activity;
 import com.example.mobileappbook.src.page.course.CreateCourseActivity;
 
-public class mycoursesFragment extends Fragment {
+public class mycoursesFragment extends Fragment{
     private View mView;
     private Button mBtnSwipe;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_mycourses,container,false);
-        init();
         initView();
         listenerOnclick();
         return mView;
-    }
-
-    private void init() {
-
     }
 
     private void listenerOnclick() {
@@ -43,8 +39,7 @@ public class mycoursesFragment extends Fragment {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent intent = new Intent(getActivity(), CreateCourseActivity.class);
-                        startActivity(intent);
+                        startActivity(new Intent(getActivity(), CourseList2Activity.class));
                         getActivity().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                     }
                 },2000);

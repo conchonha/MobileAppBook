@@ -8,7 +8,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -19,8 +18,10 @@ import com.example.mobileappbook.R;
 import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseReponse;
 import com.example.mobileappbook.model.CallbackFeatured;
 import com.example.mobileappbook.src.adapter.featured_adapter.FeaturedAdapter;
+import com.example.mobileappbook.src.page.tabbar.TabBarActivity;
 import com.example.mobileappbook.src.viewmodel.featured.FeaturedViewModel;
 import com.example.mobileappbook.utils.Constain;
+import com.example.mobileappbook.utils.Helpers;
 
 import java.util.List;
 
@@ -85,6 +86,7 @@ public class FeatureFragment extends Fragment implements CallbackFeatured, View.
 
     @Override
     public void onClickItem(GetAllCourseReponse reponse) {
+        TabBarActivity.mTabLayout.setVisibility(View.VISIBLE);
         DetailBuyFragment detailBuyFragment = new DetailBuyFragment();
         CallbackFeatured callbackFeatured = detailBuyFragment;
         callbackFeatured.onClickItem(reponse);
@@ -99,15 +101,7 @@ public class FeatureFragment extends Fragment implements CallbackFeatured, View.
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.img_back:
-                Fragment prev = getFragmentManager().findFragmentByTag(Constain.feauterFragment);
-                if (prev != null) {
-                    getActivity()
-                            .getSupportFragmentManager()
-                            .beginTransaction()
-                            .setCustomAnimations(R.anim.slide_out_right,R.anim.slide_out_fragment)
-                            .remove(prev)
-                            .commit();
-                }
+                Helpers.removeFragment(getFragmentManager(),R.anim.slide_out_right,R.anim.slide_out_fragment,Constain.feauterFragment);
                 mFeaturedViewModel.setDataAllSearch();
                 break;
         }

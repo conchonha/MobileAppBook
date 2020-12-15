@@ -20,7 +20,8 @@
             android:src="@drawable/ic_back"/>
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_marginTop="92dp"
+            android:layout_marginTop="143dp"
+            android:layout_marginBottom="143dp"
             android:id="@+id/recycler_featured"
             android:layout_height="match_parent"/>
     </RelativeLayout>

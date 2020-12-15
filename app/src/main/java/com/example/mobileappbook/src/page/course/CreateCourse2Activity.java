@@ -27,7 +27,7 @@ public class CreateCourse2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(CreateCourse2Activity.this,ChangeCourseAvataActivity.class));
-                finish();
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
             }
         });
     }

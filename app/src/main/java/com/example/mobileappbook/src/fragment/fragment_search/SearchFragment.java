@@ -85,7 +85,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.cart_search:
-                search(mEdtSearch.getText().toString());
+                search(mEdtSearch.getText().toString().equals("") ? "0" : mEdtSearch.getText().toString());
                 break;
         }
     }
