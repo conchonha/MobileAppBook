@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import com.example.mobileappbook.src.fragment.fragment_account.AccountFragment;
 import com.example.mobileappbook.src.fragment.fragment_cart.cartFragment;
 import com.example.mobileappbook.src.fragment.fragment_featured.FeatureFragment;
-import com.example.mobileappbook.src.fragment.fragment_search.mycoursesFragment;
+import com.example.mobileappbook.src.fragment.fragment_courses.mycoursesFragment;
 import com.example.mobileappbook.src.fragment.fragment_search.SearchFragment;
 
 import java.util.ArrayList;

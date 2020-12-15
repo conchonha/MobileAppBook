@@ -58,7 +58,7 @@ public class UserAvatarActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_avatar);
+        setContentView(R.layout.activity_change_avatar);
         ActivityCompat.requestPermissions(this, mPermissions, REQUEST_CODE_PERMISSION_STORAGE);
         initView();
         initViewmodel();
