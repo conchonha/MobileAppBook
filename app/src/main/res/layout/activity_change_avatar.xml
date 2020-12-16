@@ -27,172 +27,178 @@
         android:layout_marginLeft="121dp"
         android:layout_marginRight="121dp"/>
 
-    <LinearLayout
-        android:orientation="vertical"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_below="@id/txt_title"
-        android:layout_marginTop="22dp"
-        android:layout_marginLeft="14dp"
-        android:layout_marginRight="14dp"
-        android:background="@drawable/border_change_avt">
-        <TextView
-            android:paddingLeft="13dp"
-            android:paddingRight="13dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Review"
-            android:layout_alignParentLeft="true"
-            android:textSize="18dp"
-            android:textColor="#000000"/>
-        <RelativeLayout
-            android:layout_marginLeft="13dp"
-            android:layout_marginRight="13dp"
-            android:id="@+id/linechange1"
-            android:layout_width="match_parent"
-            android:layout_height="186dp"
-            android:layout_marginTop="15dp"
-            >
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/img_background"
-                android:src="@drawable/avt_1"
-                android:scaleType="fitXY"/>
-            <com.makeramen.roundedimageview.RoundedImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="12dp"
-                android:layout_marginTop="12dp"
-                android:src="@drawable/avt_1"
-                android:id="@+id/img_avatar"
-                android:background="#000000"
-                app:riv_mutate_background="true"
-                app:riv_corner_radius="30dp"
-                android:scaleType="fitXY"
-                android:padding="1dp">
-
-            </com.makeramen.roundedimageview.RoundedImageView>
-        </RelativeLayout>
-        <TextView
-            android:id="@+id/txt_2"
-            android:layout_marginTop="12dp"
-            android:layout_below="@id/linechange1"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#000000"/>
+        android:layout_marginBottom="10dp"
+        android:layout_above="@+id/btn_update"
+        android:layout_height="match_parent">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp">
+            android:layout_marginTop="22dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:background="@drawable/border_change_avt">
             <TextView
                 android:paddingLeft="13dp"
                 android:paddingRight="13dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pick Image"
+                android:text="Review"
                 android:layout_alignParentLeft="true"
                 android:textSize="18dp"
                 android:textColor="#000000"/>
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_marginTop="3dp"
+            <RelativeLayout
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:id="@+id/linechange1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
+                android:layout_height="186dp"
+                android:layout_marginTop="15dp"
+                >
+                <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="For Avatar"
-                    android:textColor="#000000"
-                    android:textSize="14sp"
-                    android:layout_marginLeft="25dp"/>
-                <LinearLayout
-                    android:layout_marginTop="3dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <Button
-                        android:layout_marginLeft="68dp"
-                        android:padding="10dp"
-                        android:layout_width="wrap_content"
-                        android:foreground="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:id="@+id/btn_avatar_camera"
-                        android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:text="New Photo"
-                        android:textAppearance="@style/CalcResultStyle"
-
-                        android:background="@drawable/border_change"/>
-                    <Button
-                        android:layout_marginLeft="19dp"
-                        android:padding="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:foreground="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:id="@+id/btn_avatar_liblary"
-                        android:textSize="14sp"
-                        android:text="From Libary"
-                        android:textAppearance="@style/CalcResultStyle"
-                        android:background="@drawable/border_change"/>
-                </LinearLayout>
-                <TextView
-                    android:layout_width="200dp"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/img_background"
+                    android:src="@drawable/avt_1"
+                    android:scaleType="fitXY"/>
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:src="@drawable/avt_1"
+                    android:id="@+id/img_avatar"
                     android:background="#000000"
-                    android:layout_marginLeft="74dp"
-                    android:layout_marginRight="59dp"/>
-            </LinearLayout>
+                    app:riv_mutate_background="true"
+                    app:riv_corner_radius="30dp"
+                    android:scaleType="fitXY"
+                    android:padding="1dp">
+
+                </com.makeramen.roundedimageview.RoundedImageView>
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/txt_2"
+                android:layout_marginTop="12dp"
+                android:layout_below="@id/linechange1"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#000000"/>
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_marginTop="3dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp">
                 <TextView
-                    android:layout_marginTop="8dp"
+                    android:paddingLeft="13dp"
+                    android:paddingRight="13dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="For Background"
-                    android:textColor="#000000"
-                    android:textSize="14sp"
-                    android:layout_marginLeft="25dp"/>
+                    android:text="Pick Image"
+                    android:layout_alignParentLeft="true"
+                    android:textSize="18dp"
+                    android:textColor="#000000"/>
                 <LinearLayout
+                    android:orientation="vertical"
                     android:layout_marginTop="3dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="23dp">
-                    <Button
-                        android:layout_marginLeft="68dp"
-                        android:padding="10dp"
-                        android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="For Avatar"
+                        android:textColor="#000000"
                         android:textSize="14sp"
-                        android:text="New Photo"
-                        android:id="@+id/btn_backgound_camera"
-                        android:foreground="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:textAppearance="@style/CalcResultStyle"
-                        android:background="@drawable/border_change"/>
-                    <Button
-                        android:layout_marginLeft="19dp"
-                        android:padding="10dp"
-                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="25dp"/>
+                    <LinearLayout
+                        android:layout_marginTop="3dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:foreground="?attr/selectableItemBackground"
-                        android:clickable="true"
+                        android:orientation="horizontal">
+                        <Button
+                            android:layout_marginLeft="68dp"
+                            android:padding="10dp"
+                            android:layout_width="wrap_content"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:id="@+id/btn_avatar_camera"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:text="New Photo"
+                            android:textAppearance="@style/CalcResultStyle"
+
+                            android:background="@drawable/border_change"/>
+                        <Button
+                            android:layout_marginLeft="19dp"
+                            android:padding="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:id="@+id/btn_avatar_liblary"
+                            android:textSize="14sp"
+                            android:text="From Libary"
+                            android:textAppearance="@style/CalcResultStyle"
+                            android:background="@drawable/border_change"/>
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="8dp"
+                        android:background="#000000"
+                        android:layout_marginLeft="74dp"
+                        android:layout_marginRight="59dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_marginTop="3dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginTop="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="For Background"
+                        android:textColor="#000000"
                         android:textSize="14sp"
-                        android:id="@+id/btn_backgound_liblary"
-                        android:text="From Libary"
-                        android:textAppearance="@style/CalcResultStyle"
-                        android:background="@drawable/border_change"/>
+                        android:layout_marginLeft="25dp"/>
+                    <LinearLayout
+                        android:layout_marginTop="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="23dp">
+                        <Button
+                            android:layout_marginLeft="68dp"
+                            android:padding="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:text="New Photo"
+                            android:id="@+id/btn_backgound_camera"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:textAppearance="@style/CalcResultStyle"
+                            android:background="@drawable/border_change"/>
+                        <Button
+                            android:layout_marginLeft="19dp"
+                            android:padding="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:textSize="14sp"
+                            android:id="@+id/btn_backgound_liblary"
+                            android:text="From Libary"
+                            android:textAppearance="@style/CalcResultStyle"
+                            android:background="@drawable/border_change"/>
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 
     <Button

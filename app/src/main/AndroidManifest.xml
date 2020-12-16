@@ -16,29 +16,63 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".src.page.course.LessonListActivity"></activity>
-        <activity android:name=".src.page.course.CourseList2Activity" />
-        <activity android:name=".src.page.account.ResetPasswordActivity" />
-        <activity android:name=".src.page.account.ActiveAccountActivity" />
-        <activity android:name=".src.page.tabbar.TabBarActivity" />
-        <activity android:name=".src.page.account.RegisterActivity" />
-        <activity android:name=".src.page.splash.StartScreenActivity">
+        <activity
+            android:name=".src.page.course.LessonListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".src.page.course.CourseList2Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".src.page.account.ResetPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".src.page.account.ActiveAccountActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".src.page.tabbar.TabBarActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".src.page.account.RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".src.page.splash.StartScreenActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".src.page.account.LoginActivity" />
-        <activity android:name=".src.page.setting.UserInfoActivity" />
-        <activity android:name=".src.page.account.RecoverActivity" />
-        <activity android:name=".src.page.setting.ActivitySetting" />
-        <activity android:name=".src.page.setting.ActivitySecurity" />
-        <activity android:name=".src.page.setting.UserAvatarActivity" />
-        <activity android:name=".src.page.payment.PayActivity" />
-        <activity android:name=".src.page.course.CreateCourseActivity" />
-        <activity android:name=".src.page.course.CreateCourse2Activity" />
-        <activity android:name=".src.page.course.ChangeCourseAvataActivity" />
+        <activity
+            android:name=".src.page.account.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".src.page.setting.UserInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".src.page.account.RecoverActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".src.page.setting.ActivitySetting"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".src.page.setting.ActivitySecurity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".src.page.setting.UserAvatarActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".src.page.payment.PayActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".src.page.course.CreateCourseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".src.page.course.CreateCourse2Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".src.page.course.ChangeCourseAvataActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

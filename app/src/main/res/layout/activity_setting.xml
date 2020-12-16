@@ -1,173 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/setting">
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/img_back"
-        android:foreground="?attr/selectableItemBackground"
-        android:clickable="true"
-        android:layout_margin="5dp"
-        android:src="@drawable/ic_back"/>
-    <TextView
-        android:fontFamily="@font/black_and_white_picture"
-        android:id="@+id/txt_settingt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="116dp"
-        android:layout_marginTop="33dp"
-        android:layout_marginRight="116dp"
-        android:gravity="center"
-        android:text="Setting"
-        android:textSize="48sp" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txt_settingt"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="22dp"
-        android:layout_marginTop="37dp"
-        android:layout_marginRight="22dp">
+        android:layout_height="match_parent">
 
-        <ScrollView
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/txt_settingt"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="116dp"
+            android:layout_marginTop="33dp"
+            android:layout_marginRight="116dp"
+            android:fontFamily="@font/black_and_white_picture"
+            android:gravity="center"
+            android:text="Setting"
+            android:textSize="48sp" />
 
-            <LinearLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_settingt"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="57dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:paddingLeft="10dp"
-                android:paddingTop="20dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="20dp">
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardBackgroundColor="#7EFFFFFF"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="4dp">
 
-                <androidx.cardview.widget.CardView
+                <TextView
+                    android:id="@+id/txt_change"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:foreground="?attr/selectableItemBackground"
+                    android:layout_height="46dp"
                     android:clickable="true"
-                    app:cardElevation="4dp"
-                    app:cardCornerRadius="30dp"
-                    app:cardBackgroundColor="#7EFFFFFF">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="46dp"
-                        android:drawableLeft="@drawable/ic_st_1"
-                        android:gravity="center_vertical"
-                        android:foreground="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:drawablePadding="18dp"
-                        android:id="@+id/txt_change"
-                        android:paddingLeft="10dp"
-                        android:text="Change Avatar / Background"
-                        android:textColor="#000000"
-                        android:textSize="13sp" />
+                    android:drawableLeft="@drawable/ic_st_1"
+                    android:drawablePadding="18dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Change Avatar / Background"
+                    android:textColor="#000000"
+                    android:textSize="13sp" />
 
-                </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="31dp"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardBackgroundColor="#7EFFFFFF"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="4dp">
+
+                <TextView
+                    android:id="@+id/txt_security"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="31dp"
-                    android:foreground="?attr/selectableItemBackground"
-                    app:cardElevation="4dp"
+                    android:layout_height="46dp"
                     android:clickable="true"
-                    app:cardCornerRadius="30dp"
-                    app:cardBackgroundColor="#7EFFFFFF">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="46dp"
-                        android:drawableLeft="@drawable/icon"
-                        android:id="@+id/txt_security"
-                        android:gravity="center_vertical"
-                        android:drawablePadding="18dp"
-                        android:foreground="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:paddingLeft="10dp"
-                        android:text="Security"
-                        android:textColor="#000000"
-                        android:textSize="13sp" />
+                    android:drawableLeft="@drawable/icon"
+                    android:drawablePadding="18dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Security"
+                    android:textColor="#000000"
+                    android:textSize="13sp" />
 
-                </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="31dp"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardBackgroundColor="#7EFFFFFF"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="4dp">
+
+                <TextView
+                    android:id="@+id/txt_update_infor"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="31dp"
-                    app:cardElevation="4dp"
-                    android:foreground="?attr/selectableItemBackground"
+                    android:layout_height="46dp"
                     android:clickable="true"
-                    app:cardCornerRadius="30dp"
-                    app:cardBackgroundColor="#7EFFFFFF">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="46dp"
-                        android:drawableLeft="@drawable/ic_st_3"
-                        android:gravity="center_vertical"
-                        android:drawablePadding="18dp"
-                        android:foreground="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:paddingLeft="10dp"
-                        android:id="@+id/txt_update_infor"
-                        android:text="Update User Information"
-                        android:textColor="#000000"
-                        android:textSize="13sp" />
+                    android:drawableLeft="@drawable/ic_st_3"
+                    android:drawablePadding="18dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Update User Information"
+                    android:textColor="#000000"
+                    android:textSize="13sp" />
 
-                </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="31dp"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardBackgroundColor="#7EFFFFFF"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="4dp">
+
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="31dp"
-                    app:cardElevation="4dp"
-                    app:cardCornerRadius="30dp"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    app:cardBackgroundColor="#7EFFFFFF">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="46dp"
-                        android:drawableLeft="@drawable/ic_st_4"
-                        android:gravity="center_vertical"
-                        android:drawablePadding="18dp"
-                        android:paddingLeft="10dp"
-                        android:text="Payment History"
-                        android:textColor="#000000"
-                        android:textSize="13sp" />
+                    android:layout_height="46dp"
+                    android:drawableLeft="@drawable/ic_st_4"
+                    android:drawablePadding="18dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Payment History"
+                    android:textColor="#000000"
+                    android:textSize="13sp" />
 
-                </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
 
-                <androidx.cardview.widget.CardView
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cart_logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="31dp"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardBackgroundColor="#7EFFFFFF"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="4dp">
+
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="31dp"
-                    app:cardCornerRadius="30dp"
-                    app:cardElevation="4dp"
-                    android:id="@+id/cart_logout"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    app:cardBackgroundColor="#7EFFFFFF">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="46dp"
-                        android:drawableLeft="@drawable/ic_st_logout"
-                        android:gravity="center_vertical"
-                        android:drawablePadding="18dp"
-                        android:paddingLeft="10dp"
-                        android:text="Log Out"
-                        android:textColor="#000000"
-                        android:textSize="13sp" />
+                    android:layout_height="46dp"
+                    android:drawableLeft="@drawable/ic_st_logout"
+                    android:drawablePadding="18dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Log Out"
+                    android:textColor="#000000"
+                    android:textSize="13sp" />
 
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
-</RelativeLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.core.widget.NestedScrollView>
