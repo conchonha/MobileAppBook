@@ -1,7 +1,9 @@
 package com.example.mobileappbook.src.page.account;
 
+import android.Manifest;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -9,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -17,6 +20,7 @@ import com.example.mobileappbook.cores.reponse.acount.UserReponse;
 import com.example.mobileappbook.src.page.tabbar.TabBarActivity;
 import com.example.mobileappbook.src.viewmodel.acount.LoginViewmodel;
 import com.example.mobileappbook.utils.Helpers;
+import com.example.mobileappbook.utils.Validations;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText mEdtEmail, mEdtPassword;
@@ -24,11 +28,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Dialog mDialog;
     private LoginViewmodel mLoginViewmodel;
     private String TAG = "LoginActivity";
+    private final int REQUEST_CODE_PERMISSION_STORAGE = 01234;
+    private final String[] mPermissions = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        ActivityCompat.requestPermissions(this, mPermissions, REQUEST_CODE_PERMISSION_STORAGE);
         initViewModel();
         initView();
         listenerOnclicked();
@@ -79,9 +86,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.btn_login:
                 if (mLoginViewmodel.checkValidation(mEdtEmail, mEdtPassword)) {
-                    mDialog = Helpers.showLoadingDialog(LoginActivity.this);
-                    mDialog.show();
-                    mLoginViewmodel.login();
+                    if(Validations.checkInternet(getApplicationContext())){
+                        mDialog = Helpers.showLoadingDialog(LoginActivity.this);
+                        mDialog.show();
+                        mLoginViewmodel.login();
+                    }else{
+                        Helpers.showLoadingDialog(this);
+                    }
                 }
                 break;
             case R.id.txt_forgotPassword:
@@ -95,6 +106,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.img_back:
                 finish();
                 break;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permission, int[] grantResults) {
+        if (requestCode == REQUEST_CODE_PERMISSION_STORAGE) {
+            for (int i = 0; i < mPermissions.length; i++) {
+                String permissio = mPermissions[i];
+                int grantResult = grantResults[i];
+
+                if (permissio.equals(Manifest.permission.READ_EXTERNAL_STORAGE) || permissio.equals(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                    if (grantResult == PackageManager.PERMISSION_GRANTED) {
+
+                    } else {
+                        requestPermissions(new String[]{permissio}, REQUEST_CODE_PERMISSION_STORAGE);
+                    }
+                }
+            }
         }
     }
 }

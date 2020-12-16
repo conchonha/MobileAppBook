@@ -20,7 +20,11 @@ public class TabbarAdapter extends FragmentStatePagerAdapter {
     private List<Fragment>mListFragment = new ArrayList<>();
 
     public TabbarAdapter(@NonNull FragmentManager fm) {
-        super(fm);
+        super(fm,BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        addData();
+    }
+
+    private void addData() {
         //add title tabbar
         mListTitle.add("Featured");
         mListTitle.add("Search");

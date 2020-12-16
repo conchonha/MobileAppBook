@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,10 +18,16 @@ import androidx.fragment.app.Fragment;
 import com.example.mobileappbook.R;
 import com.example.mobileappbook.src.page.course.CourseList2Activity;
 import com.example.mobileappbook.src.page.course.CreateCourseActivity;
+import com.example.mobileappbook.src.page.tabbar.TabBarActivity;
+import com.example.mobileappbook.utils.Constain;
+import com.example.mobileappbook.utils.Helpers;
+
+import static android.app.Activity.RESULT_OK;
 
 public class mycoursesFragment extends Fragment{
     private View mView;
     private Button mBtnSwipe;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -39,7 +46,7 @@ public class mycoursesFragment extends Fragment{
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        startActivity(new Intent(getActivity(), CourseList2Activity.class));
+                        startActivity(new Intent(getContext(), CourseList2Activity.class));
                         getActivity().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                     }
                 },2000);
@@ -51,4 +58,5 @@ public class mycoursesFragment extends Fragment{
     private void initView() {
         mBtnSwipe = mView.findViewById(R.id.btn_swipe);
     }
+
 }

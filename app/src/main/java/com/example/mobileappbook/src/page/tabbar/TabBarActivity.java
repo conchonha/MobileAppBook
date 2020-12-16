@@ -1,5 +1,6 @@
 package com.example.mobileappbook.src.page.tabbar;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -42,9 +43,14 @@ public class TabBarActivity extends AppCompatActivity{
                 switch (position){
                     case 0:
                         mTabLayout.setVisibility(View.GONE);
-                        finish();
-                        startActivity(getIntent());
-                        overridePendingTransition(0,0);
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                finish();
+                                startActivity(getIntent().putExtra(Constain.keyTap,0));
+                                overridePendingTransition(0,0);
+                            }
+                        },1000);
                         break;
                     default:
                         Helpers.removeFragment(getSupportFragmentManager(),0,0,Constain.fragmentDetailBuy);

@@ -4,9 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.mobileappbook.R;
+import com.example.mobileappbook.src.page.tabbar.TabBarActivity;
+import com.example.mobileappbook.utils.Helpers;
 
 public class CourseList2Activity extends AppCompatActivity implements View.OnClickListener {
 
@@ -27,6 +31,7 @@ public class CourseList2Activity extends AppCompatActivity implements View.OnCli
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.img_back:
+                Helpers.intentClearOnTapSelected2(this, TabBarActivity.class);
                 finish();
                 break;
             case R.id.btn_next:
@@ -34,5 +39,15 @@ public class CourseList2Activity extends AppCompatActivity implements View.OnCli
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                 break;
         }
+    }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            Helpers.intentClearOnTapSelected2(this, TabBarActivity.class);
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

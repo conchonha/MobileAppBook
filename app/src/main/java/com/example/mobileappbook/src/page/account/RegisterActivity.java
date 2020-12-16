@@ -16,6 +16,7 @@ import com.example.mobileappbook.R;
 import com.example.mobileappbook.cores.reponse.acount.UserReponse;
 import com.example.mobileappbook.src.viewmodel.acount.RegisterViewmodel;
 import com.example.mobileappbook.utils.Helpers;
+import com.example.mobileappbook.utils.Validations;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
     private RegisterViewmodel mRegisterViewmodel;
@@ -73,9 +74,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         switch (v.getId()) {
             case R.id.card_register1:
                 if (mRegisterViewmodel.checkValidationsRegister(mEdtYourName, mEdtPhoneNumber, mEdtAddress, mEdtEmail, mEdtPassword, mEdtConfirm)) {
-                    mDialog = Helpers.showLoadingDialog(RegisterActivity.this);
-                    mDialog.show();
-                    mRegisterViewmodel.register();
+                    if(Validations.checkInternet(getApplicationContext())){
+                        mDialog = Helpers.showLoadingDialog(RegisterActivity.this);
+                        mDialog.show();
+                        mRegisterViewmodel.register();
+                    }else{
+                        Helpers.showLoadingDialog(this);
+                    }
                 }
                 break;
             case R.id.img_back:

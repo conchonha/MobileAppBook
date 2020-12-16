@@ -1,11 +1,15 @@
 package com.example.mobileappbook.utils;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Application;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Environment;
 import android.util.Base64;
 
@@ -15,6 +19,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.mobileappbook.R;
+import com.example.mobileappbook.src.page.account.LoginActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -59,6 +64,13 @@ public class Helpers {
         context.startActivity(intent);
         context.overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
     }
+    public static void intentClearOnTapSelected2(Activity context, Class activitity){
+        Intent intent = new Intent(context, activitity);
+        intent.putExtra(Constain.keyTap,2);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        context.startActivity(intent);
+        context.overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+    }
 
     public static File savebitmap(Bitmap bmp) {
         String extStorageDirectory = Environment.getExternalStorageDirectory().toString();
@@ -99,5 +111,16 @@ public class Helpers {
                     .remove(prev)
                     .commit();
         }
+    }
+
+    public static void showDialogCheckConnection(Activity activity){
+        final AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle("Check Internet").setMessage("Please check internet of your");
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        }).create().show();
     }
 }

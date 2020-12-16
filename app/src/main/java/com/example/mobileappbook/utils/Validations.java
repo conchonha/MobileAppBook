@@ -1,6 +1,8 @@
 package com.example.mobileappbook.utils;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.text.Editable;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -42,6 +44,14 @@ public class Validations {
         else
             return false;
     }
+    public static boolean isValidPrice(String price){
+        try {
+           Integer.parseInt(price);
+           return false;
+        }catch (Exception e){
+            return true;
+        }
+    }
 
     public static boolean isValidPhoneNumber(String number) {
         String validNumber = "^0[35789]{1}\\d{8}$";
@@ -65,6 +75,12 @@ public class Validations {
             return true;
         }
         return false;
+    }
+
+    public static boolean checkInternet(Context context) {
+        ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        return (networkInfo != null && networkInfo.isConnected());
     }
 
     public static boolean isValidSpecialCharacters(Editable s) {

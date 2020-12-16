@@ -1,5 +1,6 @@
 package com.example.mobileappbook.cores.services;
 import com.example.mobileappbook.cores.body.ActiveAcountBody;
+import com.example.mobileappbook.cores.body.CreateCourseBody;
 import com.example.mobileappbook.cores.body.LoginBody;
 import com.example.mobileappbook.cores.body.PaymentBody;
 import com.example.mobileappbook.cores.body.RegisterBody;
@@ -81,4 +82,7 @@ public interface DataService {
     @POST("/payment/pay")
     Call<Map>pay(@Body PaymentBody body);
 
+    //-----------------------Course---------------------------------
+    @POST("/course/create")
+    Call<Map>createCourse(@Body CreateCourseBody body,@Header("auth-token") String authToken);
 }
