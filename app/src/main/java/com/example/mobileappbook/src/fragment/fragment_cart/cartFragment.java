@@ -19,16 +19,11 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileappbook.R;
-import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCategoryReponse;
-import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseReponse;
 import com.example.mobileappbook.model.CartModel;
 import com.example.mobileappbook.src.viewmodel.cart.CartViewModel;
 import com.example.mobileappbook.src.adapter.cart_adapter.CartAdapter;
 import com.example.mobileappbook.src.page.payment.PayActivity;
 import com.example.mobileappbook.utils.Helpers;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class cartFragment extends Fragment implements View.OnClickListener {
     private View mView;

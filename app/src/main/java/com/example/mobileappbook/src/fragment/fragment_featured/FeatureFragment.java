@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileappbook.R;
-import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseReponse;
+import com.example.mobileappbook.cores.reponse.featured.GetAllCourseReponse;
 import com.example.mobileappbook.model.CallbackFeatured;
 import com.example.mobileappbook.src.adapter.featured_adapter.FeaturedAdapter;
 import com.example.mobileappbook.src.page.tabbar.TabBarActivity;

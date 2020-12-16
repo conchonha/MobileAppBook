@@ -7,8 +7,8 @@ import com.example.mobileappbook.async.featured.GetAllCategoryAsync;
 import com.example.mobileappbook.async.featured.GetAllCourseAsync;
 import com.example.mobileappbook.async.featured.GetFreeCourseAsync;
 import com.example.mobileappbook.async.featured.GetTopCourseAsync;
-import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCategoryReponse;
-import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseReponse;
+import com.example.mobileappbook.cores.reponse.featured.GetAllCategoryReponse;
+import com.example.mobileappbook.cores.reponse.featured.GetAllCourseReponse;
 
 import java.util.List;
 

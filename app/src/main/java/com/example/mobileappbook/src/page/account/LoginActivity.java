@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         mDialog.show();
                         mLoginViewmodel.login();
                     }else{
-                        Helpers.showLoadingDialog(this);
+                        Helpers.showDialogCheckConnection(this);
                     }
                 }
                 break;

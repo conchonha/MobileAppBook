@@ -152,22 +152,17 @@
                             android:textColor="#FFFFFF"
                             android:textSize="16sp" />
 
-                        <LinearLayout
+                        <Spinner
+                            android:id="@+id/spiner_field"
                             android:layout_width="match_parent"
-                            android:layout_height="40dp"
+                            android:layout_height="37dp"
+                            android:paddingStart="20dp"
+                            android:paddingLeft="10dp"
                             android:background="@drawable/boder_edit"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/edt_field"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:paddingLeft="10dp"
-                                android:inputType="text"
-                                android:textColor="#000000"
-                                android:textSize="13sp"
-                                android:textColorHint="#000000"/>
-                        </LinearLayout>
+                            android:paddingRight="20dp"
+                            android:textColor="#000000"
+                            android:textSize="13sp"
+                            android:textColorHint="#000000"/>
                     </LinearLayout>
 
                     <LinearLayout

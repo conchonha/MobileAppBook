@@ -6,25 +6,23 @@ import com.example.mobileappbook.cores.body.PaymentBody;
 import com.example.mobileappbook.cores.body.RegisterBody;
 import com.example.mobileappbook.cores.body.UserInfoBody;
 import com.example.mobileappbook.cores.reponse.acount.ChangePasswordReponse;
-import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseReponse;
-import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCategoryReponse;
+import com.example.mobileappbook.cores.reponse.course.CourseReponse;
+import com.example.mobileappbook.cores.reponse.featured.GetAllCourseReponse;
+import com.example.mobileappbook.cores.reponse.featured.GetAllCategoryReponse;
 import com.example.mobileappbook.cores.body.ResetPasswordBody;
 import com.example.mobileappbook.cores.reponse.acount.UserReponse;
-
-import org.json.JSONObject;
 
 import java.util.List;
 import java.util.Map;
 
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
-import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -83,6 +81,14 @@ public interface DataService {
     Call<Map>pay(@Body PaymentBody body);
 
     //-----------------------Course---------------------------------
+    @Multipart
     @POST("/course/create")
-    Call<Map>createCourse(@Body CreateCourseBody body,@Header("auth-token") String authToken);
+    Call<CourseReponse>createCourse(@Part("name") RequestBody name,
+                                    @Part("goal") RequestBody goal,
+                                    @Part("description") RequestBody description,
+                                    @Part("category") RequestBody category,
+                                    @Part("price") RequestBody price,
+                                    @Part("discount") RequestBody discount,
+                                    @Header("auth-token") String authToken,
+                                    @Part MultipartBody.Part file);
 }

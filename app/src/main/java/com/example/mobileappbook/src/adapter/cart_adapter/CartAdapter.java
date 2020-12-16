@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileappbook.R;
-import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseReponse;
+import com.example.mobileappbook.cores.reponse.featured.GetAllCourseReponse;
 
 import java.util.ArrayList;
 import java.util.List;

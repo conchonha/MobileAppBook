@@ -79,7 +79,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         mDialog.show();
                         mRegisterViewmodel.register();
                     }else{
-                        Helpers.showLoadingDialog(this);
+                        Helpers.showDialogCheckConnection(this);
                     }
                 }
                 break;

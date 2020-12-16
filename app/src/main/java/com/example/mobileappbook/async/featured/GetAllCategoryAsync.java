@@ -3,7 +3,7 @@ package com.example.mobileappbook.async.featured;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCategoryReponse;
+import com.example.mobileappbook.cores.reponse.featured.GetAllCategoryReponse;
 import com.example.mobileappbook.cores.services.*;
 import com.example.mobileappbook.src.repositories.featured.FeaturedRepositories;
 

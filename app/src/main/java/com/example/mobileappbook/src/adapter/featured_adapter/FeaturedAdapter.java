@@ -9,7 +9,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileappbook.R;
-import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseReponse;
+import com.example.mobileappbook.cores.reponse.featured.GetAllCourseReponse;
 import com.example.mobileappbook.model.CallbackFeatured;
 import com.example.mobileappbook.src.fragment.fragment_featured.FeatureFragment;
 import com.example.mobileappbook.utils.Constain;

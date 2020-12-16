@@ -1,6 +1,6 @@
 package com.example.mobileappbook.model;
 
-import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseReponse;
+import com.example.mobileappbook.cores.reponse.featured.GetAllCourseReponse;
 
 import java.util.List;
 

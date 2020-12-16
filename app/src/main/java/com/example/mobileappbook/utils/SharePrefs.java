@@ -2,13 +2,10 @@ package com.example.mobileappbook.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.lifecycle.LiveData;
-
-import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseReponse;
+import com.example.mobileappbook.cores.reponse.featured.GetAllCourseReponse;
 import com.example.mobileappbook.cores.reponse.acount.UserReponse;
 import com.example.mobileappbook.model.CartModel;
 import com.google.gson.Gson;

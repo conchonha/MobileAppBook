@@ -3,8 +3,12 @@ package com.example.mobileappbook.src.page.course;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -13,16 +17,24 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.mobileappbook.R;
+import com.example.mobileappbook.compoments.OnItemSelectedListenner;
+import com.example.mobileappbook.cores.reponse.featured.GetAllCategoryReponse;
 import com.example.mobileappbook.src.viewmodel.course.CourseViewmodel;
 import com.example.mobileappbook.utils.Constain;
 import com.example.mobileappbook.utils.Helpers;
+import com.google.gson.Gson;
 
-import java.util.Map;
+import java.util.List;
+
 
 public class CreateCourse2Activity extends AppCompatActivity implements View.OnClickListener {
-    private EditText mEdtCourseName,mEdtObjectives,mEdtDesciption,mEdtField,mEdtPrice,mEdtDiscount;
+    private EditText mEdtCourseName,mEdtObjectives,mEdtDesciption,mEdtPrice,mEdtDiscount;
     private CourseViewmodel mCourseViewmodel;
     private Dialog mDialog;
+    private Spinner mSpiner;
+    private SpinnerAdapter mSpinnerAdapter;
+    private GetAllCategoryReponse mGetAllCategoryReponse;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,17 +47,12 @@ public class CreateCourse2Activity extends AppCompatActivity implements View.OnC
     //khởi tạo viewmodel
     private void initViewModel() {
         mCourseViewmodel = ViewModelProviders.of(this).get(CourseViewmodel.class);
-        //lang nghe va quan sat du lieu
-        mCourseViewmodel.getCreateCourseReponse().observe(this, new Observer<Map>() {
+
+        mCourseViewmodel.getAllCategory().observe(this, new Observer<List<GetAllCategoryReponse>>() {
             @Override
-            public void onChanged(Map map) {
-                mDialog.dismiss();
-                if(map.get(Constain.keyMapErr) != null){
-                    Toast.makeText(CreateCourse2Activity.this, map.get(Constain.keyMapErr)+"", Toast.LENGTH_SHORT).show();
-                }else{
-                    startActivity(new Intent(CreateCourse2Activity.this,ChangeCourseAvataActivity.class));
-                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
-                }
+            public void onChanged(List<GetAllCategoryReponse> getAllCategoryReponses) {
+                mSpinnerAdapter = new com.example.mobileappbook.src.adapter.spinner_adapter.SpinnerAdapter(getApplicationContext(), getAllCategoryReponses);
+                mSpiner.setAdapter(mSpinnerAdapter);
             }
         });
     }
@@ -55,13 +62,21 @@ public class CreateCourse2Activity extends AppCompatActivity implements View.OnC
         mEdtCourseName = findViewById(R.id.edt_courseName);
         mEdtObjectives = findViewById(R.id.edt_objectives);
         mEdtDesciption = findViewById(R.id.edt_desciption);
-        mEdtField = findViewById(R.id.edt_field);
         mEdtPrice = findViewById(R.id.edt_price);
         mEdtDiscount = findViewById(R.id.edt_discount);
+        mSpiner = findViewById(R.id.spiner_field);
     }
 
     //lắng nghe sự kiện onClicked
     private void listenerOnclicked() {
+        mSpiner.setOnItemSelectedListener(new OnItemSelectedListenner() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                super.onItemSelected(parent, view, position, id);
+                mGetAllCategoryReponse = (GetAllCategoryReponse) parent.getItemAtPosition(position);
+            }
+        });
+
         findViewById(R.id.btn_next).setOnClickListener(this);
     }
 
@@ -69,10 +84,16 @@ public class CreateCourse2Activity extends AppCompatActivity implements View.OnC
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_next:
-                if (mCourseViewmodel.checkValidation(mEdtCourseName, mEdtObjectives, mEdtDesciption, mEdtField, mEdtPrice, mEdtDiscount)) {
-                    mCourseViewmodel.createCourse();
+                if (mCourseViewmodel.checkValidation(mEdtCourseName, mEdtObjectives, mEdtDesciption, mGetAllCategoryReponse.getId(), mEdtPrice, mEdtDiscount)) {
                     mDialog = Helpers.showLoadingDialog(this);
                     mDialog.show();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            mDialog.dismiss();
+                            startActivity(new Intent(CreateCourse2Activity.this,ChangeCourseAvataActivity.class).putExtra(Constain.keyCreateCourseBody,mCourseViewmodel.getmCreateCourseBody()));
+                        }
+                    },2000);
                 }
                 break;
         }

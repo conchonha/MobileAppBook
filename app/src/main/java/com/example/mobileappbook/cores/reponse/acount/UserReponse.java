@@ -1,6 +1,6 @@
 package com.example.mobileappbook.cores.reponse.acount;
 
-import com.example.mobileappbook.cores.reponse.error_reponse.ObjectError;
+import com.example.mobileappbook.cores.reponse.error.ObjectError;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

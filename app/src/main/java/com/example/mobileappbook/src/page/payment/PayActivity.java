@@ -15,7 +15,6 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.mobileappbook.R;
 import com.example.mobileappbook.cores.body.PaymentBody;
 import com.example.mobileappbook.cores.reponse.acount.UserReponse;
-import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseReponse;
 import com.example.mobileappbook.cores.services.APIServices;
 import com.example.mobileappbook.cores.services.DataService;
 import com.example.mobileappbook.model.CartModel;
@@ -30,8 +29,6 @@ import com.stripe.android.model.Card;
 import com.stripe.android.model.Token;
 import com.stripe.android.view.CardInputWidget;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import retrofit2.Call;

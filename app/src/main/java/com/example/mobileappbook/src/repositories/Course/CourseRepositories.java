@@ -4,23 +4,31 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.mobileappbook.async.course.CreateCousreAsync;
+import com.example.mobileappbook.async.featured.GetAllCategoryAsync;
 import com.example.mobileappbook.cores.body.CreateCourseBody;
+import com.example.mobileappbook.cores.reponse.course.CourseReponse;
+import com.example.mobileappbook.cores.reponse.featured.GetAllCategoryReponse;
 
-import java.util.Map;
+import java.util.List;
+
+import okhttp3.MultipartBody;
 
 public class CourseRepositories {
-    private MutableLiveData<Map>mCreateCourseReponse = new MutableLiveData<>();
+    private MutableLiveData<CourseReponse>mCreateCourseReponse = new MutableLiveData<>();
+    private MutableLiveData<List<GetAllCategoryReponse>> mGetAllCategoryReponse = new MutableLiveData<>();
 
-    public void createCourse(CreateCourseBody createCourseBody,String token){
-        CreateCousreAsync async = new CreateCousreAsync(this,createCourseBody,token);
+    //---------------------createCourse------------
+
+    public void createCourse(CreateCourseBody createCourseBody, String token, MultipartBody.Part part){
+        CreateCousreAsync async = new CreateCousreAsync(this,createCourseBody,token,part);
         async.execute();
     }
 
-    public void setmCreateCourseReponse(Map map){
-        mCreateCourseReponse.setValue(map);
+    public void setmCreateCourseReponse(CourseReponse createCourseReponse){
+        mCreateCourseReponse.setValue(createCourseReponse);
     }
 
-    public LiveData<Map> getCreateCourseReponse(){
+    public LiveData<CourseReponse> getCreateCourseReponse(){
         return mCreateCourseReponse;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.mobileappbook.cores.reponse.featured_reponse;
+package com.example.mobileappbook.cores.reponse.featured;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

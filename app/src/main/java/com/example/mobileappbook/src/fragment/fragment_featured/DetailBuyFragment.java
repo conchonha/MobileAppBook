@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.mobileappbook.R;
-import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseReponse;
+import com.example.mobileappbook.cores.reponse.featured.GetAllCourseReponse;
 import com.example.mobileappbook.model.CallbackFeatured;
 import com.example.mobileappbook.src.page.tabbar.TabBarActivity;
 import com.example.mobileappbook.utils.Constain;

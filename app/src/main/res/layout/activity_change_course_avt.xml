@@ -1,125 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/banner_change_avt">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/banner_change_avt">
 
     <ImageView
-            android:id="@+id/img_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:clickable="true"
-            android:foreground="?attr/selectableItemBackground"
-            android:src="@drawable/ic_back" />
+        android:id="@+id/img_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:src="@drawable/ic_back" />
 
     <TextView
-            android:id="@+id/txt_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="33dp"
-            android:fontFamily="@font/black_and_white_picture"
-            android:gravity="center"
-            android:text="Course Cover"
-            android:textColor="#FFFFFF"
-            android:textSize="48sp" />
+        android:id="@+id/txt_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp"
+        android:fontFamily="@font/black_and_white_picture"
+        android:gravity="center"
+        android:text="Course Cover"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp" />
 
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txt_title"
-            android:layout_marginLeft="14dp"
-            android:layout_marginTop="22dp"
-            android:layout_marginRight="14dp"
-            android:background="@drawable/border_change_avt"
-            android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_title"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginRight="14dp"
+        android:background="@drawable/border_change_avt"
+        android:orientation="vertical">
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp"
+            android:text="Review"
+            android:textColor="#000000"
+            android:textSize="18dp" />
+
+        <ImageView
+            android:id="@+id/img_course_cover"
+            android:layout_width="match_parent"
+            android:layout_height="183dp"
+            android:layout_margin="12dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/rectangle_27" />
+
+        <TextView
+            android:id="@+id/txt_2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/linechange1"
+            android:layout_marginTop="12dp"
+            android:background="#000000" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:orientation="vertical">
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:paddingLeft="13dp"
                 android:paddingRight="13dp"
-                android:text="Review"
+                android:text="Pick Image"
                 android:textColor="#000000"
                 android:textSize="18dp" />
 
-        <ImageView
-                android:id="@+id/img_course_cover"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="12dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/rectangle_27" />
-
-        <TextView
-                android:id="@+id/txt_2"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_below="@id/linechange1"
-                android:layout_marginTop="12dp"
-                android:background="#000000" />
-
-        <LinearLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:orientation="vertical">
-
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:paddingLeft="13dp"
-                    android:paddingRight="13dp"
-                    android:text="Pick Image"
-                    android:textColor="#000000"
-                    android:textSize="18dp" />
-
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="25dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="25dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <Button
-                        android:id="@+id/btn_course_library"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="113dp"
-                        android:layout_marginRight="113dp"
-                        android:background="@drawable/border_change"
-                        android:padding="10dp"
-                        android:text="From Library"
-                        android:textAppearance="@style/CalcResultStyle"
-                        android:textColor="#000000"
-                        android:textSize="14sp" />
+                    android:id="@+id/btn_course_library"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="113dp"
+                    android:layout_marginRight="113dp"
+                    android:background="@drawable/border_change"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:padding="10dp"
+                    android:text="From Library"
+                    android:textAppearance="@style/CalcResultStyle"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
 
     <Button
-            android:id="@+id/btn_create_course"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="121dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginRight="121dp"
-            android:layout_marginBottom="36dp"
-            android:background="@drawable/border_send"
-            android:clickable="true"
-            android:fontFamily="@font/black_and_white_picture"
-            android:foreground="?attr/selectableItemBackground"
-            android:padding="10dp"
-            android:text="Create Course"
-            android:textAppearance="@style/CalcResultStyle"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+        android:id="@+id/btn_create_course"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="121dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="121dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/border_send"
+        android:clickable="true"
+        android:fontFamily="@font/black_and_white_picture"
+        android:foreground="?attr/selectableItemBackground"
+        android:padding="10dp"
+        android:text="Create Course"
+        android:textAppearance="@style/CalcResultStyle"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
 
 </RelativeLayout>

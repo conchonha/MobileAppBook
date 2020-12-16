@@ -1,4 +1,4 @@
-package com.example.mobileappbook.cores.reponse.error_reponse;
+package com.example.mobileappbook.cores.reponse.error;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

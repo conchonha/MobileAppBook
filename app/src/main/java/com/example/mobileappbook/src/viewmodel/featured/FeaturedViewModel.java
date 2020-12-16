@@ -1,17 +1,14 @@
 package com.example.mobileappbook.src.viewmodel.featured;
 
 import android.app.Application;
-import android.view.Window;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 
-import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCategoryReponse;
-import com.example.mobileappbook.cores.reponse.featured_reponse.GetAllCourseReponse;
+import com.example.mobileappbook.cores.reponse.featured.GetAllCategoryReponse;
+import com.example.mobileappbook.cores.reponse.featured.GetAllCourseReponse;
 import com.example.mobileappbook.src.repositories.featured.FeaturedRepositories;
 
 import java.util.ArrayList;
