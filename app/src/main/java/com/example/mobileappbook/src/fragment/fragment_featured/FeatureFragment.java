@@ -49,7 +49,7 @@ public class FeatureFragment extends Fragment implements CallbackFeatured, View.
     }
 
     private void init() {
-        mFeaturedAdapter = new FeaturedAdapter(this);
+        mFeaturedAdapter = new FeaturedAdapter(this,R.layout.row_item_featured);
         mRecyclerviewFeatured.setLayoutManager(new GridLayoutManager(getContext(), 1));
         mRecyclerviewFeatured.setHasFixedSize(true);
         mRecyclerviewFeatured.setAdapter(mFeaturedAdapter);

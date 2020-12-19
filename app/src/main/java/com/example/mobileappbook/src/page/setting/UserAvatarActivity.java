@@ -192,6 +192,9 @@ public class UserAvatarActivity extends AppCompatActivity implements View.OnClic
                         RequestBody fileReqBody = RequestBody.create(MediaType.parse("image/jpg"), mFileImage);
                         MultipartBody.Part part = MultipartBody.Part.createFormData("image", mFileImage.getName(), fileReqBody);
                         mUserAvatarViewModel.userChangeAvatar(part);
+                    }else{
+                        mDialog.dismiss();
+                        Toast.makeText(this, "Vui lòng chọn tối thiểu một trường", Toast.LENGTH_SHORT).show();
                     }
                 }
 

@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileappbook.R;
@@ -21,18 +22,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.FeaturedViewhodler> {
-    private FeatureFragment mFeatureFragment;
+    private Fragment mFeatureFragment;
     private List<GetAllCourseReponse>mListCourseReponse  = new ArrayList<>();
     private View mView;
+    private int mLayout;
 
-    public FeaturedAdapter(FeatureFragment featureFragment) {
+    public FeaturedAdapter(Fragment featureFragment,int layout) {
         this.mFeatureFragment = featureFragment;
+        this.mLayout = layout;
     }
 
     @NonNull
     @Override
     public FeaturedViewhodler onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        mView = View.inflate(parent.getContext(), R.layout.row_item_featured,null);
+        mView = View.inflate(parent.getContext(), mLayout,null);
         return new FeaturedViewhodler(mView);
     }
 
@@ -49,7 +52,7 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.Featur
             holder.mCardBuy.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    CallbackFeatured callbackFeatured = mFeatureFragment;
+                    CallbackFeatured callbackFeatured = (CallbackFeatured) mFeatureFragment;
                     callbackFeatured.onClickItem(reponse);
                 }
             });

@@ -1,6 +1,7 @@
 package com.example.mobileappbook.src.fragment.fragment_featured.detail_buy;
 
 import android.app.Dialog;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -24,12 +25,11 @@ import com.example.mobileappbook.utils.Helpers;
 import com.example.mobileappbook.utils.SharePrefs;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
-import com.squareup.picasso.Picasso;;
+import com.squareup.picasso.Picasso;
 
-
-public class DetailBuyFragment extends Fragment implements View.OnClickListener,CallbackFeatured{
+public class DetailBuyFragment extends Fragment implements View.OnClickListener, CallbackFeatured {
     private View mView;
-    private TextView mTxtName,mTxtNameCategory,mTxtPrice,mTxtPriceSale,mTxtTime,mTxtDescription;
+    private TextView mTxtName, mTxtNameCategory, mTxtPrice, mTxtPriceSale, mTxtTime, mTxtDescription;
     private ImageView mImageAvatar;
     //variable
     private GetAllCourseReponse mReponse;
@@ -39,7 +39,7 @@ public class DetailBuyFragment extends Fragment implements View.OnClickListener,
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.layout_fragment_detail_buy,container,false);
+        mView = inflater.inflate(R.layout.layout_fragment_detail_buy, container, false);
         initView();
         initViewModel();
         init();
@@ -59,22 +59,24 @@ public class DetailBuyFragment extends Fragment implements View.OnClickListener,
     }
 
     private void init() {
-        if(mReponse != null){
+        if (mReponse != null) {
             mTxtName.setText(mReponse.getName());
             mTxtDescription.setText(mReponse.getDescription());
             mTxtNameCategory.setText(mReponse.getCategory().getName());
             mTxtPrice.setText(mReponse.getPrice().toString());
-            mTxtPriceSale.setText(mReponse.getDiscount().toString()+"%");
+            mTxtPrice.setPaintFlags(mTxtPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            mTxtPriceSale.setText(mReponse.getDiscount().toString() + "%");
             mTxtTime.setText(mReponse.getCreatedAt());
-            Picasso.get().load(Constain.coursesUrlImg+mReponse.getImage()).placeholder(R.drawable.empty23).error(R.drawable.empty23).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).into(mImageAvatar);
-            if(mReponse.getDiscount() != 0){
-                int price = mReponse.getPrice()-(mReponse.getPrice()*mReponse.getDiscount())/100;
-                mTxtPrice.setText(price+"");
+            Picasso.get().load(Constain.coursesUrlImg + mReponse.getImage()).placeholder(R.drawable.empty23).error(R.drawable.empty23).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).into(mImageAvatar);
+            if (mReponse.getDiscount() != 0) {
+                int price = mReponse.getPrice() - (mReponse.getPrice() * mReponse.getDiscount()) / 100;
+                mTxtPrice.setText(price + "");
             }
-            if(mReponse.getPrice() == 0){
+            if (mReponse.getPrice() == 0) {
                 mTxtPrice.setText("Miễn phí");
             }
             mDetailBuyViewModel.getComment(mReponse.getId());
+            mDetailBuyViewModel.getSuggestedCourses(mReponse.getIdUser().getId().toString());
         }
     }
 
@@ -91,10 +93,10 @@ public class DetailBuyFragment extends Fragment implements View.OnClickListener,
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.img_back:
                 TabBarActivity.mTabLayout.setVisibility(View.GONE);
-                Helpers.removeFragment(getFragmentManager(),R.anim.slide_out_right,R.anim.slide_out_fragment,Constain.fragmentDetailBuy);
+                Helpers.removeFragment(getFragmentManager(), R.anim.slide_out_right, R.anim.slide_out_fragment, Constain.fragmentDetailBuy);
                 break;
             case R.id.card_4:
                 mDialog = Helpers.showLoadingDialog(getActivity());
@@ -103,10 +105,10 @@ public class DetailBuyFragment extends Fragment implements View.OnClickListener,
                     @Override
                     public void run() {
                         SharePrefs sharePrefs = new SharePrefs(getContext());
-                        sharePrefs.saveCart(mReponse,getContext());
+                        sharePrefs.saveCart(mReponse, getContext());
                         mDialog.dismiss();
                     }
-                },3000);
+                }, 3000);
                 break;
         }
     }

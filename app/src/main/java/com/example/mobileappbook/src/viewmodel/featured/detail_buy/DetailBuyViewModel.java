@@ -27,4 +27,12 @@ public class DetailBuyViewModel extends AndroidViewModel {
     public LiveData<Map>getCommentReponse(){
         return mDetailBuyRepositories.getmGetCommentReponse();
     }
+
+    public void getSuggestedCourses(String idUser){
+        mDetailBuyRepositories.getGetSuggested(idUser);
+    }
+
+    public LiveData<Map>getmGetSuggestedReponse(){
+        return mDetailBuyRepositories.getmGetSuggestedReponse();
+    }
 }

@@ -97,4 +97,7 @@ public interface DataService {
     //-----------------------Comment---------------------------------
     @GET("/rate/get-rate-by-course/{courseId}")
     Call<List<GetCommentReponse>>getCommentReponse(@Path(value="courseId", encoded=false) String courseId);
+
+    @GET("/course/getby-iduser/{userId}")
+    Call<List<GetAllCourseReponse>>getSussgesTedCourseReponse(@Path(value="userId", encoded=false) String userId);
 }

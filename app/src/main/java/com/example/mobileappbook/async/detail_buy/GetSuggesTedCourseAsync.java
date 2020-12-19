@@ -1,9 +1,10 @@
-package com.example.mobileappbook.async.comment;
+package com.example.mobileappbook.async.detail_buy;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.example.mobileappbook.cores.reponse.comment.GetCommentReponse;
+import com.example.mobileappbook.cores.reponse.featured.GetAllCourseReponse;
 import com.example.mobileappbook.cores.services.APIServices;
 import com.example.mobileappbook.cores.services.DataService;
 import com.example.mobileappbook.src.repositories.featured.detail_buy.DetailBuyRepositories;
@@ -18,42 +19,42 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class GetCommentAsync extends AsyncTask<String,Void,Void> {
+public class GetSuggesTedCourseAsync extends AsyncTask<String,Void,Void> {
     private DetailBuyRepositories mDetailBuyRepositories;
     private Map mMap = new HashMap();
-    private String TAG = "GetCommentAsync";
+    private String TAG = "GetSuggesTedCourseAsync";
     private Gson mGson = new Gson();
 
-    public GetCommentAsync(DetailBuyRepositories detailBuyRepositories){
+    public GetSuggesTedCourseAsync(DetailBuyRepositories detailBuyRepositories){
         this.mDetailBuyRepositories = detailBuyRepositories;
     }
 
     @Override
     protected Void doInBackground(String... strings) {
-        String courseId = strings[0];
+        String userId = strings[0];
         DataService dataService = APIServices.getService();
-        Call<List<GetCommentReponse>>call = dataService.getCommentReponse(courseId);
+        Call<List<GetAllCourseReponse>> call = dataService.getSussgesTedCourseReponse(userId);
 
-        call.enqueue(new Callback<List<GetCommentReponse>>() {
+        call.enqueue(new Callback<List<GetAllCourseReponse>>() {
             @Override
-            public void onResponse(Call<List<GetCommentReponse>> call, Response<List<GetCommentReponse>> response) {
+            public void onResponse(Call<List<GetAllCourseReponse>> call, Response<List<GetAllCourseReponse>> response) {
                 Log.d(TAG, "onResponse: "+response.toString());
                 if(response.isSuccessful()){
-                    mMap.put(200,response.body());
-                    mDetailBuyRepositories.setmGetCommentReponse(mMap);
+                    mMap.put("200",response.body());
+                    mDetailBuyRepositories.setmGetSuggestedReponse(mMap);
                     Log.d(TAG, "onResponse -success: "+mGson.toJson(response.body()));
                 }else{
                     mMap.put(Constain.keyMapErr,response.message());
-                    mDetailBuyRepositories.setmGetCommentReponse(mMap);
+                    mDetailBuyRepositories.setmGetSuggestedReponse(mMap);
                     Log.d(TAG, "onResponse -err: "+mGson.toJson(response.errorBody()));
                 }
             }
 
             @Override
-            public void onFailure(Call<List<GetCommentReponse>> call, Throwable t) {
+            public void onFailure(Call<List<GetAllCourseReponse>> call, Throwable t) {
                 Log.d(TAG, "onFailure: "+t.toString());
                 mMap.put(Constain.keyMapErr,t.getMessage());
-                mDetailBuyRepositories.setmGetCommentReponse(mMap);
+                mDetailBuyRepositories.setmGetSuggestedReponse(mMap);
             }
         });
         return null;

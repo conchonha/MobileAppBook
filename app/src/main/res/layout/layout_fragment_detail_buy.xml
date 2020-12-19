@@ -231,7 +231,7 @@
                   android:layout_marginTop="7dp"
                   android:id="@+id/txt_description"
                   android:textColor="#fff"
-                  android:textSize="13sp"
+                  android:textSize="@dimen/_10sdp"
                   android:layout_marginBottom="80dp"
                   android:text="@string/text" />
           </LinearLayout>
@@ -243,6 +243,14 @@
           android:layout_below="@+id/cart5"
           android:id="@+id/fragment_get_comment"
           android:name="com.example.mobileappbook.src.fragment.fragment_featured.comment.GetCommentFragment"/>
+      <fragment
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/fragment_get_comment"
+          android:layout_marginTop="@dimen/_30sdp"
+          android:id="@+id/fragment_suggested"
+          android:name="com.example.mobileappbook.src.fragment.fragment_featured.suggested_courses.SuggestedCoursesFragment"/>
+
   </RelativeLayout>
 
 </androidx.core.widget.NestedScrollView>
