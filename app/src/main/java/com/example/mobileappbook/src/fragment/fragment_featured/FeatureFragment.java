@@ -18,6 +18,7 @@ import com.example.mobileappbook.R;
 import com.example.mobileappbook.cores.reponse.featured.GetAllCourseReponse;
 import com.example.mobileappbook.model.CallbackFeatured;
 import com.example.mobileappbook.src.adapter.featured_adapter.FeaturedAdapter;
+import com.example.mobileappbook.src.fragment.fragment_featured.detail_buy.DetailBuyFragment;
 import com.example.mobileappbook.src.page.tabbar.TabBarActivity;
 import com.example.mobileappbook.src.viewmodel.featured.FeaturedViewModel;
 import com.example.mobileappbook.utils.Constain;

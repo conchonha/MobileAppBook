@@ -35,15 +35,13 @@ dependencies {
 
     //load imageview
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.makeramen:roundedimageview:2.3.0'
 
     //noinspection GradleCompatible - ho tro design
     implementation 'com.android.support:design:28.0.0'
 
     //danh dau trang viewpager
     implementation 'com.romandanylyk:pageindicatorview:1.0.0'
-
-    // imageview
-    implementation 'com.makeramen:roundedimageview:2.3.0'
 
     //api
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
@@ -56,7 +54,10 @@ dependencies {
     //countryl
     implementation 'com.hbb20:ccp:2.4.0'
 
-//    implementation 'com.google.android.gms:play-services-wallet:18.1.2'
+    //visa thanh toan
     implementation 'com.stripe:stripe-android:14.5.0'
     compile 'com.github.stfalcon:swipeable-button:0.1.0'
+
+    //mutiple screen
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
 }

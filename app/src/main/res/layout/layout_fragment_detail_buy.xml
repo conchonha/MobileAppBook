@@ -202,6 +202,7 @@
           android:layout_marginBottom="2dp"
           android:padding="2dp"
           android:layout_marginTop="23dp"
+          android:id="@+id/cart5"
           android:layout_below="@+id/card_4">
           <LinearLayout
               android:layout_width="match_parent"
@@ -234,7 +235,14 @@
                   android:layout_marginBottom="80dp"
                   android:text="@string/text" />
           </LinearLayout>
+
       </androidx.cardview.widget.CardView>
+      <fragment
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/cart5"
+          android:id="@+id/fragment_get_comment"
+          android:name="com.example.mobileappbook.src.fragment.fragment_featured.comment.GetCommentFragment"/>
   </RelativeLayout>
 
 </androidx.core.widget.NestedScrollView>

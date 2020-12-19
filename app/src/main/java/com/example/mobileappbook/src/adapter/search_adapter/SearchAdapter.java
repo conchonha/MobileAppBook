@@ -1,6 +1,5 @@
 package com.example.mobileappbook.src.adapter.search_adapter;
 
-import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -21,7 +20,7 @@ public class SearchAdapter extends RecyclerView.Adapter <SearchAdapter.SearchVie
     @NonNull
     @Override
     public SearchViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = View.inflate(parent.getContext(), R.layout.layout_item_search,null);
+        View view = View.inflate(parent.getContext(), R.layout.row_item_search,null);
         return new SearchViewholder(view);
     }
 

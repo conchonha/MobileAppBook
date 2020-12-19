@@ -37,7 +37,7 @@ public class SpinnerAdapter extends ArrayAdapter<GetAllCategoryReponse> {
 
     private View initView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.layout_item_spinner, parent,false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.row_item_spinner, parent,false);
         }
 
         ImageView imageView = convertView.findViewById(R.id.img_spinner);

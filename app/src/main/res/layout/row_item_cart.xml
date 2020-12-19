@@ -18,6 +18,7 @@
             <com.makeramen.roundedimageview.RoundedImageView
                 android:layout_width="91dp"
                 android:layout_height="75dp"
+                android:id="@+id/round_img"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="4dp"
                 android:src="@drawable/rectangle_22"

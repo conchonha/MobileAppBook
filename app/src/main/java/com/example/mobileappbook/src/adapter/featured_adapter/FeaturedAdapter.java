@@ -32,35 +32,40 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.Featur
     @NonNull
     @Override
     public FeaturedViewhodler onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        mView = View.inflate(parent.getContext(), R.layout.layout_item_featured,null);
+        mView = View.inflate(parent.getContext(), R.layout.row_item_featured,null);
         return new FeaturedViewhodler(mView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull FeaturedViewhodler holder, int position) {
-        final GetAllCourseReponse reponse = mListCourseReponse.get(position);
-        holder.mTxtPriceSale.setText(reponse.getDiscount().toString()+"%");
-        holder.mtxtPrice.setText(reponse.getPrice().toString());
-        holder.mTxtNameCategory.setText(reponse.getCategory().getName());
-        holder.mTxtName.setText(reponse.getName());
-        Picasso.get().load(Constain.coursesUrlImg+reponse.getImage()).placeholder(R.drawable.empty23).error(R.drawable.empty23).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).into(holder.mImageAvatar);
+        try {
+            final GetAllCourseReponse reponse = mListCourseReponse.get(position);
+            holder.mTxtPriceSale.setText(reponse.getDiscount().toString()+"%");
+            holder.mtxtPrice.setText(reponse.getPrice().toString());
+            holder.mTxtNameCategory.setText(reponse.getCategory().getName());
+            holder.mTxtName.setText(reponse.getName());
+            Picasso.get().load(Constain.coursesUrlImg+reponse.getImage()).placeholder(R.drawable.empty23).error(R.drawable.empty23).networkPolicy(NetworkPolicy.NO_CACHE).memoryPolicy(MemoryPolicy.NO_CACHE).into(holder.mImageAvatar);
 
-        holder.mCardBuy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CallbackFeatured callbackFeatured = mFeatureFragment;
-                callbackFeatured.onClickItem(reponse);
+            holder.mCardBuy.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CallbackFeatured callbackFeatured = mFeatureFragment;
+                    callbackFeatured.onClickItem(reponse);
+                }
+            });
+
+            if(reponse.getDiscount() != null){
+                int price=reponse.getPrice()-(reponse.getPrice()*reponse.getDiscount())/100;
+                holder.mtxtPrice.setText(price+"");
             }
-        });
 
-        if(reponse.getDiscount() != null){
-            int price=reponse.getPrice()-(reponse.getPrice()*reponse.getDiscount())/100;
-            holder.mtxtPrice.setText(price+"");
+            if(reponse.getPrice()==0){
+                holder.mtxtPrice.setText("Miễn phí");
+            }
+        }catch (Exception e){
+
         }
 
-        if(reponse.getPrice()==0){
-            holder.mtxtPrice.setText("Miễn phí");
-        }
     }
 
     public void setmListCourseReponse(List<GetAllCourseReponse>listCourseReponse){

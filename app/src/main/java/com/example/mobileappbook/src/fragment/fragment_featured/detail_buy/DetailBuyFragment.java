@@ -1,4 +1,4 @@
-package com.example.mobileappbook.src.fragment.fragment_featured;
+package com.example.mobileappbook.src.fragment.fragment_featured.detail_buy;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -12,17 +12,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.example.mobileappbook.R;
 import com.example.mobileappbook.cores.reponse.featured.GetAllCourseReponse;
 import com.example.mobileappbook.model.CallbackFeatured;
 import com.example.mobileappbook.src.page.tabbar.TabBarActivity;
+import com.example.mobileappbook.src.viewmodel.featured.detail_buy.DetailBuyViewModel;
 import com.example.mobileappbook.utils.Constain;
 import com.example.mobileappbook.utils.Helpers;
 import com.example.mobileappbook.utils.SharePrefs;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
-import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Picasso;;
+
 
 public class DetailBuyFragment extends Fragment implements View.OnClickListener,CallbackFeatured{
     private View mView;
@@ -31,14 +34,22 @@ public class DetailBuyFragment extends Fragment implements View.OnClickListener,
     //variable
     private GetAllCourseReponse mReponse;
     private Dialog mDialog;
+    private DetailBuyViewModel mDetailBuyViewModel;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.layout_fragment_detail_buy,container,false);
         initView();
+        initViewModel();
         init();
         listenerOnclicked();
         return mView;
+    }
+
+    //khởi tạo viewmodel
+    private void initViewModel() {
+        mDetailBuyViewModel = ViewModelProviders.of(getActivity()).get(DetailBuyViewModel.class);
     }
 
     //lang nghe su kien onclick
@@ -63,6 +74,7 @@ public class DetailBuyFragment extends Fragment implements View.OnClickListener,
             if(mReponse.getPrice() == 0){
                 mTxtPrice.setText("Miễn phí");
             }
+            mDetailBuyViewModel.getComment(mReponse.getId());
         }
     }
 

@@ -6,6 +6,7 @@ import com.example.mobileappbook.cores.body.PaymentBody;
 import com.example.mobileappbook.cores.body.RegisterBody;
 import com.example.mobileappbook.cores.body.UserInfoBody;
 import com.example.mobileappbook.cores.reponse.acount.ChangePasswordReponse;
+import com.example.mobileappbook.cores.reponse.comment.GetCommentReponse;
 import com.example.mobileappbook.cores.reponse.course.CourseReponse;
 import com.example.mobileappbook.cores.reponse.featured.GetAllCourseReponse;
 import com.example.mobileappbook.cores.reponse.featured.GetAllCategoryReponse;
@@ -27,6 +28,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 
 public interface DataService {
     //-----------------------ACCOUNT---------------------------------
@@ -91,4 +93,8 @@ public interface DataService {
                                     @Part("discount") RequestBody discount,
                                     @Header("auth-token") String authToken,
                                     @Part MultipartBody.Part file);
+
+    //-----------------------Comment---------------------------------
+    @GET("/rate/get-rate-by-course/{courseId}")
+    Call<List<GetCommentReponse>>getCommentReponse(@Path(value="courseId", encoded=false) String courseId);
 }
