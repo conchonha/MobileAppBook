@@ -4,7 +4,9 @@ import com.example.mobileappbook.cores.reponse.Vote;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class GetAllCourseReponse{
+import java.io.Serializable;
+
+public class GetAllCourseReponse implements Serializable {
     @SerializedName("vote")
     @Expose
     private Vote vote;

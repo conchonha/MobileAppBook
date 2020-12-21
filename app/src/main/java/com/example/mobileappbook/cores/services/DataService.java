@@ -3,6 +3,7 @@ import com.example.mobileappbook.cores.body.ActiveAcountBody;
 import com.example.mobileappbook.cores.body.CreateCourseBody;
 import com.example.mobileappbook.cores.body.LoginBody;
 import com.example.mobileappbook.cores.body.PaymentBody;
+import com.example.mobileappbook.cores.body.PostRattingBody;
 import com.example.mobileappbook.cores.body.RegisterBody;
 import com.example.mobileappbook.cores.body.UserInfoBody;
 import com.example.mobileappbook.cores.reponse.acount.ChangePasswordReponse;
@@ -100,4 +101,7 @@ public interface DataService {
 
     @GET("/course/getby-iduser/{userId}")
     Call<List<GetAllCourseReponse>>getSussgesTedCourseReponse(@Path(value="userId", encoded=false) String userId);
+
+    @POST("/rate/create-rate")
+    Call<Map>postRating(@Body PostRattingBody body);
 }

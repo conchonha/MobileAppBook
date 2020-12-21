@@ -17,13 +17,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.mobileappbook.R;
 import com.example.mobileappbook.cores.reponse.featured.GetAllCourseReponse;
 import com.example.mobileappbook.model.CallbackFeatured;
+import com.example.mobileappbook.src.dialog.RatingDialog;
 import com.example.mobileappbook.src.page.tabbar.TabBarActivity;
 import com.example.mobileappbook.src.page.webview.WebView;
 import com.example.mobileappbook.src.viewmodel.featured.detail_buy.DetailBuyViewModel;
@@ -37,7 +37,7 @@ import com.squareup.picasso.Picasso;
 public class DetailBuyFragment extends Fragment implements View.OnClickListener, CallbackFeatured {
     private View mView;
     private TextView mTxtName, mTxtNameCategory, mTxtPrice, mTxtPriceSale, mTxtTime, mTxtDescription;
-    private ImageView mImageAvatar,mImg1,mImg2,mImg3,mImg4,mImg5;
+    private ImageView mImageAvatar;
     //variable
     private GetAllCourseReponse mReponse;
     private Dialog mDialog;
@@ -72,7 +72,7 @@ public class DetailBuyFragment extends Fragment implements View.OnClickListener,
         mView.findViewById(R.id.relative3).setOnClickListener(this);
         mView.findViewById(R.id.relative4).setOnClickListener(this);
         mView.findViewById(R.id.relative5).setOnClickListener(this);
-        mCardRating.setOnClickListener(this);
+        mView.findViewById(R.id.card_rating).setOnClickListener(this);
     }
 
     private void init() {
@@ -109,11 +109,6 @@ public class DetailBuyFragment extends Fragment implements View.OnClickListener,
         mTxtDescription = mView.findViewById(R.id.txt_description);
         mImageAvatar = mView.findViewById(R.id.img_avatar);
         mCardRating = mView.findViewById(R.id.card_rating);
-        mImg1 = mView.findViewById(R.id.img1);
-        mImg2 = mView.findViewById(R.id.img2);
-        mImg3 = mView.findViewById(R.id.img3);
-        mImg4 = mView.findViewById(R.id.img4);
-        mImg5 = mView.findViewById(R.id.img5);
     }
 
     @Override
@@ -141,28 +136,28 @@ public class DetailBuyFragment extends Fragment implements View.OnClickListener,
                 }, 3000);
                 break;
             case R.id.relative1:
-                mImg1.setBackgroundResource(R.drawable.ic_path);
+                mView.findViewById(R.id.img1).setBackgroundResource(R.drawable.ic_path);
                 mView.findViewById(R.id.relative1).setEnabled(false);
                 startActivity(new Intent(getActivity(), WebView.class));
                 getActivity().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                 mTotal+= 20;
                 break;
             case R.id.relative2:
-                mImg2.setBackgroundResource(R.drawable.ic_path);
+                mView.findViewById(R.id.img2).setBackgroundResource(R.drawable.ic_path);
                 mView.findViewById(R.id.relative2).setEnabled(false);
                 mTotal+= 20;
                 startActivity(new Intent(getActivity(), WebView.class));
                 getActivity().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                 break;
             case R.id.relative3:
-                mImg3.setBackgroundResource(R.drawable.ic_path);
+                mView.findViewById(R.id.img3).setBackgroundResource(R.drawable.ic_path);
                 mView.findViewById(R.id.relative3).setEnabled(false);
                 mTotal+= 20;
                 startActivity(new Intent(getActivity(), WebView.class));
                 getActivity().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                 break;
             case R.id.relative4:
-                mImg4.setBackgroundResource(R.drawable.ic_path);
+                mView.findViewById(R.id.img4).setBackgroundResource(R.drawable.ic_path);
                 mView.findViewById(R.id.relative4).setEnabled(false);
                 mTotal+= 20;
                 startActivity(new Intent(getActivity(), WebView.class));
@@ -176,11 +171,12 @@ public class DetailBuyFragment extends Fragment implements View.OnClickListener,
                 getActivity().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                 break;
             case R.id.card_rating:
-                if(mTotal >= 80){
-                    
-                }else{
-                    Toast.makeText(getContext(), "Bạn chưa hoàn thành 80% khoá học", Toast.LENGTH_SHORT).show();
-                }
+                Toast.makeText(getContext(), "hghj", Toast.LENGTH_SHORT).show();
+                    RatingDialog ratingDialog = new RatingDialog();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(Constain.keyGetAllcourseReponse,mReponse);
+                    ratingDialog.setArguments(bundle);
+                    ratingDialog.show(getFragmentManager(),Constain.keyRatingDialog);
                 break;
                 
 

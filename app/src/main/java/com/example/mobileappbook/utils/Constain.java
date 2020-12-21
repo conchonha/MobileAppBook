@@ -13,7 +13,11 @@ public class Constain {
    public static final String cart = "cart";
    public static final String keyMapErr = "300";
    public static final String keyTap = "keyTap";
+
+   //--------------key Tag fragment
+   public static final String keyGetAllcourseReponse = "keyGetAllcourseReponse";
    public static final String keyCreateCourseBody = "keyCreateCourseBody";
+   public static final String keyRatingDialog = "keyRatingDialog";
 
    //tag fragment
    public static final String fragmentDetailBuy = "fragmentDetailBuy";
