@@ -80,8 +80,9 @@ public interface DataService {
     @GET("/course/get-top")
     Call<List<GetAllCourseReponse>> gettopcourse();
 
+    //Payment - Week 5
     @POST("/payment/pay")
-    Call<Map>pay(@Body PaymentBody body);
+    Call<Map> pay (@Body RequestBody body);
 
     //-----------------------Course---------------------------------
     @Multipart
