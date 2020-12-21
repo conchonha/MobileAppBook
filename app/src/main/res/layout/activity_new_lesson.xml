@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/login">
+
+<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:src="@drawable/ic_back" />
+
+    <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="33dp"
+            android:fontFamily="@font/black_and_white_picture"
+            android:gravity="center"
+            android:text="New Lesson"
+            android:textColor="#FFFFFF"
+            android:textSize="48sp" />
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/linelogin2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_title"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="16dp"
+            android:background="#80171616"
+            app:cardBackgroundColor="#80171616"
+            app:cardCornerRadius="30dp"
+            app:cardElevation="5dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:orientation="vertical"
+                android:paddingLeft="11dp"
+                android:paddingTop="74dp"
+                android:paddingRight="11dp">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/black_and_white_picture"
+                        android:text="Lesson Name"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp" />
+
+                <EditText
+                        android:id="@+id/edt_nameLesson"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/boder_edit"
+                        android:hint="Nhập vào Email ..."
+                        android:inputType="textEmailAddress"
+                        android:paddingLeft="10dp"
+                        android:textColor="#000000"
+                        android:textSize="10sp" />
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/black_and_white_picture"
+                        android:text="Order of Lesson"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp" />
+
+                <EditText
+                        android:id="@+id/edt_orderLesson"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/boder_edit"
+                        android:hint="Nhập vào Email ..."
+                        android:inputType="textEmailAddress"
+                        android:paddingLeft="10dp"
+                        android:textColor="#000000"
+                        android:textSize="10sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/black_and_white_picture"
+                        android:text="Related Document"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp" />
+
+                <RelativeLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    <ImageView
+                            android:id="@+id/img_word"
+                            android:layout_alignParentLeft="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/btn_word" />
+
+                    <ImageView
+                            android:id="@+id/img_pdf"
+                            android:layout_alignParentRight="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/btn_pdf" />
+                </RelativeLayout>
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/black_and_white_picture"
+                        android:text="Related Video"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp" />
+
+                <RelativeLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    <ImageView
+                            android:layout_centerInParent="true"
+                            android:id="@+id/img_video"
+                            android:layout_alignParentLeft="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/btn_video" />
+                </RelativeLayout>
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/black_and_white_picture"
+                        android:text="Pop-up question (Optional)"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp" />
+
+                <RelativeLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    <ImageView
+                            android:layout_centerInParent="true"
+                            android:id="@+id/img_pop_up"
+                            android:layout_alignParentLeft="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/btn_pop_up" />
+                </RelativeLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <LinearLayout
+            android:layout_below="@+id/linelogin2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <Button
+                android:id="@+id/btn_create_lesson"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginLeft="83dp"
+                android:layout_marginTop="17dp"
+                android:layout_marginRight="83dp"
+                android:layout_marginBottom="41dp"
+                android:background="@drawable/border_send"
+                android:clickable="true"
+                android:fontFamily="@font/black_and_white_picture"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:text="Create Lesson"
+                android:textAppearance="@style/CalcResultStyle"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+    </LinearLayout>
+</RelativeLayout>
+
+
+</ScrollView>
