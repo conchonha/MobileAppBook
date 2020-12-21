@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".base.BaseActivity"></activity>
+        <activity android:name=".src.page.webview.WebView"></activity>
+        <activity android:name=".base.BaseActivity" />
         <activity
             android:name=".src.page.course.LessonListActivity"
             android:screenOrientation="portrait" />

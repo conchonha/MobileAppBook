@@ -1,10 +1,13 @@
 package com.example.mobileappbook.utils;
 
 public class Constain {
+   //-------------------url
    public static final String baseUrl = "http://149.28.24.98:9000";
    public static final String coursesUrlImg = "http://149.28.24.98:9000/upload/course_image/";
    public static final String categoryImg  = "http://149.28.24.98:9000/upload/category/";
    public static final String userUrlImg = "http://149.28.24.98:9000/upload/user_image/";
+   public static final String courseUrl = "https://docs.google.com/document/d/1Ungf3zXh0L7Siic0SNLuV8lZAXgWokMIQ5aICABHNrs/edit?usp=sharing";
+   //-------------key
    public static final String isImgBackground = "isImgBackground";
    public static final String isUser = "user";
    public static final String cart = "cart";

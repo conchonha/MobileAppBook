@@ -36,7 +36,8 @@ public class SharePrefs {
         mEditTor.putString(Constain.isUser, user).commit();
     }
 
-    public void saveCart(GetAllCourseReponse reponse, Context context) {
+    public boolean saveCart(GetAllCourseReponse reponse, Context context) {
+        boolean check = false;
         if (getCart().equals("")) {
             List<GetAllCourseReponse> allCourseReponseList = new ArrayList<>();
             CartModel cartModel = new CartModel();
@@ -47,9 +48,8 @@ public class SharePrefs {
             Toast.makeText(context, "Insert cart success", Toast.LENGTH_SHORT).show();
         } else {
             CartModel cartModel = mGson.fromJson(getCart(), CartModel.class);
-            boolean check = false;
             for (int i = 0; i < cartModel.getList().size(); i++) {
-                if (reponse.getId()  == cartModel.getList().get(i).getId()) {
+                if (reponse.getId().equals(cartModel.getList().get(i).getId())) {
                     check = true;
                 }
             }
@@ -63,6 +63,7 @@ public class SharePrefs {
                 Log.d(TAG, "saveCart: " + cartModel.getList().size());
             }
         }
+        return check;
     }
 
     public String getCart() {
