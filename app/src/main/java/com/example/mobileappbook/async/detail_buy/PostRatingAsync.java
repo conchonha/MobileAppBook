@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,12 +50,13 @@ public class PostRatingAsync extends AsyncTask<String,Void,Void> {
                     Log.d(TAG, "onResponse -success: "+mGson.toJson(response.body()));
                 }else{
                     Log.d(TAG, "onResponse -err: "+mGson.toJson(response.errorBody()));
+                    String reponse = null;
                     try {
-                        String reponse = mGson.toJson(response.errorBody());
+                        reponse = response.errorBody().string();
                         JSONObject jsonObject = new JSONObject(reponse);
                         mMap.put(Constain.keyMapErr,jsonObject.get("message"));
                         mDetailBuyRepositories.setmPostRatingReponse(mMap);
-                    } catch (JSONException e) {
+                    } catch (IOException | JSONException e) {
                         e.printStackTrace();
                         mMap.put(Constain.keyMapErr,response.message());
                         mDetailBuyRepositories.setmPostRatingReponse(mMap);

@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.mobileappbook.R;
 import com.example.mobileappbook.cores.body.PaymentBody;
 import com.example.mobileappbook.cores.reponse.acount.UserReponse;
+import com.example.mobileappbook.cores.reponse.featured.GetAllCourseReponse;
 import com.example.mobileappbook.cores.services.APIServices;
 import com.example.mobileappbook.cores.services.DataService;
 import com.example.mobileappbook.model.CartModel;
@@ -28,6 +29,10 @@ import com.stripe.android.Stripe;
 import com.stripe.android.model.Card;
 import com.stripe.android.model.Token;
 import com.stripe.android.view.CardInputWidget;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Map;
 
@@ -44,6 +49,7 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
     private CartModel mCartModel;
     private Dialog mDialog;
     private CartViewModel mCartViewModel;
+    JSONArray cartArray=new JSONArray();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -87,65 +93,69 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
                                 card,
                                 new ApiResultCallback<Token>() {
                                     public void onSuccess(@NonNull final Token token) {
-                                        try {
-                                            new AsyncTask<Void, Void, Void>() {
-                                                @Override
-                                                protected void onPreExecute() {
-                                                    super.onPreExecute();
-                                                    mDialog = Helpers.showLoadingDialog(PayActivity.this);
-                                                    mDialog.show();
-                                                }
-
-                                                @Override
-                                                protected Void doInBackground(Void... voids) {
-                                                    for (int i = 0; i < mCartModel.getList().size(); i++) {
-                                                        final PaymentBody paymentBody = new PaymentBody(mUserReponse.getName(), mUserReponse.getEmail(),
-                                                                token.getId(), mCartModel.getList().get(i).getPrice().toString(), mCartModel.getList().get(i).getCategory().getId(), mUserReponse.getId());
-                                                                final int finalI = i;
-                                                                DataService dataService = APIServices.getService();
-                                                                Call<Map> call = dataService.pay(paymentBody);
-                                                                call.enqueue(new Callback<Map>() {
-                                                                    @Override
-                                                                    public void onResponse(Call<Map> call, Response<Map> response) {
-                                                                        Log.d(TAG, "onResponse: " + response.toString());
-                                                                        Toast.makeText(PayActivity.this, response.message(), Toast.LENGTH_SHORT).show();
-                                                                        if (response.isSuccessful()) {
-                                                                            Log.d(TAG, "onResponse: -success-" + mGson.toJson(response.body()));
-                                                                            Helpers.intentClearOnTapSelected3(PayActivity.this, TabBarActivity.class);
-                                                                            mCartModel.getList().remove(finalI);
-                                                                        } else {
-                                                                            Log.d(TAG, "onResponse: -err-" + mGson.toJson(response.errorBody()));
-                                                                        }
-                                                                    }
-
-                                                                    @Override
-                                                                    public void onFailure(Call<Map> call, Throwable t) {
-                                                                        Log.d(TAG, "onFailure: --err" + t.toString());
-                                                                        Toast.makeText(PayActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-                                                                    }
-                                                                });
-                                                    }
-                                                    return null;
-                                                }
-
-                                                @Override
-                                                protected void onPostExecute(Void aVoid) {
-                                                    super.onPostExecute(aVoid);
-                                                    try {
-                                                        Thread.sleep(3000);
-                                                        mDialog.dismiss();
-                                                        mCartViewModel.remoCart();
-                                                        Helpers.intentClearOnTapSelected3(PayActivity.this,TabBarActivity.class);
-                                                        finish();
-                                                    } catch (InterruptedException e) {
-                                                        e.printStackTrace();
-                                                    }
-                                                }
-                                            }.execute();
-                                        } catch (Exception e) {
-                                            Log.d(TAG, "onError: " + e.toString());
-                                            Toast.makeText(PayActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        JSONObject jsonCourse = new JSONObject();
+                                        for (GetAllCourseReponse reponse : mCartModel.getList()){
+                                           // cartArray.put()
                                         }
+//                                        try {
+//                                            new AsyncTask<Void, Void, Void>() {
+//                                                @Override
+//                                                protected void onPreExecute() {
+//                                                    super.onPreExecute();
+//                                                    mDialog = Helpers.showLoadingDialog(PayActivity.this);
+//                                                    mDialog.show();
+//                                                }
+//
+//                                                @Override
+//                                                protected Void doInBackground(Void... voids) {
+//                                                    for (int i = 0; i < mCartModel.getList().size(); i++) {
+//                                                        final PaymentBody paymentBody = new PaymentBody(mUserReponse.getName(), mUserReponse.getEmail(),
+//                                                                token.getId(), mCartModel.getList().get(i).getPrice().toString(), mCartModel.getList().get(i).getCategory().getId(), mUserReponse.getId());
+//                                                                final int finalI = i;
+//                                                                DataService dataService = APIServices.getService();
+//                                                                Call<Map> call = dataService.pay(paymentBody);
+//                                                                call.enqueue(new Callback<Map>() {
+//                                                                    @Override
+//                                                                    public void onResponse(Call<Map> call, Response<Map> response) {
+//                                                                        Log.d(TAG, "onResponse: " + response.toString());
+//                                                                        Toast.makeText(PayActivity.this, response.message(), Toast.LENGTH_SHORT).show();
+//                                                                        if (response.isSuccessful()) {
+//                                                                            Log.d(TAG, "onResponse: -success-" + mGson.toJson(response.body()));
+//                                                                            Helpers.intentClearOnTapSelected3(PayActivity.this, TabBarActivity.class);
+//                                                                            mCartModel.getList().remove(finalI);
+//                                                                        } else {
+//                                                                            Log.d(TAG, "onResponse: -err-" + mGson.toJson(response.errorBody()));
+//                                                                        }
+//                                                                    }
+//
+//                                                                    @Override
+//                                                                    public void onFailure(Call<Map> call, Throwable t) {
+//                                                                        Log.d(TAG, "onFailure: --err" + t.toString());
+//                                                                        Toast.makeText(PayActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+//                                                                    }
+//                                                                });
+//                                                    }
+//                                                    return null;
+//                                                }
+//
+//                                                @Override
+//                                                protected void onPostExecute(Void aVoid) {
+//                                                    super.onPostExecute(aVoid);
+//                                                    try {
+//                                                        Thread.sleep(3000);
+//                                                        mDialog.dismiss();
+//                                                        mCartViewModel.remoCart();
+//                                                        Helpers.intentClearOnTapSelected3(PayActivity.this,TabBarActivity.class);
+//                                                        finish();
+//                                                    } catch (InterruptedException e) {
+//                                                        e.printStackTrace();
+//                                                    }
+//                                                }
+//                                            }.execute();
+//                                        } catch (Exception e) {
+//                                            Log.d(TAG, "onError: " + e.toString());
+//                                            Toast.makeText(PayActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+//                                        }
                                     }
 
                                     public void onError(@NonNull Exception error) {

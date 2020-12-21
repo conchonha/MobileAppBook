@@ -1,15 +1,10 @@
 package com.example.mobileappbook.src.page.tabbar;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.mobileappbook.R;
@@ -21,7 +16,7 @@ import com.google.android.material.tabs.TabLayout;
 
 public class TabBarActivity extends AppCompatActivity{
     private ViewPager mViewPager;
-    public static TabLayout mTabLayout;
+    public TabLayout mTabLayout;
 
     //variable
     private TabbarAdapter mTabbarAdapter;
@@ -42,7 +37,6 @@ public class TabBarActivity extends AppCompatActivity{
                 super.onPageSelected(position);
                 switch (position){
                     case 0:
-                        mTabLayout.setVisibility(View.GONE);
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
@@ -55,7 +49,6 @@ public class TabBarActivity extends AppCompatActivity{
                     default:
                         Helpers.removeFragment(getSupportFragmentManager(),0,0,Constain.fragmentDetailBuy);
                         Helpers.removeFragment(getSupportFragmentManager(),0,0,Constain.feauterFragment);
-                        mTabLayout.setVisibility(View.VISIBLE);
                         break;
                 }
             }
@@ -63,7 +56,6 @@ public class TabBarActivity extends AppCompatActivity{
     }
 
     private void init() {
-        mTabLayout.setVisibility(View.GONE);
         mTabbarAdapter = new TabbarAdapter(getSupportFragmentManager());
 
         //set adapter cho viewpager

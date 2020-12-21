@@ -7,20 +7,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileappbook.R;
+import com.example.mobileappbook.cores.reponse.featured.GetAllCourseReponse;
 import com.example.mobileappbook.src.adapter.search_adapter.SearchAdapter;
 import com.example.mobileappbook.src.fragment.fragment_featured.FeatureFragment;
 import com.example.mobileappbook.src.viewmodel.featured.FeaturedViewModel;
 import com.example.mobileappbook.utils.Constain;
 import com.example.mobileappbook.utils.Helpers;
+
+import java.util.List;
 
 public class SearchFragment extends Fragment implements View.OnClickListener {
     private View mView;
@@ -47,6 +52,20 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
     // khởi tạo viewmodel
     private void initViewModel() {
         mFeaturedViewModel = ViewModelProviders.of(getActivity()).get(FeaturedViewModel.class);
+
+        mFeaturedViewModel.getListSearch().observe(getViewLifecycleOwner(), new Observer<List<GetAllCourseReponse>>() {
+            @Override
+            public void onChanged(List<GetAllCourseReponse> getAllCourseReponse) {
+                if(getAllCourseReponse.size() == 0){
+                    Toast.makeText(getContext(), "Không tìm thấy kết quả nào", Toast.LENGTH_SHORT).show();
+                }else {
+                    getFragmentManager().beginTransaction().
+                            setCustomAnimations(R.anim.slide_in_fragment, R.anim.slide_out_right).
+                            add(R.id.relative_2,new FeatureFragment(), Constain.feauterFragment).
+                            commit();
+                }
+            }
+        });
     }
 
     private void init() {
@@ -73,10 +92,6 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
             public void run() {
                 dialog.dismiss();
                 mFeaturedViewModel.searchCoure(content);
-                getFragmentManager().beginTransaction().
-                        setCustomAnimations(R.anim.slide_in_fragment, R.anim.slide_out_right).
-                        add(R.id.relative_2,new FeatureFragment(), Constain.feauterFragment).
-                        commit();
             }
         },3000);
     }

@@ -1,28 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relative_featured"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/relative_featured"
+    android:paddingLeft="12dp"
+    android:paddingRight="16dp"
+    android:paddingTop="20dp"
     android:background="@drawable/home_flashsale">
-    <RelativeLayout
-        android:paddingLeft="12dp"
+    <ImageView
+        android:id="@+id/img_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:src="@drawable/ic_back" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_featured"
         android:layout_width="match_parent"
-        android:paddingRight="40dp"
-        android:layout_height="match_parent">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/img_back"
-            android:foreground="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:layout_margin="5dp"
-            android:src="@drawable/ic_back"/>
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_marginTop="143dp"
-            android:layout_marginBottom="143dp"
-            android:id="@+id/recycler_featured"
-            android:layout_height="match_parent"/>
-    </RelativeLayout>
+        android:layout_height="match_parent"
+        android:layout_marginTop="78dp" />
 </RelativeLayout>

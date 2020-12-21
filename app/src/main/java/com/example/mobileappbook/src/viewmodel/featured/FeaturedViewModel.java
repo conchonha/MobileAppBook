@@ -53,9 +53,9 @@ public class FeaturedViewModel extends AndroidViewModel {
         mMutableLiveData.setValue(listTmt);
     }
 
-    public void setDataAllSearch(){
-        mMutableLiveData.setValue(mFeaturedRepositories.getmGetAllCourseReponse().getValue());
-    }
+//    public void setDataAllSearch(){
+//        mMutableLiveData.setValue(mFeaturedRepositories.getmGetAllCourseReponse().getValue());
+//    }
     public LiveData<List<GetAllCourseReponse>>getListSearch(){
         return mMutableLiveData;
     }

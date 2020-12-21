@@ -2,6 +2,7 @@ package com.example.mobileappbook.src.dialog;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,11 +59,15 @@ public class RatingDialog extends DialogFragment implements View.OnClickListener
         mDetailBuyViewModel.getPostRatingRepone().observe(getViewLifecycleOwner(), new Observer<Map>() {
             @Override
             public void onChanged(Map map) {
-                mDialog.dismiss();
-                if(map.get(Constain.keyMapErr) != null){
-                    Toast.makeText(getContext(),map.get(Constain.keyMapErr)+"" , Toast.LENGTH_SHORT).show();
-                }else{
-                    Helpers.hideFragmentDialog(RatingDialog.this,Constain.keyRatingDialog);
+                try {
+                    mDialog.dismiss();
+                    if(map.get(Constain.keyMapErr) != null){
+                        Toast.makeText(getContext(),map.get(Constain.keyMapErr)+"" , Toast.LENGTH_SHORT).show();
+                    }else{
+                        Helpers.hideFragmentDialog(RatingDialog.this,Constain.keyRatingDialog);
+                    }
+                }catch (Exception e){
+                    Log.d("AAA", "onChanged: "+e.getMessage());
                 }
             }
         });

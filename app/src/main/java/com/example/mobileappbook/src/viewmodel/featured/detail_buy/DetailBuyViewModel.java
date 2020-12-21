@@ -47,7 +47,7 @@ public class DetailBuyViewModel extends AndroidViewModel {
 
     public void postRating(String comment, int mRating,String idCourse) {
         UserReponse userReponse  = mGson.fromJson(mSharePrefs.getUser(),UserReponse.class);
-        PostRattingBody body = new PostRattingBody(userReponse.getId(),idCourse,comment,mRating);
+        PostRattingBody body = new PostRattingBody(userReponse.getId(),idCourse,comment,mRating+"");
         Log.d("AAA", "postRating: "+mGson.toJson(body));
         mDetailBuyRepositories.postRating(body);
     }

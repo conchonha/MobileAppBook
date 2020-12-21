@@ -87,7 +87,6 @@ public class FeatureFragment extends Fragment implements CallbackFeatured, View.
 
     @Override
     public void onClickItem(GetAllCourseReponse reponse) {
-        TabBarActivity.mTabLayout.setVisibility(View.VISIBLE);
         DetailBuyFragment detailBuyFragment = new DetailBuyFragment();
         CallbackFeatured callbackFeatured = detailBuyFragment;
         callbackFeatured.onClickItem(reponse);
@@ -103,7 +102,6 @@ public class FeatureFragment extends Fragment implements CallbackFeatured, View.
         switch (v.getId()){
             case R.id.img_back:
                 Helpers.removeFragment(getFragmentManager(),R.anim.slide_out_right,R.anim.slide_out_fragment,Constain.feauterFragment);
-                mFeaturedViewModel.setDataAllSearch();
                 break;
         }
     }

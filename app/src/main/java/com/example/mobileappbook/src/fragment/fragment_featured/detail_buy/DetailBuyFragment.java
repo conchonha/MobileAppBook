@@ -24,7 +24,6 @@ import com.example.mobileappbook.R;
 import com.example.mobileappbook.cores.reponse.featured.GetAllCourseReponse;
 import com.example.mobileappbook.model.CallbackFeatured;
 import com.example.mobileappbook.src.dialog.RatingDialog;
-import com.example.mobileappbook.src.page.tabbar.TabBarActivity;
 import com.example.mobileappbook.src.page.webview.WebView;
 import com.example.mobileappbook.src.viewmodel.featured.detail_buy.DetailBuyViewModel;
 import com.example.mobileappbook.utils.Constain;
@@ -115,7 +114,6 @@ public class DetailBuyFragment extends Fragment implements View.OnClickListener,
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.img_back:
-                TabBarActivity.mTabLayout.setVisibility(View.GONE);
                 Helpers.removeFragment(getFragmentManager(), R.anim.slide_out_right, R.anim.slide_out_fragment, Constain.fragmentDetailBuy);
                 break;
             case R.id.card_4:
@@ -127,10 +125,7 @@ public class DetailBuyFragment extends Fragment implements View.OnClickListener,
                         mDialog.dismiss();
                         SharePrefs sharePrefs = new SharePrefs(getContext());
                         if(!sharePrefs.saveCart(mReponse, getContext())){
-                            mCardRating.setVisibility(View.VISIBLE);
-                            mView.findViewById(R.id.relative_3).setVisibility(View.GONE);
-                            mRelativeLayout.setVisibility(View.GONE);
-                            mLinearLayout.setVisibility(View.VISIBLE);
+
                         }
                     }
                 }, 3000);
@@ -172,13 +167,13 @@ public class DetailBuyFragment extends Fragment implements View.OnClickListener,
                 break;
             case R.id.card_rating:
                 Toast.makeText(getContext(), "hghj", Toast.LENGTH_SHORT).show();
-                    RatingDialog ratingDialog = new RatingDialog();
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable(Constain.keyGetAllcourseReponse,mReponse);
-                    ratingDialog.setArguments(bundle);
-                    ratingDialog.show(getFragmentManager(),Constain.keyRatingDialog);
+                RatingDialog ratingDialog = new RatingDialog();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(Constain.keyGetAllcourseReponse,mReponse);
+                ratingDialog.setArguments(bundle);
+                ratingDialog.show(getFragmentManager(),Constain.keyRatingDialog);
                 break;
-                
+
 
         }
     }

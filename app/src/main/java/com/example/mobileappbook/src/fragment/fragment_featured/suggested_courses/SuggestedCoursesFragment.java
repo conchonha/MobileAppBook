@@ -80,7 +80,6 @@ public class SuggestedCoursesFragment extends Fragment implements CallbackFeatur
     }
     @Override
     public void onClickItem(GetAllCourseReponse reponse) {
-        TabBarActivity.mTabLayout.setVisibility(View.VISIBLE);
         DetailBuyFragment detailBuyFragment = new DetailBuyFragment();
         CallbackFeatured callbackFeatured = detailBuyFragment;
         callbackFeatured.onClickItem(reponse);
