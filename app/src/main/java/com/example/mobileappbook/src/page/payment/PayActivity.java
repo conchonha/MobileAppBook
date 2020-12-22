@@ -17,11 +17,11 @@ import com.example.mobileappbook.cores.reponse.featured.GetAllCourseReponse;
 import com.example.mobileappbook.cores.services.APIServices;
 import com.example.mobileappbook.cores.services.DataService;
 import com.example.mobileappbook.model.CartModel;
+import com.example.mobileappbook.src.page.tabbar.TabBarActivity;
 import com.example.mobileappbook.src.viewmodel.cart.CartViewModel;
 import com.example.mobileappbook.utils.Helpers;
 import com.example.mobileappbook.utils.SharePrefs;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.stripe.android.ApiResultCallback;
 import com.stripe.android.Stripe;
 import com.stripe.android.model.Card;
@@ -32,7 +32,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.Map;
 
 import okhttp3.MediaType;
@@ -50,8 +49,8 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
     private CartModel mCartModel;
     private Dialog mDialog;
     private CartViewModel mCartViewModel;
-    JSONArray cartArray = new JSONArray();
-    JSONObject sendJO = new JSONObject();
+    private JSONArray mCartArraySend = new JSONArray();
+    private JSONObject mCendJO = new JSONObject();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -78,21 +77,19 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
         mCardInputWidget.setPostalCodeEnabled(false);
         //put cart
         for (GetAllCourseReponse reponse : mCartModel.getList()){
-            JSONObject jsonObject = new JSONObject();
             try {
-                jsonObject.put("_id",reponse.getId());
-                jsonObject.put("created_at",reponse.getCreatedAt());
-                jsonObject.put("discount",reponse.getDiscount());
-                jsonObject.put("ranking",reponse.getRanking());
-                jsonObject.put("is_checked",reponse.getIsChecked());
-                jsonObject.put("is_required",reponse.getRequired());
-                jsonObject.put("name",reponse.getName());
-                jsonObject.put("price",reponse.getPrice());
-                jsonObject.put("image",reponse.getImage());
-                cartArray.put(jsonObject);
+                JSONObject jo = new JSONObject();
+                jo.put("_id", reponse.getId());
+                mCartArraySend.put(jo);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+        }
+        try {
+            mCendJO.put("cart", mCartArraySend);
+            mCendJO.put("idUser", mUserReponse.getId());
+        } catch (JSONException jx) {
+            jx.printStackTrace();
         }
     }
 
@@ -112,41 +109,39 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
                                 card,
                                 new ApiResultCallback<Token>() {
                                     public void onSuccess(@NonNull final Token token) {
-                                        Log.d(TAG, "onClick: "+mGson.toJson(token));
-                                        JSONObject tokenJo = new JSONObject();
-                                        JSONObject cardJo = new JSONObject();
-
+                                        JSONObject tokenJO = new JSONObject();
+                                        JSONObject cardJO = new JSONObject();
                                         try {
-                                            cardJo.put("id",token.getCard().getId());
-                                            cardJo.put("object","card");
-                                        } catch (JSONException e) {
-                                            e.printStackTrace();
+                                            cardJO.put("id", token.getCard().getId());
+                                            cardJO.put("object", "card");
+
+                                        } catch (JSONException jx) {
+                                            jx.printStackTrace();
                                         }
 
                                         try {
-                                            tokenJo.put("id",token.getId());
-                                            tokenJo.put("object","token");
-                                            tokenJo.put("card",cardJo);
-                                            tokenJo.put("client_ip","");
-                                            tokenJo.put("created",token.getCreated().getTime());
-                                            tokenJo.put("type","card");
-                                            tokenJo.put("used",token.getUsed());
-                                            tokenJo.put("email",mUserReponse.getEmail());
-                                            tokenJo.put("livemode",token.getLivemode());
-                                            tokenJo.put("name",mUserReponse.getName());
-                                            tokenJo.put("bank_account",token.getBankAccount());
-                                        } catch (JSONException e) {
-                                            e.printStackTrace();
+                                            tokenJO.put("id", token.getId());
+                                            tokenJO.put("object", "token");
+                                            tokenJO.put("card", cardJO);
+                                            tokenJO.put("client_ip", "");
+                                            tokenJO.put("created", token.getCreated().getTime());
+                                            tokenJO.put("type", "card");
+                                            tokenJO.put("used", token.getUsed());
+                                            tokenJO.put("email", mUserReponse.getEmail());
+                                            tokenJO.put("livemode", token.getLivemode());
+                                            tokenJO.put("name", mUserReponse.getName());
+                                            tokenJO.put("bank_account", token.getBankAccount());
+
+                                        } catch (JSONException jx) {
+                                            jx.printStackTrace();
                                         }
 
                                         try {
-                                            sendJO.put("token",tokenJo);
-                                            sendJO.put("cart",cartArray);
-                                            sendJO.put("idUser",mUserReponse.getId());
-                                            pay();
-                                        } catch (JSONException e) {
-                                            e.printStackTrace();
+                                            mCendJO.put("token", tokenJO);
+                                        } catch (JSONException jx) {
+                                            jx.printStackTrace();
                                         }
+                                        pay();
                                     }
                                     public void onError(@NonNull Exception error) {
                                         Log.d(TAG, "onError: " + error.toString());
@@ -167,7 +162,7 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
     private void pay() {
         mDialog = Helpers.showLoadingDialog(this);
         mDialog.show();
-        RequestBody body = RequestBody.create(MediaType.parse("application/json"), sendJO.toString());
+        RequestBody body = RequestBody.create(MediaType.parse("application/json"), mCendJO.toString());
         DataService dataService = APIServices.getService();
         Call<Map>call = dataService.pay(body);
         call.enqueue(new Callback<Map>() {
@@ -175,20 +170,23 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
             public void onResponse(Call<Map> call, Response<Map> response) {
                 mDialog.dismiss();
                 Log.d(TAG, "onResponse: "+response.toString());
-                if(response.isSuccessful()){
-                    Log.d(TAG, "onResponse: -sucess"+mGson.toJson(response.body()));
-                    Toast.makeText(PayActivity.this, "Payment success", Toast.LENGTH_SHORT).show();
-                }else {
-                    Log.d(TAG, "onResponse: -error"+response.errorBody());
-                    try {
-                        String reponse = response.errorBody().string();
-                        JSONObject jsonObject = new JSONObject(reponse);
-                        Toast.makeText(PayActivity.this, jsonObject.getString("message")+"", Toast.LENGTH_SHORT).show();
-                    } catch (IOException | JSONException e) {
-                        e.printStackTrace();
-                        Toast.makeText(PayActivity.this, response.message(), Toast.LENGTH_SHORT).show();
-                    }
-                }
+                Toast.makeText(PayActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                mCartViewModel.saveCartToBy();
+                Helpers.intentClearOnTapSelected3(PayActivity.this, TabBarActivity.class);
+//                if(response.isSuccessful()){
+//                    Log.d(TAG, "onResponse: -sucess"+mGson.toJson(response.body()));
+//                    Toast.makeText(PayActivity.this, "Payment success", Toast.LENGTH_SHORT).show();
+//                }else {
+//                    Log.d(TAG, "onResponse: -error"+response.errorBody());
+//                    try {
+//                        String reponse = response.errorBody().string();
+//                        JSONObject jsonObject = new JSONObject(reponse);
+//                        Toast.makeText(PayActivity.this, jsonObject.getString("message")+"", Toast.LENGTH_SHORT).show();
+//                    } catch (IOException | JSONException e) {
+//                        e.printStackTrace();
+//                        Toast.makeText(PayActivity.this, response.message(), Toast.LENGTH_SHORT).show();
+//                    }
+//                }
             }
 
             @Override

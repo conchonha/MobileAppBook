@@ -48,7 +48,7 @@ public class cartFragment extends Fragment implements View.OnClickListener {
     //khoi tao viewmodel
     private void initViewModel() {
         mCartViewModel = ViewModelProviders.of(getActivity()).get(CartViewModel.class);
-        mCartViewModel.initstalise(mTxtTotal);
+        mCartViewModel.initCart(mTxtTotal);
 
         mCartViewModel.getDataCart().observe(getViewLifecycleOwner(), new Observer<CartModel>() {
             @Override

@@ -19,14 +19,15 @@ import java.util.List;
 public class CartViewModel extends AndroidViewModel {
     private SharePrefs mSharePrefs = new SharePrefs(getApplication());
     private Gson mGson = new Gson();
-    private CartModel mCartModel;
+    private CartModel mCartModel,mCartModelToPay;
     private MutableLiveData<CartModel>getmCartModel = new MutableLiveData<>();
+    private MutableLiveData<CartModel>getmCartModelToPay = new MutableLiveData<>();
 
     public CartViewModel(@NonNull Application application) {
         super(application);
     }
 
-    public void initstalise(TextView editText){
+    public void initCart(TextView editText){
         int total  = 0;
         mCartModel = mGson.fromJson(mSharePrefs.getCart(), CartModel.class);
         if (mCartModel != null) {
@@ -48,11 +49,32 @@ public class CartViewModel extends AndroidViewModel {
 
     }
 
+    public void initCartToPay(){
+        mCartModelToPay = mGson.fromJson(mSharePrefs.getCartToPay(), CartModel.class);
+        if (mCartModelToPay != null) {
+            getmCartModelToPay.setValue(mCartModelToPay);
+        }else{
+            List<GetAllCourseReponse>list = new ArrayList<>();
+            CartModel cartModel = new CartModel();
+            cartModel.setList(list);
+            getmCartModelToPay.setValue(cartModel);
+        }
+    }
+
+    public LiveData<CartModel> getDataCartToPay() {
+        return getmCartModelToPay;
+    }
+
     public LiveData<CartModel> getDataCart() {
         return getmCartModel;
     }
 
-    public void remoCart(){
+    public void saveCartToBy(){
+        CartModel mCartModel = mGson.fromJson(mSharePrefs.getCart(), CartModel.class);
+        for (GetAllCourseReponse reponse : mCartModel.getList()){
+            mSharePrefs.saveCartToPay(reponse);
+        }
         mSharePrefs.removeCart();
     }
+
 }

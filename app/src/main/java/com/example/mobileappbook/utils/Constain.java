@@ -11,6 +11,7 @@ public class Constain {
    public static final String isImgBackground = "isImgBackground";
    public static final String isUser = "user";
    public static final String cart = "cart";
+   public static final String cartToPay = "cartToPay";
    public static final String keyMapErr = "300";
    public static final String keyTap = "keyTap";
 

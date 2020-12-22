@@ -3,6 +3,7 @@
         android:layout_width="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:background="@drawable/banner_course"
+        android:id="@+id/relative_featured"
         android:layout_height="match_parent">
     <ImageView
             android:layout_width="wrap_content"
@@ -26,6 +27,7 @@
     <RelativeLayout
             android:layout_below="@id/txt_title"
             android:layout_width="match_parent"
+        android:id="@+id/relative"
             android:layout_height="50dp"
             android:background="#73000000">
         <Button
@@ -39,4 +41,13 @@
                 android:layout_marginBottom="5dp"
                 android:textAppearance="@style/CalcResultStyle"/>
     </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/relative"
+        android:id="@+id/recycler"/>
+
 </RelativeLayout>

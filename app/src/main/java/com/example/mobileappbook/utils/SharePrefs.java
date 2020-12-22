@@ -36,6 +36,34 @@ public class SharePrefs {
         mEditTor.putString(Constain.isUser, user).commit();
     }
 
+    public boolean saveCartToPay(GetAllCourseReponse reponse) {
+        boolean check = false;
+        if (getCartToPay().equals("")) {
+            List<GetAllCourseReponse> allCourseReponseList = new ArrayList<>();
+            CartModel cartModel = new CartModel();
+
+            allCourseReponseList.add(reponse);
+            cartModel.setList(allCourseReponseList);
+            String cart = mGson.toJson(cartModel, CartModel.class);
+            mEditTor.putString(Constain.cartToPay, cart).commit();
+          //  Toast.makeText(context, "Insert cart success", Toast.LENGTH_SHORT).show();
+        } else {
+            CartModel cartModel = mGson.fromJson(getCartToPay(), CartModel.class);
+            cartModel.getList().add(reponse);
+            String cart = mGson.toJson(cartModel, CartModel.class);
+            mEditTor.putString(Constain.cartToPay, cart).commit();
+        }
+        return check;
+    }
+
+    public String getCartToPay() {
+        return mSharedPreferences.getString(Constain.cartToPay, "");
+    }
+
+    public void removeCartToPay(){
+        mEditTor.remove(Constain.cartToPay).commit();
+    }
+
     public boolean saveCart(GetAllCourseReponse reponse, Context context) {
         boolean check = false;
         if (getCart().equals("")) {

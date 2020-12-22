@@ -53,7 +53,7 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.Featur
                 @Override
                 public void onClick(View v) {
                     CallbackFeatured callbackFeatured = (CallbackFeatured) mFeatureFragment;
-                    callbackFeatured.onClickItem(reponse);
+                    callbackFeatured.onClickItem(reponse,false);
                 }
             });
 

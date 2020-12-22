@@ -45,6 +45,7 @@ public class DetailBuyFragment extends Fragment implements View.OnClickListener,
     private RelativeLayout mRelativeLayout;
     private LinearLayout mLinearLayout;
     private int mTotal = 0;
+    boolean mCheck = false;
 
     @Nullable
     @Override
@@ -71,7 +72,8 @@ public class DetailBuyFragment extends Fragment implements View.OnClickListener,
         mView.findViewById(R.id.relative3).setOnClickListener(this);
         mView.findViewById(R.id.relative4).setOnClickListener(this);
         mView.findViewById(R.id.relative5).setOnClickListener(this);
-        mView.findViewById(R.id.card_rating).setOnClickListener(this);
+        mView.findViewById(R.id.card_rate).setOnClickListener(this);
+        mView.findViewById(R.id.card_lern).setOnClickListener(this);
     }
 
     private void init() {
@@ -94,6 +96,10 @@ public class DetailBuyFragment extends Fragment implements View.OnClickListener,
             mDetailBuyViewModel.getComment(mReponse.getId());
             mDetailBuyViewModel.getSuggestedCourses(mReponse.getIdUser().getId().toString());
         }
+        if(mCheck){
+            mView.findViewById(R.id.card_4).setVisibility(View.GONE);
+            mView.findViewById(R.id.linner_test).setVisibility(View.VISIBLE);
+        }
     }
 
     //anh xa view
@@ -107,7 +113,7 @@ public class DetailBuyFragment extends Fragment implements View.OnClickListener,
         mTxtTime = mView.findViewById(R.id.txt_time);
         mTxtDescription = mView.findViewById(R.id.txt_description);
         mImageAvatar = mView.findViewById(R.id.img_avatar);
-        mCardRating = mView.findViewById(R.id.card_rating);
+        mCardRating = mView.findViewById(R.id.card_rate);
     }
 
     @Override
@@ -165,7 +171,7 @@ public class DetailBuyFragment extends Fragment implements View.OnClickListener,
                 startActivity(new Intent(getActivity(), WebView.class));
                 getActivity().overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                 break;
-            case R.id.card_rating:
+            case R.id.card_rate:
                 Toast.makeText(getContext(), "hghj", Toast.LENGTH_SHORT).show();
                 RatingDialog ratingDialog = new RatingDialog();
                 Bundle bundle = new Bundle();
@@ -173,13 +179,18 @@ public class DetailBuyFragment extends Fragment implements View.OnClickListener,
                 ratingDialog.setArguments(bundle);
                 ratingDialog.show(getFragmentManager(),Constain.keyRatingDialog);
                 break;
+            case R.id.card_lern:
+                mView.findViewById(R.id.linner).setVisibility(View.VISIBLE);
+                mView.findViewById(R.id.relative_3).setVisibility(View.GONE);
+                break;
 
 
         }
     }
 
     @Override
-    public void onClickItem(GetAllCourseReponse reponse) {
+    public void onClickItem(GetAllCourseReponse reponse,boolean check) {
+        mCheck  = check;
         mReponse = reponse;
     }
 }

@@ -539,34 +539,89 @@
                     android:textSize="25dp"
                     android:textStyle="bold" />
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/card_4"
-                    android:layout_width="133dp"
-                    android:layout_height="47dp"
-                    android:layout_below="@+id/txt_price_sale_featured"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="22dp"
-                    android:clickable="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    app:cardBackgroundColor="#3778F8"
-                    app:cardCornerRadius="30dp">
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:id="@+id/liner4"
+                   android:gravity="center"
+                   android:layout_marginTop="22dp"
+                   android:layout_below="@+id/txt_price_sale_featured"
+                   android:layout_height="wrap_content">
+                   <androidx.cardview.widget.CardView
+                       android:id="@+id/card_4"
+                       android:layout_width="133dp"
+                       android:layout_height="47dp"
+                       android:layout_centerHorizontal="true"
+                       android:clickable="true"
+                       android:layout_marginRight="10dp"
+                       android:foreground="?attr/selectableItemBackground"
+                       app:cardBackgroundColor="#3778F8"
+                       app:cardCornerRadius="30dp">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="BUY"
-                        android:textColor="#fff"
-                        android:textSize="20dp"
-                        android:textStyle="bold" />
+                       <TextView
+                           android:layout_width="match_parent"
+                           android:layout_height="match_parent"
+                           android:gravity="center"
+                           android:text="BUY"
+                           android:textColor="#fff"
+                           android:textSize="20dp"
+                           android:textStyle="bold" />
 
-                </androidx.cardview.widget.CardView>
+                   </androidx.cardview.widget.CardView>
+                   <LinearLayout
+                       android:layout_width="wrap_content"
+                       android:id="@+id/linner_test"
+                       android:visibility="gone"
+                       android:layout_height="wrap_content">
+                       <androidx.cardview.widget.CardView
+                           android:id="@+id/card_lern"
+                           android:layout_width="133dp"
+                           android:layout_height="47dp"
+                           android:layout_centerHorizontal="true"
+                           android:clickable="true"
+                           android:layout_marginRight="10dp"
+                           android:foreground="?attr/selectableItemBackground"
+                           app:cardBackgroundColor="#3778F8"
+                           app:cardCornerRadius="30dp">
+
+                           <TextView
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent"
+                               android:gravity="center"
+                               android:text="LEARN"
+                               android:textColor="#fff"
+                               android:textSize="20dp"
+                               android:textStyle="bold" />
+
+                       </androidx.cardview.widget.CardView>
+                       <androidx.cardview.widget.CardView
+                           android:id="@+id/card_rate"
+                           android:layout_width="133dp"
+                           android:layout_height="47dp"
+                           android:layout_centerHorizontal="true"
+                           android:clickable="true"
+                           android:layout_marginRight="10dp"
+                           android:foreground="?attr/selectableItemBackground"
+                           app:cardBackgroundColor="#3778F8"
+                           app:cardCornerRadius="30dp">
+
+                           <TextView
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent"
+                               android:gravity="center"
+                               android:text="RATE"
+                               android:textColor="#fff"
+                               android:textSize="20dp"
+                               android:textStyle="bold" />
+
+                       </androidx.cardview.widget.CardView>
+                   </LinearLayout>
+               </LinearLayout>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cart5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/card_4"
+                    android:layout_below="@+id/liner4"
                     android:layout_marginTop="23dp"
                     android:layout_marginBottom="2dp"
                     android:padding="2dp"

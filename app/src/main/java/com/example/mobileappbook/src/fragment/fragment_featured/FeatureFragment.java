@@ -86,10 +86,10 @@ public class FeatureFragment extends Fragment implements CallbackFeatured, View.
     }
 
     @Override
-    public void onClickItem(GetAllCourseReponse reponse) {
+    public void onClickItem(GetAllCourseReponse reponse,boolean check) {
         DetailBuyFragment detailBuyFragment = new DetailBuyFragment();
         CallbackFeatured callbackFeatured = detailBuyFragment;
-        callbackFeatured.onClickItem(reponse);
+        callbackFeatured.onClickItem(reponse,false);
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
                 .setCustomAnimations(R.anim.slide_in_fragment, R.anim.slide_out_right)
