@@ -75,6 +75,10 @@
         <activity
             android:name=".src.page.course.ChangeCourseAvataActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".src.page.course.QuestionActivity"
+                android:screenOrientation="portrait"/>
+        <activity android:name=".src.page.course.Question2Activity"
+                android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

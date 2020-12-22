@@ -1,36 +1,32 @@
 package com.example.mobileappbook.src.page.course;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.mobileappbook.R;
 
-public class LessonListActivity extends AppCompatActivity {
-    private Button mBtnCreate;
-
-    @Override
+public class QuestionActivity extends AppCompatActivity {
+    private Button mBtnCreateQuestion;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lesson_list2);
-        initView();
+        setContentView(R.layout.activity_pop_up_question);
         listenerOnClicklistener();
-
+        initView();
     }
-
     private void listenerOnClicklistener() {
-        mBtnCreate.setOnClickListener(new View.OnClickListener() {
+        mBtnCreateQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LessonListActivity.this,QuestionActivity.class));
+                startActivity(new Intent(QuestionActivity.this,Question2Activity.class));
             }
         });
     }
 
     private void initView() {
-        mBtnCreate = findViewById(R.id.btn_create);
+        mBtnCreateQuestion = findViewById(R.id.btn_create);
     }
 }
